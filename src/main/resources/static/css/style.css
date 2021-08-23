@@ -30,3 +30,39 @@ border-radius: 3px;
 background-color: grey;
 color: white;
 }
+* {
+  --elementBgColor: white;
+  --bg: #a8dadc;
+  --itemBgColor: #07c7c7;
+  --btnBackgroundColor: #118ab2;
+}
+
+body {
+  overflow-x: hidden !important;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none !important;
+  color: black !important;
+}
+
+.AddTextDecoration{
+  text-decoration: underline !important;
+  color: rgb(37, 37, 255) !important;
+}
+
+wrapper {
+  min-height: 100vh;
+  /* Force footer to bottopm of page */
+}
+
+.ListItem {
+  background-color: var(--itemBgColor);
+  min-height: 200px;
+  height: auto;
+}
+
+.btn-primary {
+  background-color: var(--btnBackgroundColor) !important;
+}
