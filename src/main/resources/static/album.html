@@ -56,20 +56,17 @@
             </div>
         </nav>
         <!-- /Navbar -->
-        <main class="flex-fill">
-            <div class="container-fluid">
-                <!-- Search -->
-                <div class="col-lg-6 col-md-6 col-12 mx-auto mt-5">
-                    <form onsubmit="SearchAlbum(event)" class="input-group mb-3 input-group-lg">
-                        <input type="text" name="user" class="form-control" placeholder="Search for some Choonz"
-                            style="background-color: var(--elementBgColor);border: 0px;" id="q">
-                        <div class="input-group-append">
-                            <button
-                                style="border-top-right-radius: 12px;border-bottom-right-radius: 12px;background-color: var(--elementBgColor);border:0px;"><i
-                                    class="fas fa-search fa-5x ms-3"></i></button>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg mt-5">
+                    <form class="form-inline d-flex justify-content-center md-form form-sm">
+                        <input class="form-control form-control-sm mr-1 w-75" type="text" placeholder="Search for music..." aria-label="Search">
+                        <button type="submit" id="Search"> Search </button>
                     </form>
                 </div>
             </div>
+        </div>
+    
             <!-- /Search -->
             <!--Albums List-->
             <div class="col-12">
