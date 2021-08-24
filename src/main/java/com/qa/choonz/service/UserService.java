@@ -1,7 +1,9 @@
 package com.qa.choonz.service;
 
 import java.util.List;
+
 import java.util.stream.Collectors;
+
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,7 @@ import com.qa.choonz.exception.UsersNotFoundException;
 public class UserService {
 
 	public UserRepository repo;
+
 	private ModelMapper mapper;
 
 	public UserService(UserRepository repo, ModelMapper mapper) {
@@ -47,17 +50,19 @@ public class UserService {
 
 	// update
 	public UserDTO update(Users user, long id) {
-		 Users toUpdate = this.repo.findById(id).orElseThrow(UsersNotFoundException::new);
-	      toUpdate.setName(user.getName());
-	      toUpdate.setUsername(user.getUsername());
-	      toUpdate.setPassword(user.getPassword());
-	      toUpdate.setPlayList(user.getPlayList());
-	      Users updated = this.repo.save(toUpdate);
-	      return this.mapToDTO(updated);
+		Users toUpdate = this.repo.findById(id).orElseThrow(UsersNotFoundException::new);
+		toUpdate.setFull_name(user.getFull_name());
+		toUpdate.setUser_name(user.getUser_name());
+		toUpdate.setPassword(user.getPassword());
+		toUpdate.setPlaylist(user.getPlaylist());
+		Users updated = this.repo.save(toUpdate);
+		return this.mapToDTO(updated);
 	}
 
 	public boolean delete(long id) {
 		this.repo.deleteById(id);
 		return !this.repo.existsById(id);
+
 	}
+
 }

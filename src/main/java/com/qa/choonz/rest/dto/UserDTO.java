@@ -11,8 +11,8 @@ import com.qa.choonz.persistence.domain.Playlist;
 public class UserDTO {
 
 	private long id;
-	private String name;
-	private String username;
+	private String full_name;
+	private String user_name;
 	private String password;
 	private List<Playlist> playlist;
 
@@ -20,11 +20,11 @@ public class UserDTO {
 		super();
 	}
 
-	public UserDTO(long id, String name, String username, String password, List<Playlist> playlist) {
+	public UserDTO(long id, String full_name, String user_name, String password, List<Playlist> playlist) {
 		super();
 		this.id = id;
-		this.name = name;
-		this.username = username;
+		this.full_name = full_name;
+		this.user_name = user_name;
 		this.password = password;
 		this.playlist = playlist;
 	}
@@ -37,20 +37,20 @@ public class UserDTO {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getFull_name() {
+		return full_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFull_name(String full_name) {
+		this.full_name = full_name;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUser_name() {
+		return user_name;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
 
 	public String getPassword() {
@@ -61,17 +61,17 @@ public class UserDTO {
 		this.password = password;
 	}
 
-	public List<Playlist> getPlayList() {
+	public List<Playlist> getPlaylist() {
 		return playlist;
 	}
 
-	public void setPlayList(List<Playlist> playList) {
-		this.playlist = playList;
+	public void setPlaylist(List<Playlist> playlist) {
+		this.playlist = playlist;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name, password, playlist, username);
+		return Objects.hash(full_name, id, password, playlist, user_name);
 	}
 
 	@Override
@@ -83,14 +83,15 @@ public class UserDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		UserDTO other = (UserDTO) obj;
-		return id == other.id && Objects.equals(name, other.name) && Objects.equals(password, other.password)
-				&& Objects.equals(playlist, other.playlist) && Objects.equals(username, other.username);
+		return Objects.equals(full_name, other.full_name) && id == other.id && Objects.equals(password, other.password)
+				&& Objects.equals(playlist, other.playlist) && Objects.equals(user_name, other.user_name);
 	}
 
 	@Override
 	public String toString() {
-		return "UserDTO [id=" + id + ", name=" + name + ", username=" + username + ", password=" + password
+		return "UserDTO [id=" + id + ", full_name=" + full_name + ", user_name=" + user_name + ", password=" + password
 				+ ", playlist=" + playlist + "]";
 	}
-	
+
 }
+
