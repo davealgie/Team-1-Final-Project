@@ -20,8 +20,8 @@ document.querySelector('button[id="logOutBtn"]').addEventListener("click", funct
   // delete a user account
   document.querySelector('button[id="deleteUserBtn"]').addEventListener("click", function (stop) {
     stop.preventDefault();
-    let userId = get_cookie_value("user_id");
-    deleteUser(userId);
+    let userName = get_cookie_value("user_name");
+    deleteUser(userName);
   
   })
   
