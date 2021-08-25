@@ -41,7 +41,6 @@ public class AlbumController {
         return new ResponseEntity<AlbumDTO>(this.service.assignArtist(albumId, artistId), HttpStatus.CREATED);
     }
 
-    // genre
 
     @GetMapping("/read")
     public ResponseEntity<List<AlbumDTO>> read() {
