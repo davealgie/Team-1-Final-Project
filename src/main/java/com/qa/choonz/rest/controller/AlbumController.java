@@ -36,7 +36,11 @@ public class AlbumController {
     }
     
     // artist
-    
+    @PutMapping("/{albumId}/artists/{artistId}")
+    public ResponseEntity<AlbumDTO> assignAlbumToArtist(@PathVariable Long albumId, @PathVariable Long artistId) {
+        return new ResponseEntity<AlbumDTO>(this.service.assignArtist(albumId, artistId), HttpStatus.CREATED);
+    }
+
     // genre
 
     @GetMapping("/read")

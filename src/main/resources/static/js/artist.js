@@ -12,9 +12,7 @@
         head.innerText = header[0];
         var para = document.createElement("a");
         para.innerText = result[1];
-        para.setAttribute('href', "http://localhost:8082/albums/read/" + result[0]);
-        var head2 = document.createElement("p");
-        head2.innerText = header[1];
+        para.setAttribute('href', "http://localhost:8082/artists/read/" + result[0]);
 
         // var a = document.createElement('a');
         // var linkText = document.createTextNode("my title text");
@@ -25,28 +23,25 @@
 
         div.appendChild(head);
         div.appendChild(para);
-        div.appendChild(head2);
     
+        var head = document.createElement("p");
+        head.innerText = header[1];
+        div.appendChild(head);
 
-        for(var i = 0; i < result[3].length; i ++){
+        for(var i = 0; i < result[2].length; i ++){
             var para = document.createElement("a");
-            para.innerText = result[3][i].name;
-            para.setAttribute('href', "http://localhost:8082/tracks/read/" + result[3][i].id);
+            para.innerText = result[2][i].name;
+            para.setAttribute('href', "http://localhost:8082/albums/read/" + result[2][i].id);
             div.appendChild(para);
         }
 
-
-        var para = document.createElement("a");
-        para.innerText = "Artist";
-        para.setAttribute('href', "http://localhost:8082/artists/read/1");
-        div.appendChild(para);
 
 
       return div;
     }
 
     function simpleFetch(){
-        const a = ["http://localhost:8082/albums/read"];
+        const a = ["http://localhost:8082/artists/read"];
             fetch(a)
             .then((response => {
               if(response.status !== 200){
@@ -56,7 +51,7 @@
               return response.json();
             })) 
             .then(data => {
-                const result = data.map(({id, name, artist, tracks}) => [id, name, artist, tracks]);
+                const result = data.map(({id, name, albums}) => [id, name, albums]);
                 for (data of result) {
                 const table = createCard(header, data);
                 container.appendChild(table);
@@ -66,7 +61,7 @@
             .finally(() => { console.log("All OK!"); });
   
         }
-    const header = ["NAME", "TRACKS", "ARTIST"];
+    const header = ["NAME", "ALBUMS"];
     simpleFetch();
 
 })();
