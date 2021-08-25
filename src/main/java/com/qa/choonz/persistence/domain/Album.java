@@ -9,13 +9,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Album {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,14 +29,19 @@ public class Album {
     @Size(max = 100)
     @Column(unique = true)
     private String name;
-
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "album", cascade = CascadeType.ALL)
     private List<Track> tracks;
 
+    @JsonIgnore
     @ManyToOne
+    @JoinColumn(name = "artist_id", referencedColumnName = "id")
     private Artist artist;
-
+    
+    @JsonIgnore
     @ManyToOne
+    @JoinColumn(name = "genre_id", referencedColumnName = "id")
     private Genre genre;
 
     private String cover;
