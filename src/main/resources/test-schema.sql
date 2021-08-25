@@ -1,10 +1,4 @@
-DROP TABLE IF EXISTS `playlist_tracks`;
-DROP TABLE IF EXISTS `tracks`;
-DROP TABLE IF EXISTS `playlists`;
-DROP TABLE IF EXISTS `users`;
-DROP TABLE IF EXISTS `albums`;
-DROP TABLE IF EXISTS `genres`;
-DROP TABLE IF EXISTS `artists`;
+
  
 CREATE TABLE `albums` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -78,8 +72,8 @@ CREATE TABLE `tracks` (
 
 CREATE TABLE `users` (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `username` varchar(45) NOT NULL,
+  `full_name` varchar(45) NOT NULL,
+  `user_name` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`)
