@@ -1,6 +1,6 @@
-let userAuth =document.cookie;
+let userAuth = document.cookie;
 // let userPass = document.cookie;
- console.log(userAuth)
+console.log(userAuth)
 var userBtn = document.getElementById("userLoggedInBtn");
 var guestBtn = document.getElementById("guestLoggedInBtn");
 
