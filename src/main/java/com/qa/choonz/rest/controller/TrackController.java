@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +20,7 @@ import com.qa.choonz.service.TrackService;
 
 @RestController
 @RequestMapping("/tracks")
-@CrossOrigin
+@CrossOrigin("http://127.0.0.1:5500")
 public class TrackController {
 
     private TrackService service;
@@ -32,6 +33,12 @@ public class TrackController {
     @PostMapping("/create")
     public ResponseEntity<TrackDTO> create(@RequestBody Track track) {
         return new ResponseEntity<TrackDTO>(this.service.create(track), HttpStatus.CREATED);
+    }
+    
+    // track
+    @PutMapping("/{trackId}/albums/{albumId}")
+    public ResponseEntity<TrackDTO> assignTrackToAlbum(@PathVariable Long trackId, @PathVariable Long albumId) {
+        return new ResponseEntity<TrackDTO>(this.service.assignAlbum(trackId, albumId), HttpStatus.CREATED);
     }
 
     @GetMapping("/read")
@@ -49,7 +56,7 @@ public class TrackController {
         return new ResponseEntity<TrackDTO>(this.service.update(track, id), HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<TrackDTO> delete(@PathVariable long id) {
         return this.service.delete(id) ? new ResponseEntity<TrackDTO>(HttpStatus.NO_CONTENT)
                 : new ResponseEntity<TrackDTO>(HttpStatus.INTERNAL_SERVER_ERROR);
