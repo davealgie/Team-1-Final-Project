@@ -66,6 +66,13 @@ public class AlbumService {
     }
 
 //Artist
+	public AlbumDTO assignArtist(Long albumId, Long artistId) {
+		Album album = repo.findById(albumId).get();
+		Artist artist = repoArtist.findById(artistId).get();
+		album.setArtist(artist);
+		Album updated = this.repo.save(album);
+		return this.mapToDTO(updated);
+	}
 
 // genre
 
