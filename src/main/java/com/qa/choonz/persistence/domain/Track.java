@@ -1,5 +1,6 @@
 package com.qa.choonz.persistence.domain;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -7,9 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Track {
@@ -22,12 +27,15 @@ public class Track {
     @Size(max = 100)
     @Column(unique = true)
     private String name;
-
+    
+    @JsonIgnore
     @ManyToOne
+    @JoinColumn(name = "album_id", referencedColumnName = "id")
     private Album album;
-
-    @ManyToOne
-    private Playlist playlist;
+    
+    @JsonIgnore
+    @ManyToMany(mappedBy = "tracks")
+    private List<Playlist> playlist;
 
     // in seconds
     private int duration;
@@ -39,7 +47,7 @@ public class Track {
         // TODO Auto-generated constructor stub
     }
 
-    public Track(long id, @NotNull @Size(max = 100) String name, Album album, Playlist playlist, int duration,
+    public Track(long id, @NotNull @Size(max = 100) String name, Album album, List<Playlist> playlist, int duration,
             String lyrics) {
         super();
         this.id = id;
@@ -74,11 +82,11 @@ public class Track {
         this.album = album;
     }
 
-    public Playlist getPlaylist() {
+    public List<Playlist> getPlaylist() {
         return playlist;
     }
 
-    public void setPlaylist(Playlist playlist) {
+    public void setPlaylist(List<Playlist> playlist) {
         this.playlist = playlist;
     }
 

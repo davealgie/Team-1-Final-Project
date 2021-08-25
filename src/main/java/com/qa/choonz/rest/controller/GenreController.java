@@ -19,7 +19,7 @@ import com.qa.choonz.service.GenreService;
 
 @RestController
 @RequestMapping("/genres")
-@CrossOrigin
+@CrossOrigin("http://127.0.0.1:5500")
 public class GenreController {
 
     private GenreService service;

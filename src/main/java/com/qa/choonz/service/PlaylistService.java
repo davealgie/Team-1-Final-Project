@@ -8,17 +8,21 @@ import org.springframework.stereotype.Service;
 
 import com.qa.choonz.exception.PlaylistNotFoundException;
 import com.qa.choonz.persistence.domain.Playlist;
+import com.qa.choonz.persistence.domain.Track;
 import com.qa.choonz.persistence.repository.PlaylistRepository;
+import com.qa.choonz.persistence.repository.TrackRepository;
 import com.qa.choonz.rest.dto.PlaylistDTO;
 
 @Service
 public class PlaylistService {
 
     private PlaylistRepository repo;
+    private TrackRepository repoTrack;
     private ModelMapper mapper;
 
-    public PlaylistService(PlaylistRepository repo, ModelMapper mapper) {
+    public PlaylistService(PlaylistRepository repo, TrackRepository repoTrack, ModelMapper mapper) {
         super();
+        this.repoTrack = repoTrack;
         this.repo = repo;
         this.mapper = mapper;
     }
@@ -43,10 +47,10 @@ public class PlaylistService {
 
     public PlaylistDTO update(Playlist playlist, long id) {
         Playlist toUpdate = this.repo.findById(id).orElseThrow(PlaylistNotFoundException::new);
-        toUpdate.setName(toUpdate.getName());
-        toUpdate.setDescription(toUpdate.getDescription());
-        toUpdate.setArtwork(toUpdate.getArtwork());
-        toUpdate.setTracks(toUpdate.getTracks());
+        toUpdate.setName(playlist.getName());
+        toUpdate.setDescription(playlist.getDescription());
+        toUpdate.setArtwork(playlist.getArtwork());
+        toUpdate.setTracks(playlist.getTracks());
         Playlist updated = this.repo.save(toUpdate);
         return this.mapToDTO(updated);
     }
@@ -55,5 +59,6 @@ public class PlaylistService {
         this.repo.deleteById(id);
         return !this.repo.existsById(id);
     }
+
 
 }
