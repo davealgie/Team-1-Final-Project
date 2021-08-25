@@ -51,6 +51,21 @@ public class Users {
 		this.password = password;
 		this.playlist = playlist;
 	}
+	
+	public Users(long id, @NotNull @Size(max = 100) String full_name, @NotNull @Size(max = 100) String user_name, @NotNull String password) {
+		super();
+		this.id = id;
+		this.full_name = full_name;
+		this.user_name = user_name;
+		this.password = password;
+	}
+	public Users( @NotNull @Size(max = 100) String full_name, @NotNull @Size(max = 100) String user_name, @NotNull String password) {
+		super();
+		
+		this.full_name = full_name;
+		this.user_name = user_name;
+		this.password = password;
+	}
 
 	public long getId() {
 		return id;
