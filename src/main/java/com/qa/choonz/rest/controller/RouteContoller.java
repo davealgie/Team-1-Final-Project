@@ -1,11 +1,12 @@
 package com.qa.choonz.rest.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
+
+@CrossOrigin("http://127.0.0.1:5500")
 @Controller
 public class RouteContoller {
     @GetMapping(value = "/")
@@ -31,7 +32,7 @@ public class RouteContoller {
     @GetMapping(value = "/albums/view/{albumId}")
     public String albumview(@PathVariable Long albumId) {
     	
-    	return "http://localhost:8082/album.html?id"+albumId;
+    	return "http://localhost:81/album.html?id"+albumId;
 
     }
 
