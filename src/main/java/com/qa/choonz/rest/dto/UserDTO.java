@@ -28,6 +28,14 @@ public class UserDTO {
 		this.password = password;
 		this.playlist = playlist;
 	}
+	public UserDTO(long id, String full_name, String user_name, List<Playlist> playlist) {
+		super();
+		this.id = id;
+		this.full_name = full_name;
+		this.user_name = user_name;
+		this.playlist = playlist;
+	}
+
 
 	public long getId() {
 		return id;
