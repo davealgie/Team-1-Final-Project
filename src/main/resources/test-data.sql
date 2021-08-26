@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 insert into albums
 values (1,'Seliath', 'Endio', 1);
 
