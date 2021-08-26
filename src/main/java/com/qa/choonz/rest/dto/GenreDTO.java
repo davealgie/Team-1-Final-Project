@@ -25,7 +25,14 @@ public class GenreDTO {
         this.description = description;
         this.tracks = tracks;
     }
-
+    
+    public GenreDTO(Long id, String name, String description) {
+ 		super();
+ 		this.id = id;
+ 		this.name = name;
+ 		this.description = description;
+ 	}
+    
     public long getId() {
         return id;
     }
