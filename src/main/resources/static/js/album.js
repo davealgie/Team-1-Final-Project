@@ -1,7 +1,10 @@
 (() => {
 
     let container = document.querySelector("#flex");
-
+    let submitCreateBtn = document.querySelector("#createAlbum");
+    let albumname = document.querySelector("#albumname");
+    let cover = document.querySelector("#cover");
+    let artistid = document.querySelector("#artistid");
 
 
     function createCard(header, result){
@@ -12,7 +15,7 @@
         head.innerText = header[0];
         var para = document.createElement("a");
         para.innerText = result[1];
-        para.setAttribute('href', "http://localhost:8082/albums/view/" + result[0]);
+        para.setAttribute('href', "http://localhost:81/albums/view/" + result[0]);
         var head2 = document.createElement("p");
         head2.innerText = header[1];
 
@@ -32,14 +35,14 @@
             var para = document.createElement("a");
             para.innerText = result[3][i].name;
 
-            para.setAttribute('href', "http://localhost:8082/track/" + result[3][i].id);
+            para.setAttribute('href', "http://localhost:81/track/" + result[3][i].id);
             div.appendChild(para);
         }
 
 
         var para = document.createElement("a");
         para.innerText = "Artist";
-        para.setAttribute('href', "http://localhost:8082/artists/read/1");
+        para.setAttribute('href', "http://localhost:81/artists/read/1");
         div.appendChild(para);
 
 
@@ -47,7 +50,7 @@
     }
 
     function simpleFetch(){
-        const a = ["http://localhost:8082/albums/read"];
+        const a = ["http://localhost:81/albums/read"];
             fetch(a)
             .then((response => {
               if(response.status !== 200){
@@ -69,5 +72,30 @@
         }
     const header = ["NAME", "TRACKS", "ARTIST"];
     simpleFetch();
+
+      //CREATE
+  
+  submitCreateBtn.addEventListener("click", (event) => {
+    const data = {name: albumname.value, cover: cover.value, artist_id: artistid.value};
+
+    console.log(data);
+
+    fetch('http://localhost:81/albums/create', {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+    },
+      body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+    
+    // window.location.reload();
+  }, false);
 
 })();
