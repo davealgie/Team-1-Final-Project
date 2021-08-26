@@ -20,13 +20,11 @@ public class AlbumService {
 
     private AlbumRepository repo;
     private ArtistRepository repoArtist;
-    private GenreRepository repoGenre;
     private ModelMapper mapper;
 
-    public AlbumService(AlbumRepository repo, ArtistRepository repoArtist, GenreRepository repoGenre, ModelMapper mapper) {
+    public AlbumService(AlbumRepository repo, ArtistRepository repoArtist,  ModelMapper mapper) {
         super();
         this.repoArtist = repoArtist;
-        this.repoGenre = repoGenre;
         this.repo = repo;
         this.mapper = mapper;
     }
@@ -73,7 +71,4 @@ public class AlbumService {
 		Album updated = this.repo.save(album);
 		return this.mapToDTO(updated);
 	}
-
-// genre
-
 }
