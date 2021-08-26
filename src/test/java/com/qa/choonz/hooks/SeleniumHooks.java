@@ -26,7 +26,7 @@ public class SeleniumHooks {
 	
 	@After("@webpage")
 	public void teardown(Scenario scenario) {
-		//could in theory do this after every step but it got weird with alerts, look into later if time
+	
 		scenario.attach(takeScreenshot(), "image/png", scenario.getName());
 		
 		this.driver.quit();
