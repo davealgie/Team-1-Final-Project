@@ -4,7 +4,7 @@ Feature: Demo sign up
 
   Scenario: Title of your scenario
 		Given I am on "http://127.0.0.1:5500/static/index.html"
-		When I click create account
+		When I click the sign up button
 		And I enter my fullname
 		And I enter my username
 		And I enter my password
