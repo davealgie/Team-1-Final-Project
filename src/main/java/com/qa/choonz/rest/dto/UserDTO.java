@@ -11,7 +11,7 @@ import com.qa.choonz.persistence.domain.Playlist;
 
 public class UserDTO {
 
-	private long id;
+	private Long user_id;
 	private String full_name;
 	private String user_name;
 	private String password;
@@ -21,17 +21,17 @@ public class UserDTO {
 		super();
 	}
 
-	public UserDTO(long id, String full_name, String user_name, String password, List<Playlist> playlist) {
+	public UserDTO(Long user_id, String full_name, String user_name, String password, List<Playlist> playlist) {
 		super();
-		this.id = id;
+		this.user_id = user_id;
 		this.full_name = full_name;
 		this.user_name = user_name;
 		this.password = password;
 		this.playlist = playlist;
 	}
-	public UserDTO(long id, String full_name, String user_name, List<Playlist> playlist) {
+	public UserDTO(Long user_id, String full_name, String user_name, List<Playlist> playlist) {
 		super();
-		this.id = id;
+		this.user_id = user_id;
 		this.full_name = full_name;
 		this.user_name = user_name;
 		this.playlist = playlist;
@@ -39,11 +39,11 @@ public class UserDTO {
 
 
 	public long getId() {
-		return id;
+		return user_id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setId(Long id) {
+		this.user_id = id;
 	}
 
 	public String getFull_name() {
@@ -80,7 +80,7 @@ public class UserDTO {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(full_name, id, password, playlist, user_name);
+		return Objects.hash(full_name, user_id, password, playlist, user_name);
 	}
 
 	@Override
@@ -92,13 +92,13 @@ public class UserDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		UserDTO other = (UserDTO) obj;
-		return Objects.equals(full_name, other.full_name) && id == other.id && Objects.equals(password, other.password)
+		return Objects.equals(full_name, other.full_name) && user_id == other.user_id && Objects.equals(password, other.password)
 				&& Objects.equals(playlist, other.playlist) && Objects.equals(user_name, other.user_name);
 	}
 
 	@Override
 	public String toString() {
-		return "UserDTO [id=" + id + ", full_name=" + full_name + ", user_name=" + user_name + ", password=" + password
+		return "UserDTO [user_id=" + user_id + ", full_name=" + full_name + ", user_name=" + user_name + ", password=" + password
 				+ ", playlist=" + playlist + "]";
 	}
 
