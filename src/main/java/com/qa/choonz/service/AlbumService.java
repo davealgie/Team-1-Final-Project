@@ -9,10 +9,8 @@ import org.springframework.stereotype.Service;
 import com.qa.choonz.exception.AlbumNotFoundException;
 import com.qa.choonz.persistence.domain.Album;
 import com.qa.choonz.persistence.domain.Artist;
-import com.qa.choonz.persistence.domain.Genre;
 import com.qa.choonz.persistence.repository.AlbumRepository;
 import com.qa.choonz.persistence.repository.ArtistRepository;
-import com.qa.choonz.persistence.repository.GenreRepository;
 import com.qa.choonz.rest.dto.AlbumDTO;
 
 @Service
