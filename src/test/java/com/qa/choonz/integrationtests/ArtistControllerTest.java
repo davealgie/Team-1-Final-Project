@@ -24,7 +24,9 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.qa.choonz.persistence.domain.Album;
 import com.qa.choonz.persistence.domain.Artist;
+import com.qa.choonz.rest.dto.ArtistDTO;
 
 
 
@@ -64,19 +66,13 @@ public class ArtistControllerTest {
 		this.mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
 	}
 	@Test
-	void testReadOneArtist() throws Exception {
-		
-		RequestBuilder mockRequest = get("/artists/read/1").contentType(MediaType.APPLICATION_JSON);
-	
-		Artist artistOnDb = new Artist(1L, "Kirk Hammett");
-		
-		String artistOnDbAsJSON = this.mapper.writeValueAsString(artistOnDb);
-		
+	void testReadSingleSuccess() throws Exception{
+		ArtistDTO expected = new ArtistDTO(1L, "Kirk Hammett",new ArrayList<Album>());
+		String expectedJSON = mapper.writeValueAsString(expected);
+		RequestBuilder mockRequest = get("/artists/read/1");
 		ResultMatcher matchStatus = status().isOk();
-		
-		ResultMatcher matchBody = content().json(artistOnDbAsJSON); 
-		
-		this.mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
+		ResultMatcher matchBody = content().json(expectedJSON);
+		mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
 	}
 	
 
