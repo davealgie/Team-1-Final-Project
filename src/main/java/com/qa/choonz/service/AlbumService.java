@@ -20,13 +20,11 @@ public class AlbumService {
 
     private AlbumRepository repo;
     private ArtistRepository repoArtist;
-    private GenreRepository repoGenre;
     private ModelMapper mapper;
 
-    public AlbumService(AlbumRepository repo, ArtistRepository repoArtist, GenreRepository repoGenre, ModelMapper mapper) {
+    public AlbumService(AlbumRepository repo, ArtistRepository repoArtist,  ModelMapper mapper) {
         super();
         this.repoArtist = repoArtist;
-        this.repoGenre = repoGenre;
         this.repo = repo;
         this.mapper = mapper;
     }
@@ -66,7 +64,11 @@ public class AlbumService {
     }
 
 //Artist
-
-// genre
-
+	public AlbumDTO assignArtist(Long albumId, Long artistId) {
+		Album album = repo.findById(albumId).get();
+		Artist artist = repoArtist.findById(artistId).get();
+		album.setArtist(artist);
+		Album updated = this.repo.save(album);
+		return this.mapToDTO(updated);
+	}
 }
