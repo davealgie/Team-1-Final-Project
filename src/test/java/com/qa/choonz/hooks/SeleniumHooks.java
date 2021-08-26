@@ -17,9 +17,9 @@ public class SeleniumHooks {
 	
 	@Before("@webpage")
 	public void setup() {
-		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
 		this.driver = new ChromeDriver();
-		this.driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
 	
