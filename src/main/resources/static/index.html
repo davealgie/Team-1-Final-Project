@@ -88,97 +88,228 @@
   </nav>
   <!--end of nav bar -->
   <br>
-  <!-- slide show of different playlists -->
+  <div id="guestLoggedInSection" class="container">    
   <h1>
-    <center>Latest Albums</center>
+     Albums
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#CRUDAlbumModal"
+    style="float: right">
+    CRUD Albums
+  </button>
   </h1>
   <br>
 
-  <!-- hidden empty carousel slide to clone -->
-  <div hidden id="hidden">
-    <div id="carousel-template">
-      <a id="imagelink">
-        <img style="height:400px;" style="width:400px;" class="rounded mx-auto d-block" alt="...">
-      </a>
-      <div class="carousel-caption">
-        <h5 id="title" style="text-shadow:
-        -2px -2px 0 black,  
-         2px -2px 0 black,
-        -2px  2px 0 black,
-         2px  2px 0 black;">
-          <a id="albumlink" style="color: white; text-decoration: none; background-color: none;"></a>
-        </h5>
-        <p id="text" style="color: black; text-decoration: none; background-color: none;
-        text-shadow:
-        -1px -1px 0 white,  
-         1px -1px 0 white,
-        -1px  1px 0 white,
-         1px  1px 0 white;">
-          <a id="artistlink" style="color: black; text-decoration: none; background-color: none;"></a>
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <!-- creates 6 slide carouel for latest albums -->
-  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="5"></li>
-    </ol>
-
-    <div id="carousel-inner" class="carousel-inner"></div>
-
-
-    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
+  <h1>
+    Tracks
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#CRUDTracksModal"
+    style="float: right">
+    CRUD Tracks
+  </button>
+  </h1>
   <br>
+  <h1>
+    Playlist
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#CRUDPlaylistModal"
+    style="float: right">
+    CRUD Playlists
+  </button>
+  </h1>
+  <br>
+  <h1>
+    Artists
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#CRUDArtistModal"
+    style="float: right">
+    CRUD Artists
+  </button>
+  </h1>
+  <br>
+</div>
 
-
-  <!-- creates template hidden card -->
-  <div hidden>
-    <div id="cards2" class="cards2">
-      <div id="card2" class="card" classname="card2" style="max-width: 260px; border-radius: 10%; margin: 0 auto;">
-        <a id="imagelink">
-          <img height="250" width="250" style="min-width: 10;border-radius: 10%; margin: 2%">
-        </a>
-
-        <div id="body" class="card-body">
-          <h5 id="title" class="card-title"><a id="titlelink"
-              style="color: white; text-decoration: none; background-color: none;"></a></h5>
-          <p id="text" class="card-text"><a id="textlink"
-              style="color: whitesmoke; text-decoration: none; background-color: none;"></a></p>
-          <a id="button" class="btn btn-primary"></a>
+ <!-- CRUD Playlist modal -->
+<div class="modal fade" id="CRUDPlaylistModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">CRUD Playlist</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form class="log-in" action="index.html" method="POST">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+          </div>
+          <input id="name" name="name" type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default" required />
         </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
+          </div>
+          <input id="description" name="name" type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default" required />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button id="createNewPlayBtn" type="button" class="btn btn-primary" data-dismiss="modal">
+            Create
+          </button>
+          <button id="updatePlayBtn" type="button" class="btn btn-primary" data-dismiss="modal">
+            Update
+          </button>
+          <button id="deletePlayBtn" type="button" class="btn btn-primary" data-dismiss="modal">
+            Delete
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+ <!-- CRUD Artist modal -->
+<div class="modal fade" id="CRUDArtistModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">CRUD Artists</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form class="log-in" action="index.html" method="POST">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+          </div>
+          <input id="name" name="name" type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default" required />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button id="createNewArtistBtn" type="button" class="btn btn-primary" data-dismiss="modal">
+            Create
+          </button>
+          <button id="updateArtistBtn" type="button" class="btn btn-primary" data-dismiss="modal">
+            Update
+          </button>
+          <button id="deleteArtistBtn" type="button" class="btn btn-primary" data-dismiss="modal">
+            Delete
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+
+ <!-- CRUD Tracks modal -->
+ <div class="modal fade" id="CRUDTracksModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+ aria-hidden="true">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h5 class="modal-title" id="exampleModalLabel">CRUD Tracks</h5>
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div>
+     <div class="modal-body">
+       <form class="log-in" action="index.html" method="POST">
+         <div class="input-group mb-3">
+           <div class="input-group-prepend">
+             <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+           </div>
+           <input id="name" name="name" type="text" class="form-control" aria-label="Sizing example input"
+             aria-describedby="inputGroup-sizing-default" required />
+         </div>
+         <div class="input-group mb-3">
+           <div class="input-group-prepend">
+             <span class="input-group-text" id="inputGroup-sizing-default">Lyrics</span>
+           </div>
+           <input id="lyrics" name="name" type="text" class="form-control" aria-label="Sizing example input"
+             aria-describedby="inputGroup-sizing-default" required />
+         </div>
+         <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default">Duration</span>
+          </div>
+          <input id="duration" name="name" type="number" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default" required />
+        </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" data-dismiss="modal">
+             Close
+           </button>
+           <button id="createNewTrackBtn" type="button" class="btn btn-primary" data-dismiss="modal">
+             Create
+           </button>
+           <button id="updateTrackBtn" type="button" class="btn btn-primary" data-dismiss="modal">
+             Update
+           </button>
+           <button id="deleteTrackBtn" type="button" class="btn btn-primary" data-dismiss="modal">
+             Delete
+           </button>
+         </div>
+       </form>
+     </div>
+   </div>
+ </div>
+ </div>
+
+  <!-- CRUD Album modal -->
+  <div class="modal fade" id="CRUDAlbumModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">CRUD Albums</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="log-in" action="index.html" method="POST">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+            </div>
+            <input id="name" name="name" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default" required />
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Genre</span>
+            </div>
+            <input id="genre" name="name" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default" required />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+              Close
+            </button>
+            <button id="createAlbumBtn" type="button" class="btn btn-primary" data-dismiss="modal">
+              Create
+            </button>
+            <button id="updateAlbumBtn" type="button" class="btn btn-primary" data-dismiss="modal">
+              Update
+            </button>
+            <button id="deleteAlbumBtn" type="button" class="btn btn-primary" data-dismiss="modal">
+              Delete
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
-
-  <h1>
-    <center>Latest Tracks</center>
-  </h1>
-  <br>
-
-  <!-- creates displayed card deck to be populard -->
-  <div class="row" style="text-align:center; margin: 0 auto;">
-    <div class="col-12">
-      <div class="card-deck" id="card-deck">
-      </div>
-    </div>
   </div>
-  <br>
-
  <!-- create account modal -->
  <div class="modal fade" id="createAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
