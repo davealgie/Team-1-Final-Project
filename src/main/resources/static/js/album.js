@@ -12,7 +12,7 @@
         head.innerText = header[0];
         var para = document.createElement("a");
         para.innerText = result[1];
-        para.setAttribute('href', "http://localhost:8082/albums/read/" + result[0]);
+        para.setAttribute('href', "http://localhost:8082/albums/view/" + result[0]);
         var head2 = document.createElement("p");
         head2.innerText = header[1];
 
@@ -31,7 +31,8 @@
         for(var i = 0; i < result[3].length; i ++){
             var para = document.createElement("a");
             para.innerText = result[3][i].name;
-            para.setAttribute('href', "http://localhost:8082/tracks/read/" + result[3][i].id);
+
+            para.setAttribute('href', "http://localhost:8082/track/" + result[3][i].id);
             div.appendChild(para);
         }
 
