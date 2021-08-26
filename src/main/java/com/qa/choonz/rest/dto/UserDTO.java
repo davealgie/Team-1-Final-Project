@@ -1,5 +1,6 @@
 package com.qa.choonz.rest.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,7 +15,7 @@ public class UserDTO {
 	private String full_name;
 	private String user_name;
 	private String password;
-	private List<Playlist> playlist;
+	private List<Playlist> playlist = new ArrayList<>();
 
 	public UserDTO() {
 		super();

@@ -29,6 +29,18 @@ public class TrackDTO {
 		this.duration = duration;
 		this.lyrics = lyrics;
 	}
+	public TrackDTO(Long id, String name, List<Playlist> playlist) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.playlist = playlist;
+	}
+	
+	public TrackDTO(Long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
 
 	public long getId() {
 		return id;
