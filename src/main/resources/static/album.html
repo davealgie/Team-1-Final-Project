@@ -95,8 +95,8 @@
         </button>
         <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
           <button class="dropdown-item" type="button"  data-toggle="modal" data-target="#createAlbumModal" >CREATE</button>
-          <button class="dropdown-item" type="button"  data-toggle="modal" data-target="#createAccountModal" >UPDATE</button>
-          <button class="dropdown-item" type="button"  data-toggle="modal" data-target="#createAccountModal" >DELETE</button>
+          <button class="dropdown-item" type="button"  data-toggle="modal" data-target="#updateAlbumModal" >UPDATE</button>
+          <button class="dropdown-item" type="button"  data-toggle="modal" data-target="#deleteAlbumModal" >DELETE</button>
         </div>
       </div>
     </li>
@@ -108,11 +108,63 @@
 <table class="table table-dark table-hover"></table>
 
 
+ <!-- update album modal -->
+ <div class="modal fade" id="updateAlbumModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Album</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <p id="success-create" class="card-text"></p>
+      <div class="modal-body">
+        <form class="create-user" action="index.html" method="POST">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Album ID:</span>
+            </div>
+            <input id="albumid" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default" required>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Album Name:</span>
+            </div>
+            <input id="albumnameupdate" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default" required>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Cover:</span>
+            </div>
+            <input id="coverupdate" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default" required>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">
+                Artist-Id:</span>
+            </div>
+            <input id="artistidupdate" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" id="updateAlbum">Update</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
-
- <!-- create account modal -->
+ <!-- create album modal -->
  <div class="modal fade" id="createAlbumModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -149,6 +201,38 @@
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary" id="createAlbum">Create</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- delete album modal -->
+ <div class="modal fade" id="deleteAlbumModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Album</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <p id="success-create" class="card-text"></p>
+      <div class="modal-body">
+        <form class="create-user" action="index.html" method="POST">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Album ID:</span>
+            </div>
+            <input id="albumiddelete" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default" required>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary" id="deleteAlbum">Delete</button>
           </div>
         </form>
       </div>

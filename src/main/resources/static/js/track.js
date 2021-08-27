@@ -37,7 +37,8 @@
         head3.innerText = header[3];
         var para3 = document.createElement("a");
         para3.innerText = result[2].name;
-        para3.setAttribute('href', "http://localhost:81/albums/read/" + result[2].id);
+        para3.href = "album.html?id=" + result[2].id;
+        // para3.setAttribute('href', "http://localhost:81/albums/read/" + result[2].id);
         div.appendChild(head3);
         div.appendChild(para3);
     
@@ -45,7 +46,7 @@
         head.innerText = header[4];
         var para = document.createElement("a");
         para.innerText = result[2].artist.name;
-        para.setAttribute('href', "http://localhost:81/artists/read/" + result[2].artist.id);
+        para.setAttribute('href', "artist.html?id=" + result[2].artist.id);
         div.appendChild(head);
         div.appendChild(para);
     }
