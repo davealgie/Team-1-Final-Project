@@ -28,7 +28,7 @@ public class Track {
     @Column(unique = true)
     private String name;
     
-    @JsonIgnore
+//    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "album_id", referencedColumnName = "id")
     private Album album;
@@ -37,7 +37,6 @@ public class Track {
     @ManyToMany(mappedBy = "tracks")
     private List<Playlist> playlist;
     
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "genre_id", referencedColumnName = "id")
     private Genre genre;
