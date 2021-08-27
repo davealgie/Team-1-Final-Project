@@ -25,8 +25,6 @@ import com.qa.choonz.persistence.domain.Genre;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
-@Sql(scripts = { "classpath:test-schema.sql",
-		"classpath:test-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 public class GenreControllerTest {
 
 	@Autowired

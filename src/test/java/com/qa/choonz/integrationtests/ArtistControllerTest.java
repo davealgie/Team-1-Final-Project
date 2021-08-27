@@ -28,8 +28,6 @@ import com.qa.choonz.persistence.domain.Album;
 import com.qa.choonz.persistence.domain.Artist;
 import com.qa.choonz.rest.dto.ArtistDTO;
 
-
-
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @Sql(scripts = { "classpath:test-schema.sql",
@@ -42,8 +40,6 @@ public class ArtistControllerTest {
 
 	@Autowired
 	private ObjectMapper mapper;
-	
-	
 
 	@Test
 	void testCreateArtist() throws Exception {
@@ -65,18 +61,16 @@ public class ArtistControllerTest {
 
 		this.mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
 	}
+
 	@Test
-	void testReadSingleSuccess() throws Exception{
-		ArtistDTO expected = new ArtistDTO(1L, "Kirk Hammett",new ArrayList<Album>());
+	void testReadSingleSuccess() throws Exception {
+		ArtistDTO expected = new ArtistDTO(1L, "Kirk Hammett", new ArrayList<Album>());
 		String expectedJSON = mapper.writeValueAsString(expected);
 		RequestBuilder mockRequest = get("/artists/read/1");
 		ResultMatcher matchStatus = status().isOk();
 		ResultMatcher matchBody = content().json(expectedJSON);
 		mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
 	}
-	
-
-
 
 	@Test
 	void testDeleteArtist() throws Exception {
