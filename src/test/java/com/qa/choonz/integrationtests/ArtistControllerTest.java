@@ -48,14 +48,14 @@ public class ArtistControllerTest {
 	@Test
 	void testCreateArtist() throws Exception {
 
-		Artist artist = new Artist("Kirk Hammett");
+		Artist artist = new Artist(1L, "Kirk Hammett", null);
 
 		String artistAsJSON = this.mapper.writeValueAsString(artist);
 
 		RequestBuilder mockRequest = post("/artists/create").contentType(MediaType.APPLICATION_JSON)
 				.content(artistAsJSON);
 
-		Artist artistInDb = new Artist(2L, "Kirk Hammett");
+		Artist artistInDb = new Artist(2L, "Kirk Hammett", null);
 
 		String artistInDbAsJSON = this.mapper.writeValueAsString(artistInDb);
 
