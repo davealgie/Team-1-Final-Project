@@ -12,12 +12,9 @@ public class TrackDTO {
     private long id;
     private String name;
     private Album album;
-<<<<<<< HEAD
     private List<Playlist> playlist;
-=======
-    private Playlist playlist;
+
     private Genre genre;
->>>>>>> 12ff12757b32829407b2e3707a6a9518770ea602
     private int duration;
     private String lyrics;
 
@@ -26,11 +23,7 @@ public class TrackDTO {
         // TODO Auto-generated constructor stub
     }
 
-<<<<<<< HEAD
-	public TrackDTO(long id, String name, Album album, List<Playlist> playlist, int duration, String lyrics) {
-=======
-	public TrackDTO(long id, String name, Album album, Playlist playlist, Genre genre, int duration, String lyrics) {
->>>>>>> 12ff12757b32829407b2e3707a6a9518770ea602
+	public TrackDTO(long id, String name, Album album, List<Playlist> playlist, Genre genre, int duration, String lyrics) {
 		super();
 		this.id = id;
 		this.name = name;
