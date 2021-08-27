@@ -30,10 +30,11 @@ import com.qa.choonz.rest.dto.ArtistDTO;
 
 
 
+
+
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-@Sql(scripts = { "classpath:test-schema.sql",
-		"classpath:test-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = {"classpath:testdata.sql", "classpath:testschema.sql"}, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles("test")
 public class ArtistControllerTest {
 
@@ -43,40 +44,36 @@ public class ArtistControllerTest {
 	@Autowired
 	private ObjectMapper mapper;
 	
+	private final Artist artist = new Artist("Kirk Hammett");
 	
-
+	private final Artist artistWithId = new Artist(1L, "Kirk Hammett");
+	
 	@Test
-	void testCreateArtist() throws Exception {
+	void testPost() throws Exception {
 
-		Artist artist = new Artist("Kirk Hammett");
+		Artist artist = new Artist ("Run a test");
 
-		String artistAsJSON = this.mapper.writeValueAsString(artist);
+		String ToDoAsJSON = this.mapper.writeValueAsString(artist);
 
-		RequestBuilder mockRequest = post("/artists/create").contentType(MediaType.APPLICATION_JSON)
-				.content(artistAsJSON);
+		RequestBuilder mockRequest = post("/artists/create").contentType(MediaType.APPLICATION_JSON).content(ToDoAsJSON);
 
-		Artist artistInDb = new Artist(2L, "Kirk Hammett");
+		Artist savedToDo = new Artist (2L, "Kirk Hammett");
 
-		String artistInDbAsJSON = this.mapper.writeValueAsString(artistInDb);
+		String savedToDoAsJSON = this.mapper.writeValueAsString(savedToDo);
 
 		ResultMatcher matchStatus = status().isCreated();
 
-		ResultMatcher matchBody = content().json(artistInDbAsJSON);
+		ResultMatcher matchBody = content().json(savedToDoAsJSON);
 
 		this.mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
 	}
 	@Test
-	void testReadSingleSuccess() throws Exception{
-		ArtistDTO expected = new ArtistDTO(1L, "Kirk Hammett",new ArrayList<Album>());
-		String expectedJSON = mapper.writeValueAsString(expected);
-		RequestBuilder mockRequest = get("/artists/read/1");
-		ResultMatcher matchStatus = status().isOk();
-		ResultMatcher matchBody = content().json(expectedJSON);
-		mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
+	public void testReadOne() throws Exception {
+		this.mock.perform(get("/artists/read/1")).andExpect(status().isOk())
+				.andExpect(content().json(this.mapper.writeValueAsString(artistWithId)));
 	}
 	
-
-
+	
 
 	@Test
 	void testDeleteArtist() throws Exception {
