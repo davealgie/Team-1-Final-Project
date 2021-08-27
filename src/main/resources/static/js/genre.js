@@ -12,7 +12,7 @@
         head.innerText = header[0];
         var para = document.createElement("a");
         para.innerText = result[1];
-        para.setAttribute('href', "http://localhost:8082/artists/read/" + result[0]);
+        para.setAttribute('href', "http://localhost:81/artists/read/" + result[0]);
 
         // var a = document.createElement('a');
         // var linkText = document.createTextNode("my title text");
@@ -31,7 +31,7 @@
         for(var i = 0; i < result[2].length; i ++){
             var para = document.createElement("a");
             para.innerText = result[2][i].name;
-            para.setAttribute('href', "http://localhost:8082/tracks/read/" + result[2][i].id);
+            para.setAttribute('href', "http://localhost:81/tracks/read/" + result[2][i].id);
             div.appendChild(para);
         }
 
@@ -41,7 +41,7 @@
     }
 
     function simpleFetch(){
-        const a = ["http://localhost:8082/genres/read"];
+        const a = ["http://localhost:81/genres/read"];
             fetch(a)
             .then((response => {
               if(response.status !== 200){

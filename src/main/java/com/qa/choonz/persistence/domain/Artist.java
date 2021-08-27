@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Artist {
@@ -25,7 +27,8 @@ public class Artist {
     @Size(max = 100)
     @Column(unique = true)
     private String name;
-
+    
+    @JsonIgnore
     @OneToMany(mappedBy = "artist", cascade = CascadeType.ALL)
     private List<Album> albums;
 
