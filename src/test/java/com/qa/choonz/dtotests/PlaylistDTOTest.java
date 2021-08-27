@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import com.qa.choonz.rest.dto.PlaylistDTO;
 
 public class PlaylistDTOTest {
-	private PlaylistDTO playlistDTO = new PlaylistDTO(0L, "name", "description", "artwork", new ArrayList<>());
+	private PlaylistDTO playlistDTO = new PlaylistDTO(0L, "name", "description", "artwork");
 
 	@Test
 	public void PlaylistTest() {
