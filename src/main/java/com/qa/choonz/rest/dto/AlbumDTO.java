@@ -28,6 +28,7 @@ public class AlbumDTO {
         this.tracks = tracks;
         this.artist = artist;
         this.cover = cover;
+
         
     }
 
@@ -104,6 +105,4 @@ public class AlbumDTO {
 				+ genre + ", cover=" + cover + "]";
 	}
     
-}
-
-   
+} 
