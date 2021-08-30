@@ -28,7 +28,7 @@ public class AlbumPage {
 	
 	public AlbumPage clickAlbumBtn() {
 		albumMenuBtn.click();
-		createAlbBtn.click();
+
 		return this;
 	}
 	

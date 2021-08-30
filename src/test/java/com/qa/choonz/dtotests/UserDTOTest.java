@@ -17,7 +17,7 @@ public class UserDTOTest {
 	
 	@Test
 	public void UserTest() {
-		assertThat("UserDTO [id=0, full_name=full_name, user_name=user_name, password=password, playlist=[]]").isEqualTo(userDTO.toString());
+		assertThat("UserDTO [user_id=0, full_name=full_name, user_name=user_name, password=password, playlist=[]]").isEqualTo(userDTO.toString());
 		
 	}
 }
