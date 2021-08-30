@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.qa.choonz.hooks.SeleniumHooks;
+import com.qa.choonz.uat.pages.AlbumPage;
 import com.qa.choonz.uat.pages.SignUpPage;
 
 import io.cucumber.java.en.Given;
@@ -16,10 +17,12 @@ public class StepDefs {
 	
 	private WebDriver driver;
 	private SignUpPage signUpPage;
+	private AlbumPage albumPage;
 	
 	public StepDefs(SeleniumHooks hooks) {
 		this.driver = hooks.getDriver();
 		this.signUpPage = PageFactory.initElements(driver, SignUpPage.class);
+		this.albumPage = PageFactory.initElements(driver, AlbumPage.class);
 	}
 	
 	
@@ -61,5 +64,27 @@ public class StepDefs {
 	@Then("I should see New user created successfully!")
 	public void i_should_see_new_user_created_successfully() {
 	   assertEquals("New user created successfully!", signUpPage.getText());
+	}
+
+	
+	@When("I click Album menu")
+	public void i_click_album_menu() {
+	  albumPage.clickAlbumBtn();
+	}
+	@When("I click on create")
+	public void i_click_on_create() {
+	  albumPage.clickCreateAlbBtn();
+	}
+	
+
+	@When("I enter my album name")
+	public void i_enter_my_album_name() {
+	albumPage.addAlbumName("Kill Em all");
+							
+	}
+
+	@When("I enter my cover")
+	public void i_enter_my_cover() {
+	albumPage.addCover("blood");
 	}
 }
