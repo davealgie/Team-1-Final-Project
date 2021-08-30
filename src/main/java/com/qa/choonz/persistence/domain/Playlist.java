@@ -56,13 +56,14 @@ public class Playlist {
     }
 
     public Playlist(long id, @NotNull @Size(max = 100) String name, @NotNull @Size(max = 500) String description,
-            @NotNull @Size(max = 1000) String artwork, List<Track> tracks) {
+            @NotNull @Size(max = 1000) String artwork, List<Track> tracks, Users users) {
         super();
         this.id = id;
         this.name = name;
         this.description = description;
         this.artwork = artwork;
         this.tracks = tracks;
+        this.users = users;
     }
 
     public long getId() {

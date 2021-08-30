@@ -23,7 +23,7 @@ document.querySelector("form.create-user").addEventListener("submit", function (
   function newUser(full_name, user_name, password) {
   
     let dataToPost = {
-      "full_name": full_name,
+      "full_name": full_name, 
       "user_name": user_name,
       "password": password
     }
