@@ -14,6 +14,6 @@ public class PlaylistDTOTest {
 	@Test
 	public void PlaylistTest() {
 	
-		assertThat("PlaylistDTO [id=0, name=name, description=description, artwork=artwork, tracks=[]".toString()+"]").isEqualTo(playlistDTO.toString());
+		assertThat("PlaylistDTO [id=0, name=name, description=description, artwork=artwork, tracks=[], users=null".toString()+"]").isEqualTo(playlistDTO.toString());
 }
 }

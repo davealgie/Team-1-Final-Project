@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+=======
+DROP TABLE IF EXISTS `album`
+DROP TABLE IF EXISTS `track`
+DROP TABLE IF EXISTS `playlist`
+DROP TABLE IF EXISTS `user`
+DROP TABLE IF EXISTS `genre`
+DROP TABLE IF EXISTS `playlists_tracks`
+
+>>>>>>> f06a13250daad75a45b3cefa3bf84cf9fb9a4cec
 drop table if exists album CASCADE;
 CREATE TABLE `album` (
   `id` bigint NOT NULL AUTO_INCREMENT,
@@ -56,7 +66,10 @@ CREATE TABLE `playlists_tracks` (
   CONSTRAINT `track_id` FOREIGN KEY (`track_id`) REFERENCES `track` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+<<<<<<< HEAD
 drop table if exists track CASCADE;
+=======
+>>>>>>> f06a13250daad75a45b3cefa3bf84cf9fb9a4cec
 CREATE TABLE `track` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -72,7 +85,10 @@ CREATE TABLE `track` (
   CONSTRAINT `genre_id` FOREIGN KEY (`genre_id`) REFERENCES `genre` (`id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+<<<<<<< HEAD
 drop table if exists users CASCADE;
+=======
+>>>>>>> f06a13250daad75a45b3cefa3bf84cf9fb9a4cec
 CREATE TABLE `users` (
 `user_id` bigint NOT NULL AUTO_INCREMENT,
 `full_name` varchar(45) NOT NULL,
