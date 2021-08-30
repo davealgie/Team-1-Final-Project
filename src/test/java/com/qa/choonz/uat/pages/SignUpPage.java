@@ -13,16 +13,16 @@ public class SignUpPage {
 	@FindBy(xpath = "/html/body/nav/div[2]/ul[1]/form/div[1]/li/div/div/button[2]")
 	private WebElement createAccBtn;
 	// FINDS YOUR NAME SECTION
-	@FindBy(xpath = "/html/body/div[5]/div/div/div[2]/form/div[1]/input")
+	@FindBy(xpath = "/html/body/div[6]/div/div/div[2]/form/div[1]/input")
 	private WebElement fullNameField;
 	// FINDS USERNAME SECTION
-	@FindBy(xpath = "/html/body/div[5]/div/div/div[2]/form/div[2]/input")
+	@FindBy(xpath = "/html/body/div[6]/div/div/div[2]/form/div[2]/input")
 	private WebElement userNameField;
 	// FINDS PASSWORD SECTION
-	@FindBy(xpath = "/html/body/div[5]/div/div/div[2]/form/div[3]/input")
+	@FindBy(xpath = "//html/body/div[6]/div/div/div[2]/form/div[3]/input")
 	private WebElement passwordField;
 	// FINDS CREATE BUTTON TO MAKE ACCOUNT
-	@FindBy(xpath = "/html/body/div[5]/div/div/div[2]/form/div[4]/button")
+	@FindBy(xpath = "/html/body/div[6]/div/div/div[2]/form/div[4]/button")
 	private WebElement createBtn;
 	// FINDS TEXT SAYING CREATED
 	@FindBy(xpath="//*[@id=\"success-create\"]")

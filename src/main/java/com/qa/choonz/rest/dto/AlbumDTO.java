@@ -105,4 +105,11 @@ public class AlbumDTO {
 				+ genre + ", cover=" + cover + "]";
 	}
     
+<<<<<<< HEAD
 } 
+=======
+
+}
+
+   
+>>>>>>> 11ef748872f3cf65e04010e8909c936c3045bfea
