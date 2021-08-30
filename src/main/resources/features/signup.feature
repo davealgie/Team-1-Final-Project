@@ -2,7 +2,7 @@
 Feature: Demo sign up
   I want to use this template for my feature file
 
-  Scenario: Title of your scenario
+  Scenario: sign up
 		Given I am on "http://127.0.0.1:5500/static/index.html"
 		When I click the sign up button
 		And I enter my fullname
