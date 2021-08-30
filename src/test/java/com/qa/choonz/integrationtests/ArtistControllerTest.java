@@ -24,17 +24,14 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qa.choonz.persistence.domain.Album;
+
 import com.qa.choonz.persistence.domain.Artist;
-import com.qa.choonz.rest.dto.ArtistDTO;
-
-
-
 
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-@Sql(scripts = {"classpath:testdata.sql", "classpath:testschema.sql"}, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = { "classpath:testdata.sql",
+		"classpath:testschema.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles("test")
 public class ArtistControllerTest {
 
@@ -43,21 +40,20 @@ public class ArtistControllerTest {
 
 	@Autowired
 	private ObjectMapper mapper;
-	
-	private final Artist artist = new Artist("Kirk Hammett");
-	
-	private final Artist artistWithId = new Artist(1L, "Kirk Hammett");
-	
+
+
+
 	@Test
 	void testPost() throws Exception {
 
-		Artist artist = new Artist ("Run a test");
+		Artist artist = new Artist("Kirk Hammett");
 
 		String ToDoAsJSON = this.mapper.writeValueAsString(artist);
 
-		RequestBuilder mockRequest = post("/artists/create").contentType(MediaType.APPLICATION_JSON).content(ToDoAsJSON);
+		RequestBuilder mockRequest = post("/artists/create").contentType(MediaType.APPLICATION_JSON)
+				.content(ToDoAsJSON);
 
-		Artist savedToDo = new Artist (2L, "Kirk Hammett");
+		Artist savedToDo = new Artist(2L, "Kirk Hammett");
 
 		String savedToDoAsJSON = this.mapper.writeValueAsString(savedToDo);
 
@@ -67,13 +63,61 @@ public class ArtistControllerTest {
 
 		this.mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
 	}
+
+	@Test
+	void testReadAllArtists() throws Exception {
+
+		RequestBuilder mockRequest = get("/artists/read");
+
+		Artist artist = new Artist(1L, "Kirk Hammett");
+
+		List<Artist> artistsInDb = new ArrayList<>();
+		artistsInDb.add(artist);
+
+		String artistsInDbAsJSON = this.mapper.writeValueAsString(artistsInDb);
+
+		ResultMatcher matchStatus = status().isOk();
+
+		ResultMatcher matchBody = content().json(artistsInDbAsJSON);
+
+		this.mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
+	}
+
 	@Test
 	public void testReadOne() throws Exception {
-		this.mock.perform(get("/artists/read/1")).andExpect(status().isOk())
-				.andExpect(content().json(this.mapper.writeValueAsString(artistWithId)));
+		RequestBuilder mockRequest = get("/artists/read/1");
+
+		Artist artistInDb = new Artist(1L, "Kirk Hammett");
+
+		String artistInDbAsJSON = this.mapper.writeValueAsString(artistInDb);
+
+		ResultMatcher matchStatus = status().isOk();
+
+		ResultMatcher matchBody = content().json(artistInDbAsJSON);
+
+		this.mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
 	}
-	
-	
+
+	@Test
+	void testUpdateArtist() throws Exception {
+
+		Artist updatedArtist = new Artist("James Hetfield");
+
+		String updatedArtistAsJSON = this.mapper.writeValueAsString(updatedArtist);
+
+		RequestBuilder mockRequest = put("/artists/update/1").contentType(MediaType.APPLICATION_JSON)
+				.content(updatedArtistAsJSON);
+
+		Artist updatedArtistInDb = new Artist(1L, "James Hetfield");
+
+		String updatedArtistInDbAsJSON = this.mapper.writeValueAsString(updatedArtistInDb);
+
+		ResultMatcher matchStatus = status().isAccepted();
+
+		ResultMatcher matchBody = content().json(updatedArtistInDbAsJSON);
+
+		this.mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
+	}
 
 	@Test
 	void testDeleteArtist() throws Exception {
