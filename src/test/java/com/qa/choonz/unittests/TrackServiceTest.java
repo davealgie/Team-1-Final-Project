@@ -40,13 +40,13 @@ public class TrackServiceTest {
 
 	private Track track = new Track(1L, "name", album, new ArrayList<>(), 180, "lyrics");
 	
-	private TrackDTO trackDTO = new TrackDTO(1L, "name");
+	private TrackDTO trackDTO = new TrackDTO(1L, "name", album, new ArrayList<>(), 180, "lyrics");
 	
 	private Optional<Track> optionalTrack = Optional.of(new Track(1L, "name", album, new ArrayList<>(), 180, "lyrics"));
 	 
 	private Track newTrack = new Track(1L, "updated name", album, new ArrayList<>(), 180, "updated lyrics");
 	
-	private TrackDTO newTrackDTO = new TrackDTO(1L, "updated name");
+	private TrackDTO newTrackDTO = new TrackDTO(1L, "updated name", album, new ArrayList<>(), 180, "updated lyrics");
 
 	@Test
 	public void testCreate() {
@@ -56,6 +56,7 @@ public class TrackServiceTest {
 		assertThat(trackDTO).isEqualTo(this.service.create(track));
 
 		Mockito.verify(this.repo, Mockito.times(1)).save(track);
+	
 	}
 
 	@Test

@@ -11,7 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import com.qa.choonz.persistence.domain.Album;
+import com.qa.choonz.persistence.domain.Artist;
 import com.qa.choonz.persistence.domain.Playlist;
+import com.qa.choonz.persistence.domain.Track;
 import com.qa.choonz.persistence.domain.Users;
 import com.qa.choonz.persistence.repository.PlaylistRepository;
 import com.qa.choonz.persistence.repository.UserRepository;
@@ -32,16 +35,18 @@ public class PlaylistServiceTest {
 
 	private Optional<Users> optionalUser = Optional.of(new Users(1L, "fullname", "username", "password"));
 
-	private Playlist playlist = new Playlist(1L, "name", "description", "artwork", new ArrayList<>());
+	private Users user = new Users(1L, "fullname", "username", "password");
+
+	private Playlist playlist = new Playlist(1L, "name", "description", "artwork", new ArrayList<>(), user);
 
 	private PlaylistDTO playlistDTO = new PlaylistDTO(1L, "name", "description", "artwork");
 
 	private Optional<Playlist> optionalPlaylist = Optional
-			.of(new Playlist(1L, "name", "description", "artwork", new ArrayList<>()));
+			.of(new Playlist(1L, "name", "description", "artwork", new ArrayList<>(), user));
 
-	private Playlist updatedPlaylist = new Playlist(1L, "updated name", "description", "artwork", tracks, users);
+	private Playlist updatedPlaylist = new Playlist(1L, "names", "descriptions", "artworks", new ArrayList<>(), user);
 
-	private PlaylistDTO updatedPlaylistDTO = new PlaylistDTO(1L, "updated name", "description", "artwork");
+	private PlaylistDTO updatedPlaylistDTO = new PlaylistDTO(1L, "names", "descriptions", "artworks");
 
 	@Test
 	public void testCreate() {

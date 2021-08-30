@@ -104,12 +104,7 @@ public class AlbumDTO {
 		return "AlbumDTO [id=" + id + ", name=" + name + ", tracks=" + tracks + ", artist=" + artist + ", genre="
 				+ genre + ", cover=" + cover + "]";
 	}
-    
-<<<<<<< HEAD
-} 
-=======
-
 }
 
    
->>>>>>> 11ef748872f3cf65e04010e8909c936c3045bfea
+
