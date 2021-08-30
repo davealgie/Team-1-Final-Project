@@ -21,16 +21,20 @@ public class AlbumDTO {
         // TODO Auto-generated constructor stub
     }
 
-    public AlbumDTO(long id, String name, List<Track> tracks, Artist artist, String cover) {
+    public AlbumDTO(long id, String name, List<Track> tracks, Artist artist, Genre genre, String cover) {
         super();
         this.id = id;
         this.name = name;
         this.tracks = tracks;
         this.artist = artist;
+        this.genre = genre;
         this.cover = cover;
-
         
+
     }
+
+
+
 
 	public long getId() {
 		return id;
@@ -104,7 +108,5 @@ public class AlbumDTO {
 		return "AlbumDTO [id=" + id + ", name=" + name + ", tracks=" + tracks + ", artist=" + artist + ", genre="
 				+ genre + ", cover=" + cover + "]";
 	}
-}
-
-   
-
+	
+    }
