@@ -25,12 +25,11 @@ import org.springframework.test.web.servlet.ResultMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-<<<<<<< HEAD
+
 import com.qa.choonz.persistence.domain.Artist;
 
 
-=======
->>>>>>> f06a13250daad75a45b3cefa3bf84cf9fb9a4cec
+
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @Sql(scripts = { "classpath:testdata.sql",
@@ -43,11 +42,7 @@ public class ArtistControllerTest {
 
 	@Autowired
 	private ObjectMapper mapper;
-<<<<<<< HEAD
 
-
-=======
->>>>>>> f06a13250daad75a45b3cefa3bf84cf9fb9a4cec
 
 	@Test
 	void testPost() throws Exception {
@@ -59,11 +54,10 @@ public class ArtistControllerTest {
 		RequestBuilder mockRequest = post("/artists/create").contentType(MediaType.APPLICATION_JSON)
 				.content(ToDoAsJSON);
 
-<<<<<<< HEAD
 		Artist artistInDb = new Artist(2L, "Kirk Hammett", null);
-=======
-		Artist savedToDo = new Artist(2L, "Kirk Hammett");
->>>>>>> 11ef748872f3cf65e04010e8909c936c3045bfea
+
+		Artist savedToDo = new Artist(2L, "Kirk Hammett", null);
+
 
 		String savedToDoAsJSON = this.mapper.writeValueAsString(savedToDo);
 
@@ -74,7 +68,7 @@ public class ArtistControllerTest {
 		this.mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
 	}
 
-<<<<<<< HEAD
+
 	@Test
 	void testReadAllArtists() throws Exception {
 
@@ -96,12 +90,12 @@ public class ArtistControllerTest {
 
 	@Test
 	public void testReadOne() throws Exception {
-=======
+
 	@Test
 	void testReadSingleSuccess() throws Exception {
 		ArtistDTO expected = new ArtistDTO(1L, "Kirk Hammett", new ArrayList<Album>());
 		String expectedJSON = mapper.writeValueAsString(expected);
->>>>>>> f06a13250daad75a45b3cefa3bf84cf9fb9a4cec
+
 		RequestBuilder mockRequest = get("/artists/read/1");
 
 		Artist artistInDb = new Artist(1L, "Kirk Hammett");
@@ -114,7 +108,7 @@ public class ArtistControllerTest {
 
 		this.mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
 	}
-<<<<<<< HEAD
+
 
 	@Test
 	void testUpdateArtist() throws Exception {
@@ -136,8 +130,7 @@ public class ArtistControllerTest {
 
 		this.mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
 	}
-=======
->>>>>>> f06a13250daad75a45b3cefa3bf84cf9fb9a4cec
+
 
 	@Test
 	void testDeleteArtist() throws Exception {
