@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 DROP TABLE IF EXISTS `album`
 DROP TABLE IF EXISTS `track`
@@ -8,6 +9,8 @@ DROP TABLE IF EXISTS `genre`
 DROP TABLE IF EXISTS `playlists_tracks`
 
 >>>>>>> f06a13250daad75a45b3cefa3bf84cf9fb9a4cec
+=======
+>>>>>>> 5df1ea38d6ce8ede2280acd4ab992ab89ee0ed91
 drop table if exists album CASCADE;
 CREATE TABLE `album` (
   `id` bigint NOT NULL AUTO_INCREMENT,
