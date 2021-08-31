@@ -41,7 +41,8 @@
         // para3.setAttribute('href', "http://localhost:81/albums/read/" + result[2].id);
         div.appendChild(head3);
         div.appendChild(para3);
-    
+  
+    if(result[2].artist!= null){    
         var head = document.createElement("p");
         head.innerText = header[4];
         var para = document.createElement("a");
@@ -50,7 +51,7 @@
         div.appendChild(head);
         div.appendChild(para);
     }
-
+    }
 
       return div;
     }
