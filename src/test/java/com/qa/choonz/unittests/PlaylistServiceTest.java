@@ -48,6 +48,7 @@ public class PlaylistServiceTest {
 
 	private PlaylistDTO updatedPlaylistDTO = new PlaylistDTO(1L, "names", "descriptions", "artworks");
 
+
 	@Test
 	public void testCreate() {
 

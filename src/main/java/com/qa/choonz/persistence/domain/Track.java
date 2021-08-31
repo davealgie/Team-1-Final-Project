@@ -1,5 +1,6 @@
 package com.qa.choonz.persistence.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,7 +36,7 @@ public class Track {
     
     @JsonIgnore
     @ManyToMany(mappedBy = "tracks")
-    private List<Playlist> playlist;
+    private List<Playlist> playlist = new ArrayList<>();
     
     @ManyToOne
     @JoinColumn(name = "genre_id", referencedColumnName = "id")

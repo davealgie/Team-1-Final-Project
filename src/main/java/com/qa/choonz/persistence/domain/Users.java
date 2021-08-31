@@ -13,8 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
-
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 
 @Entity
@@ -35,9 +34,10 @@ public class Users {
 
 	@NotNull
 	private String password;
-
+	
+    @JsonIgnore
 	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL)
-	private List<Playlist> playlist = new ArrayList<>();
+	private List<Playlist> playlist;
 
 	public Users() {
 		super();

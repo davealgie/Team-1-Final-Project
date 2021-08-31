@@ -7,23 +7,29 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import com.qa.choonz.exception.PlaylistNotFoundException;
+import com.qa.choonz.persistence.domain.Album;
+import com.qa.choonz.persistence.domain.Artist;
 import com.qa.choonz.persistence.domain.Playlist;
 import com.qa.choonz.persistence.domain.Track;
+import com.qa.choonz.persistence.domain.Users;
 import com.qa.choonz.persistence.repository.PlaylistRepository;
 import com.qa.choonz.persistence.repository.TrackRepository;
+import com.qa.choonz.persistence.repository.UserRepository;
 import com.qa.choonz.rest.dto.PlaylistDTO;
 
 @Service
 public class PlaylistService {
 
     private PlaylistRepository repo;
+    private UserRepository repoUser;
     private TrackRepository repoTrack;
     private ModelMapper mapper;
 
-    public PlaylistService(PlaylistRepository repo, TrackRepository repoTrack, ModelMapper mapper) {
+    public PlaylistService(PlaylistRepository repo, TrackRepository repoTrack, UserRepository repoUser, ModelMapper mapper) {
         super();
         this.repoTrack = repoTrack;
         this.repo = repo;
+        this.repoUser = repoUser;
         this.mapper = mapper;
     }
 
@@ -54,11 +60,27 @@ public class PlaylistService {
         Playlist updated = this.repo.save(toUpdate);
         return this.mapToDTO(updated);
     }
+    
+	public PlaylistDTO assignTrackToPlaylist(Long playlistId, Long trackId) {
+		Playlist playlist = repo.findById(playlistId).get();
+		Track track = repoTrack.findById(trackId).get();
+		playlist.addTracks(track);
+		Playlist updated = this.repo.save(playlist);
+		return this.mapToDTO(updated);
+	}
 
     public boolean delete(long id) {
         this.repo.deleteById(id);
         return !this.repo.existsById(id);
     }
+
+	public PlaylistDTO assignUser(Long playlistId, Long userId) {
+		Playlist playlist = repo.findById(playlistId).get();
+		Users user = repoUser.findById(userId).get();
+		playlist.setUsers(user);
+		Playlist updated = this.repo.save(playlist);
+		return this.mapToDTO(updated);
+	}
 
 
 }
