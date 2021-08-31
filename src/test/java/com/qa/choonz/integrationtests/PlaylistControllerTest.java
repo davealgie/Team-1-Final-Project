@@ -146,56 +146,67 @@ public class PlaylistControllerTest {
 	void testPutTrackToPlaylist() throws Exception {
 
 		Artist artist = new Artist(1L, "Kirk Hammett", new ArrayList<>());
-		List<Track> tracks = new ArrayList<>();
 
-		Album album = new Album(1L, "Zebra", tracks, artist, "image");
+		List<Track> tracks = new ArrayList<Track>();
+
+		Genre genre = new Genre(1L, "Rock", "lead guitar");
+
+		Album album = new Album(1L, "Black album", tracks, artist, "Snake");
+
 		Users user = new Users(1L, "Dave", "dave", "davidalgie", new ArrayList<>());
-		Playlist playlist = new Playlist(1L, "Chill vibes", "relaxing playlist", "cup of tea", new ArrayList<>(),
-				user);
+
+		Playlist playlist = new Playlist(1L, "Chill vibes", "relaxing playlist", "cup of tea", tracks, user);
+
 		List<Playlist> playlists = new ArrayList<>();
+
 		playlists.add(playlist);
-		Track track = new Track(1L, "Nothing", album, playlists, 100, "else");
+
+		Track track = new Track(1L, "Nothing else matters", album, playlists, 280, "and nothing else matters", genre);
+
 		tracks.add(track);
-		
-		
-		
+
+		album.setTracks(tracks);
+
 		String updatedPlaylistAsJSON = this.mapper.writeValueAsString(playlist);
-		
+
 		RequestBuilder mockRequest = put("/playlists/1/tracks/1");
-		
-		ResultMatcher matchStatus = status().isAccepted();
 
-		ResultMatcher matchBody = content().json(updatedPlaylistAsJSON);
-
-	
-		this.mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
-	}
-	@Test
-	void testPutUserToPlaylist() throws Exception {
-		Artist artist = new Artist(1L, "Kirk Hammett", new ArrayList<>());
-		List<Track> tracks = new ArrayList<>();
-
-		Album album = new Album(1L, "Zebra", tracks, artist, "image");
-		Users user = new Users(1L, "Dave", "dave", "davidalgie", new ArrayList<>());
-		Playlist playlist = new Playlist(1L, "Chill vibes", "relaxing playlist", "cup of tea", new ArrayList<>(),
-				user);
-		List<Playlist> playlists = new ArrayList<>();
-		playlists.add(playlist);
-		Track track = new Track(1L, "Nothing", album, playlists, 100, "else");
-		tracks.add(track);
-		
-		
-		
-		String updatedPlaylistAsJSON = this.mapper.writeValueAsString(playlist);
-		
-		RequestBuilder mockRequest = put("/playlists/1/users/1");
-		
 		ResultMatcher matchStatus = status().isCreated();
 
 		ResultMatcher matchBody = content().json(updatedPlaylistAsJSON);
 
-	
 		this.mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
 	}
-	
+
+	@Test
+	void testPutUserToPlaylist() throws Exception {
+		Artist artist = new Artist(1L, "Kirk Hammett", new ArrayList<>());
+
+		List<Track> tracks = new ArrayList<>();
+
+		Album album = new Album(1L, "Zebra", tracks, artist, "image");
+
+		Users user = new Users(1L, "Dave", "dave", "davidalgie", new ArrayList<>());
+
+		Playlist playlist = new Playlist(1L, "Chill vibes", "relaxing playlist", "cup of tea", new ArrayList<>(), user);
+
+		List<Playlist> playlists = new ArrayList<>();
+
+		playlists.add(playlist);
+
+		Track track = new Track(1L, "Nothing", album, playlists, 100, "else");
+
+		tracks.add(track);
+
+		String updatedPlaylistAsJSON = this.mapper.writeValueAsString(playlist);
+
+		RequestBuilder mockRequest = put("/playlists/1/users/1");
+
+		ResultMatcher matchStatus = status().isCreated();
+
+		ResultMatcher matchBody = content().json(updatedPlaylistAsJSON);
+
+		this.mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
+	}
+
 }
