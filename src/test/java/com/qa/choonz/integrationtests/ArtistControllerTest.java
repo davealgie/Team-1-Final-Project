@@ -32,8 +32,8 @@ import com.qa.choonz.rest.dto.ArtistDTO;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-@Sql(scripts = { "classpath:test-schema.sql",
-		"classpath:test-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = { "classpath:testdata.sql",
+		"classpath:testschema.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles("test")
 public class ArtistControllerTest {
 
@@ -42,41 +42,93 @@ public class ArtistControllerTest {
 
 	@Autowired
 	private ObjectMapper mapper;
-	
+
+
+	@Test
+	void testPost() throws Exception {
+
+		Artist artist = new Artist(1L, "Kirk Hammett", new ArrayList<>());
+
+		String ToDoAsJSON = this.mapper.writeValueAsString(artist);
+
+		RequestBuilder mockRequest = post("/artists/create").contentType(MediaType.APPLICATION_JSON)
+				.content(ToDoAsJSON);
+
+		Artist artistInDb = new Artist(2L, "Kirk Hammett", new ArrayList<>());
+
+		Artist savedToDo = new Artist(2L, "Kirk Hammett", new ArrayList<>());
+
+
+		String savedToDoAsJSON = this.mapper.writeValueAsString(savedToDo);
+
+		ResultMatcher matchStatus = status().isCreated();
+
+		ResultMatcher matchBody = content().json(savedToDoAsJSON);
+
+		this.mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
+	}
+
+
+	@Test
+	void testReadAllArtists() throws Exception {
+
+		RequestBuilder mockRequest = get("/artists/read");
+
+		Artist artist = new Artist(1L, "Kirk Hammett", new ArrayList<>());
+
+		List<Artist> artistsInDb = new ArrayList<>();
+		artistsInDb.add(artist);
+
+		String artistsInDbAsJSON = this.mapper.writeValueAsString(artistsInDb);
+
+		ResultMatcher matchStatus = status().isOk();
+
+		ResultMatcher matchBody = content().json(artistsInDbAsJSON);
+
+		this.mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
+	}
+
 	
 
 	@Test
-	void testCreateArtist() throws Exception {
+	void testReadOne() throws Exception {
+		ArtistDTO expected = new ArtistDTO(1L, "Kirk Hammett", new ArrayList<Album>());
+		String expectedJSON = mapper.writeValueAsString(expected);
 
-		Artist artist = new Artist("Kirk Hammett");
+		RequestBuilder mockRequest = get("/artists/read/1");
 
-		String artistAsJSON = this.mapper.writeValueAsString(artist);
-
-		RequestBuilder mockRequest = post("/artists/create").contentType(MediaType.APPLICATION_JSON)
-				.content(artistAsJSON);
-
-		Artist artistInDb = new Artist(2L, "Kirk Hammett");
+		Artist artistInDb = new Artist(1L, "Kirk Hammett", new ArrayList<>());
 
 		String artistInDbAsJSON = this.mapper.writeValueAsString(artistInDb);
 
-		ResultMatcher matchStatus = status().isCreated();
+		ResultMatcher matchStatus = status().isOk();
 
 		ResultMatcher matchBody = content().json(artistInDbAsJSON);
 
 		this.mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
 	}
+
+
 	@Test
-	void testReadSingleSuccess() throws Exception{
-		ArtistDTO expected = new ArtistDTO(1L, "Kirk Hammett",new ArrayList<Album>());
-		String expectedJSON = mapper.writeValueAsString(expected);
-		RequestBuilder mockRequest = get("/artists/read/1");
-		ResultMatcher matchStatus = status().isOk();
-		ResultMatcher matchBody = content().json(expectedJSON);
-		mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
+	void testUpdateArtist() throws Exception {
+
+		Artist updatedArtist = new Artist(2L,"James Hetfield", new ArrayList<>());
+
+		String updatedArtistAsJSON = this.mapper.writeValueAsString(updatedArtist);
+
+		RequestBuilder mockRequest = put("/artists/update/1").contentType(MediaType.APPLICATION_JSON)
+				.content(updatedArtistAsJSON);
+
+		Artist updatedArtistInDb = new Artist(1L, "James Hetfield", new ArrayList<>());
+
+		String updatedArtistInDbAsJSON = this.mapper.writeValueAsString(updatedArtistInDb);
+
+		ResultMatcher matchStatus = status().isAccepted();
+
+		ResultMatcher matchBody = content().json(updatedArtistInDbAsJSON);
+
+		this.mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
 	}
-	
-
-
 
 	@Test
 	void testDeleteArtist() throws Exception {
