@@ -27,55 +27,49 @@ public class AlbumDTO {
         this.tracks = tracks;
         this.artist = artist;
         this.cover = cover;
+        
     }
-    
-    public AlbumDTO(Long id, String name) {
-		super();
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
 		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
 		this.name = name;
 	}
 
-    public long getId() {
-        return id;
-    }
+	public List<Track> getTracks() {
+		return tracks;
+	}
 
-    public void setId(long id) {
-        this.id = id;
-    }
+<<<<<<< HEAD
+=======
+	public void setTracks(List<Track> tracks) {
+		this.tracks = tracks;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public Artist getArtist() {
+		return artist;
+	}
+>>>>>>> 505b63c784d534af12f35ec3feccce9626ad4c4f
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setArtist(Artist artist) {
+		this.artist = artist;
+	}
 
-    public List<Track> getTracks() {
-        return tracks;
-    }
+	public String getCover() {
+		return cover;
+	}
 
-    public void setTracks(List<Track> tracks) {
-        this.tracks = tracks;
-    }
-
-    public Artist getArtist() {
-        return artist;
-    }
-
-    public void setArtist(Artist artist) {
-        this.artist = artist;
-    }
-
-
-    public String getCover() {
-        return cover;
-    }
-
-    public void setCover(String cover) {
-        this.cover = cover;
-    }
-
+<<<<<<< HEAD
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -103,5 +97,35 @@ public class AlbumDTO {
                 && id == other.id && Objects.equals(name, other.name)
                 && Objects.equals(tracks, other.tracks);
     }
+=======
+	public void setCover(String cover) {
+		this.cover = cover;
+	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(artist, cover, id, name, tracks);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		AlbumDTO other = (AlbumDTO) obj;
+		return Objects.equals(artist, other.artist) && Objects.equals(cover, other.cover) && id == other.id
+				&& Objects.equals(name, other.name) && Objects.equals(tracks, other.tracks);
+	}
+>>>>>>> 505b63c784d534af12f35ec3feccce9626ad4c4f
+
+	@Override
+	public String toString() {
+		return "AlbumDTO [id=" + id + ", name=" + name + ", tracks=" + tracks + ", artist=" + artist + ", cover="
+				+ cover + "]";
+	}
+    
 }
+   

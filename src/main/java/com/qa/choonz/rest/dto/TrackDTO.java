@@ -3,6 +3,9 @@ package com.qa.choonz.rest.dto;
 import java.util.List;
 import java.util.Objects;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import com.qa.choonz.persistence.domain.Album;
 import com.qa.choonz.persistence.domain.Genre;
 import com.qa.choonz.persistence.domain.Playlist;
@@ -33,6 +36,17 @@ public class TrackDTO {
 		this.duration = duration;
 		this.lyrics = lyrics;
 	}
+	public TrackDTO(long id, String name, Album album, List<Playlist> playlist, int duration, String lyrics) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.album = album;
+		this.playlist = playlist;
+		this.duration = duration;
+		this.lyrics = lyrics;
+	}
+	
+	
 	public TrackDTO(Long id, String name, List<Playlist> playlist) {
 		super();
 		this.id = id;

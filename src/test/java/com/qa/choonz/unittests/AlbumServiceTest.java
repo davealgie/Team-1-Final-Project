@@ -13,10 +13,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.qa.choonz.persistence.domain.Album;
 import com.qa.choonz.persistence.domain.Artist;
-import com.qa.choonz.persistence.domain.Genre;
 import com.qa.choonz.persistence.repository.AlbumRepository;
 import com.qa.choonz.persistence.repository.ArtistRepository;
-import com.qa.choonz.persistence.repository.GenreRepository;
 import com.qa.choonz.rest.dto.AlbumDTO;
 import com.qa.choonz.service.AlbumService;
 
@@ -28,25 +26,23 @@ public class AlbumServiceTest {
 	@MockBean
 	private ArtistRepository artistRepo;
 
-	@MockBean
-	GenreRepository genreRepo;
 
 	@Autowired
 	private AlbumService service;
 
-	private Genre genre = new Genre(1L, "name", "description", new ArrayList<>());
+
 
 	private Artist artist = new Artist(1L, "name", new ArrayList<>());
 
 	private Album album = new Album(1L, "name", new ArrayList<>(), artist, "cover");
 
-	private AlbumDTO albumDTO = new AlbumDTO(1L, "name", new ArrayList<>(), artist, genre, "cover");
+	private AlbumDTO albumDTO = new AlbumDTO(1L, "name", new ArrayList<>(), artist, "cover");
 
 	private Optional<Album> optionalAlbum = Optional.of(new Album(1L, "name", new ArrayList<>(), artist, "cover"));
 
 	private Album newAlbum = new Album(1L, "updated name", new ArrayList<>(), artist, "updated cover");
 
-	private AlbumDTO newAlbumDTO = new AlbumDTO(1L, "updated name", new ArrayList<>(), artist, genre, "updated cover");
+	private AlbumDTO newAlbumDTO = new AlbumDTO(1L, "updated name", new ArrayList<>(), artist, "updated cover");
 
 	@Test
 	public void testCreate() {

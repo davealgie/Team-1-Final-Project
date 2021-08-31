@@ -11,7 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import com.qa.choonz.persistence.domain.Album;
+import com.qa.choonz.persistence.domain.Artist;
 import com.qa.choonz.persistence.domain.Playlist;
+import com.qa.choonz.persistence.domain.Track;
 import com.qa.choonz.persistence.domain.Users;
 import com.qa.choonz.persistence.repository.PlaylistRepository;
 import com.qa.choonz.persistence.repository.UserRepository;
@@ -45,6 +48,10 @@ public class PlaylistServiceTest {
 
 	private PlaylistDTO updatedPlaylistDTO = new PlaylistDTO(1L, "names", "descriptions", "artworks");
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 505b63c784d534af12f35ec3feccce9626ad4c4f
 	@Test
 	public void testCreate() {
 
