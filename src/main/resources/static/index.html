@@ -74,9 +74,9 @@
           <li class="nav-item active">
             <a class="nav-link" href="index.html">Home<span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="playlists.html">Playlists</a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link" href="artist.html">Artists</a>
           </li>
@@ -95,40 +95,37 @@
     </div>
   </nav>
   <!--end of nav bar -->
-
   <br>
+  
   <div id="guestLoggedInSection" class="container">
     <h1>
-      Albums
-      <div class="btn-group" style="float: right">
+      <div class="btn-group">
         <div id="guestLoggedInBtn">
           <div class="btn-group">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static"
               aria-haspopup="true" aria-expanded="false">
-              CRUD Albums
+              Album Management
             </button>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
               <button class="dropdown-item" type="button" data-toggle="modal"
-                data-target="#userLoginModal">Create</button>
+                data-target="#createAlbumModal">Create</button>
               <button class="dropdown-item" type="button" data-toggle="modal"
-                data-target="#createAccountModal">Update</button>
+                data-target="#updateAlbumModal">Update</button>
               <button class="dropdown-item" type="button" data-toggle="modal"
-                data-target="#createAccountModal">Delete</button>
+                data-target="#deleteAlbumModal">Delete</button>
             </div>
           </div>
-
         </div>
       </div>
     </h1>
     <br>
     <h1>
-      Tracks
-      <div class="btn-group" style="float: right">
+      <div class="btn-group">
         <div id="guestLoggedInBtn">
-          <div class="btn-group">
+          <div class="btn-group" style="margin-left: 10px">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static"
               aria-haspopup="true" aria-expanded="false">
-              CRUD Tracks
+              Tracks Management
             </button>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
               <button class="dropdown-item" type="button" data-toggle="modal"
@@ -139,23 +136,17 @@
                 data-target="#deleteTrackModal">Delete</button>
             </div>
           </div>
-          <div id="theModal" class="modal fade text-center">
-            <div class="modal-dialog">
-              <div class="modal-content">
-              </div>
-            </div>
-          </div>
         </div>
+      </div>
     </h1>
     <br>
     <h1>
-      Playlist
-      <div class="btn-group" style="float: right">
+      <div class="btn-group">
         <div id="guestLoggedInBtn">
-          <div class="btn-group">
+          <div class="btn-group" style="margin-left: 10px">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static"
               aria-haspopup="true" aria-expanded="false">
-              CRUD Playlists
+              Playlists Management
             </button>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
               <button class="dropdown-item" type="button" data-toggle="modal"
@@ -164,6 +155,12 @@
                 data-target="#updatePlaylistModal">Update</button>
               <button class="dropdown-item" type="button" data-toggle="modal"
                 data-target="#deletePlaylistModal">Delete</button>
+                <button class="dropdown-item" type="button" data-toggle="modal"
+                data-target="#addToPlaylistTrackID">Add to Playlist By Track ID</button>
+                <button class="dropdown-item" type="button" data-toggle="modal"
+                data-target="#addToPlaylistSongName">Add to Playlist By Song Name</button>
+                <button class="dropdown-item" type="button" data-toggle="modal"
+                data-target="#addToPlaylistGenreID">Add to Playlist By Genre</button>
             </div>
           </div>
         </div>
@@ -171,13 +168,12 @@
     </h1>
     <br>
     <h1>
-      Artists
-      <div class="btn-group" style="float: right">
+      <div class="btn-group">
         <div id="guestLoggedInBtn">
-          <div class="btn-group">
+          <div class="btn-group" style="margin-left: 10px">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static"
               aria-haspopup="true" aria-expanded="false">
-              CRUD Artists
+              Artists Management
             </button>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
               <button class="dropdown-item" type="button" data-toggle="modal"
@@ -188,194 +184,34 @@
                 data-target="#deleteArtistModal">Delete</button>
             </div>
           </div>
-
+        </div>
+      </div>
+    </h1>
+    <br>
+    <h1>
+      <div class="btn-group">
+        <div id="guestLoggedInBtn">
+          <div class="btn-group" style="margin-left: 10px">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static"
+              aria-haspopup="true" aria-expanded="false">
+              Genre Management
+            </button>
+            <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+              <button class="dropdown-item" type="button" data-toggle="modal"
+                data-target="#createGenreModal">Create</button>
+              <button class="dropdown-item" type="button" data-toggle="modal"
+                data-target="#updateGenreModal">Update</button>
+              <button class="dropdown-item" type="button" data-toggle="modal"
+                data-target="#deleteGenreModal">Delete</button>
+            </div>
+          </div>
         </div>
       </div>
     </h1>
     <br>
   </div>
-
-  <!-- CRUD Playlist modal -->
-  <div class="modal fade" id="CRUDPlaylistModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">CRUD Playlist</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form class="log-in" action="index.html" method="POST">
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
-              </div>
-              <input id="name" name="name" type="text" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default" required />
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
-              </div>
-              <input id="description" name="name" type="text" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default" required />
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                Close
-              </button>
-              <button id="createNewPlayBtn" type="button" class="btn btn-primary" data-dismiss="modal">
-                Create
-              </button>
-              <button id="updatePlayBtn" type="button" class="btn btn-primary" data-dismiss="modal">
-                Update
-              </button>
-              <button id="deletePlayBtn" type="button" class="btn btn-primary" data-dismiss="modal">
-                Delete
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- CRUD Artist modal -->
-  <div class="modal fade" id="CRUDArtistModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">CRUD Artists</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form class="log-in" action="index.html" method="POST">
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
-              </div>
-              <input id="name" name="name" type="text" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default" required />
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                Close
-              </button>
-              <button id="createNewArtistBtn" type="button" class="btn btn-primary" data-dismiss="modal">
-                Create
-              </button>
-              <button id="updateArtistBtn" type="button" class="btn btn-primary" data-dismiss="modal">
-                Update
-              </button>
-              <button id="deleteArtistBtn" type="button" class="btn btn-primary" data-dismiss="modal">
-                Delete
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CRUD Tracks modal -->
-  <div class="modal fade" id="CRUDTracksModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">CRUD Tracks</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form class="log-in" action="index.html" method="POST">
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
-              </div>
-              <input id="name" name="name" type="text" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default" required />
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default">Lyrics</span>
-              </div>
-              <input id="lyrics" name="name" type="text" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default" required />
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default">Duration</span>
-              </div>
-              <input id="duration" name="name" type="number" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default" required />
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                Close
-              </button>
-              <button id="createNewTrackBtn" type="button" class="btn btn-primary" data-dismiss="modal">
-                Create
-              </button>
-              <button id="updateTrackBtn" type="button" class="btn btn-primary" data-dismiss="modal">
-                Update
-              </button>
-              <button id="deleteTrackBtn" type="button" class="btn btn-primary" data-dismiss="modal">
-                Delete
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CRUD Album modal -->
-  <div class="modal fade" id="CRUDAlbumModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">CRUD Albums</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form class="log-in" action="index.html" method="POST">
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
-              </div>
-              <input id="name" name="name" type="text" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default" required />
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default">Genre</span>
-              </div>
-              <input id="genre" name="name" type="text" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default" required />
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                Close
-              </button>
-              <button id="createAlbumBtn" type="button" class="btn btn-primary" data-dismiss="modal">
-              </button>
-              <button id="updateAlbumBtn" type="button" class="btn btn-primary" data-dismiss="modal">
-                Update
-              </button>
-              <button id="deleteAlbumBtn" type="button" class="btn btn-primary" data-dismiss="modal">
-                Delete
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="container">
+  <div id="flex"></div>
   <!-- create account modal -->
   <div class="modal fade" id="createAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -478,7 +314,7 @@
         </div>
       </div>
     </div>
-  </div>
+    </div>
   <!-- user log in modal -->
   <div class="modal fade" id="userLoginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -518,6 +354,138 @@
     </div>
   </div>
 
+   <!-- update album modal -->
+ <div class="modal fade" id="updateAlbumModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Album</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <p id="success-create" class="card-text"></p>
+      <div class="modal-body">
+        <form class="update-album">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Album ID:</span>
+            </div>
+            <input id="albumidupdate" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default" required>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Album Name:</span>
+            </div>
+            <input id="albumnameupdate" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default" required>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Cover:</span>
+            </div>
+            <input id="coverupdate" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default" required>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">
+                Artist-Id:</span>
+            </div>
+            <input id="artistidupdate" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="updateAlbum">Update</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+ <!-- create album modal -->
+ <div class="modal fade" id="createAlbumModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New Album</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="log-in">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Album Name:</span>
+            </div>
+            <input id="albumname" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default" required>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Cover:</span>
+            </div>
+            <input id="cover" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default" required>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">
+                Artist-Id:</span>
+            </div>
+            <input id="artistid" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="createAlbumBtn">Create</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- delete album modal -->
+ <div class="modal fade" id="deleteAlbumModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Album</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <p id="success-delete" class="card-text"></p>
+      <div class="modal-body">
+        <form class="delete-album" action="album.html">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Album ID:</span>
+            </div>
+            <input id="albumiddelete" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="deleteAlbum">Delete</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   <!-- Create a track modal -->
   <div class="modal fade" id="createTrackModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -529,32 +497,45 @@
           </button>
         </div>
         <div class="modal-body">
-          <form class="log-in" action="index.html" method="POST">
+          <form class="log-in" action="index.html">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
               </div>
-              <input name="name" type="text" class="form-control" aria-label="Sizing example input"
+              <input id="trackname" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Lyrics</span>
               </div>
-              <input name="lyrics" type="text" class="form-control" aria-label="Sizing example input"
+              <input id="lyrics" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Duration</span>
               </div>
-              <input name="duration" type="number" class="form-control" aria-label="Sizing example input"
+              <input id="duration" type="number" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Album-ID</span>
+              </div>
+              <input id="albumid" type="number" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" />
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Genre-ID</span>
+              </div>
+              <input id="genreid" type="number" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" />
+            </div>
             <div class="modal-footer">
-              <p id="login-msg" class="card-text"></p>
+              <button type="button" class="btn btn-primary" id="createTrack">Create</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Create</button>
             </div>
           </form>
         </div>
@@ -572,25 +553,18 @@
           </button>
         </div>
         <div class="modal-body">
-          <form class="log-in" action="index.html" method="POST">
+          <form class="log-in" action="index.html">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">ID</span>
               </div>
-              <input name="ID" type="number" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default" required>
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
-              </div>
-              <input name="Name" type="text" class="form-control" aria-label="Sizing example input"
+              <input id="deletetrackid" type="number" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Delete</button>
+              <button type="submit" class="btn btn-primary" id="deleteTrack">Delete</button>
             </div>
           </form>
         </div>
@@ -608,39 +582,54 @@
           </button>
         </div>
         <div class="modal-body">
-          <form class="log-in" action="index.html" method="POST">
+          <form class="log-in">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">ID</span>
               </div>
-              <input name="ID" type="number" class="form-control" aria-label="Sizing example input"
+              <input id="updateTrackID" type="number" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
               </div>
-              <input name="Name" type="text" class="form-control" aria-label="Sizing example input"
+              <input id="updateTrackName" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Lyrics</span>
               </div>
-              <input name="lyrics" type="text" class="form-control" aria-label="Sizing example input"
+              <input id="updateTrackLyrics" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Duration</span>
               </div>
-              <input name="duration" type="number" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default" required>
+              <input id="updateTrackDuration" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default" required>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Album-ID</span>
+                </div>
+                <input id="updateTrackAlbumID" type="number" class="form-control" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default"/>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Genre-ID</span>
+                </div>
+                <input id="updateTrackGenreID" type="number" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default"/>
+              </div>
             </div>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Update</button>
+              <button type="button" class="btn btn-primary" id="updateTrack">Update</button>
             </div>
           </form>
         </div>
@@ -660,18 +649,18 @@
           </button>
         </div>
         <div class="modal-body">
-          <form class="log-in" action="index.html" method="POST">
+          <form class="log-in">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
               </div>
-              <input name="name" type="text" class="form-control" aria-label="Sizing example input"
+              <input id="createName" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Create</button>
+              <button type="button" class="btn btn-primary"id="createArtist">Create</button>
             </div>
           </form>
         </div>
@@ -694,20 +683,13 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">ID</span>
               </div>
-              <input name="ID" type="number" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default" required>
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
-              </div>
-              <input name="Name" type="text" class="form-control" aria-label="Sizing example input"
+              <input id="deleteID" type="number" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Delete</button>
+              <button type="button" class="btn btn-primary" id="deleteArtist">Delete</button>
             </div>
           </form>
         </div>
@@ -730,20 +712,20 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">ID</span>
               </div>
-              <input name="ID" type="number" class="form-control" aria-label="Sizing example input"
+              <input id="updateID" type="number" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
               </div>
-              <input name="Name" type="text" class="form-control" aria-label="Sizing example input"
+              <input id="updateName" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Update</button>
+              <button type="button" class="btn btn-primary"id="updateArtist">Update</button>
             </div>
           </form>
         </div>
@@ -763,32 +745,39 @@
           </button>
         </div>
         <div class="modal-body">
-          <form class="log-in" action="index.html" method="POST">
+          <form class="log-in">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
               </div>
-              <input name="name" type="text" class="form-control" aria-label="Sizing example input"
+              <input name="createPlaylistName" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
               </div>
-              <input name="description" type="text" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default" required>
-            </div>
+              <input name="createPlaylistDesc" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default" required>
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">User-ID</span>
+                </div>
+                <input name="createPlaylistUserID" type="number" class="form-control" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default" required>
+              </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Artwork</span>
               </div>
-              <input name="artwork" type="image" class="form-control" aria-label="Sizing example input"
+              <input name="createPlaylistArtwork" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Create</button>
+              <button type="submit" class="btn btn-primary" id="createPlaylist">Create</button>
             </div>
           </form>
         </div>
@@ -806,25 +795,18 @@
           </button>
         </div>
         <div class="modal-body">
-          <form class="log-in" action="index.html" method="POST">
+          <form class="log-in">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">ID</span>
               </div>
-              <input name="ID" type="number" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default" required>
-            </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
-              </div>
-              <input name="Name" type="text" class="form-control" aria-label="Sizing example input"
+              <input name="deletePlaylistID" type="number" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Delete</button>
+              <button type="button" class="btn btn-primary" id="deletePlaylist">Delete</button>
             </div>
           </form>
         </div>
@@ -842,45 +824,194 @@
           </button>
         </div>
         <div class="modal-body">
-          <form class="log-in" action="index.html" method="POST">
+          <form class="log-in">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">ID</span>
               </div>
-              <input name="ID" type="number" class="form-control" aria-label="Sizing example input"
+              <input name="updatePlaylistID" type="number" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" required>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">User-ID</span>
+              </div>
+              <input name="updatePlaylistUserID" type="number" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
               </div>
-              <input name="name" type="text" class="form-control" aria-label="Sizing example input"
+              <input name="updatePlaylistName" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
               </div>
-              <input name="description" type="text" class="form-control" aria-label="Sizing example input"
+              <input name="updatePlaylistDesc" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Artwork</span>
               </div>
-              <input name="artwork" type="image" class="form-control" aria-label="Sizing example input"
+              <input name="updatePlaylistArtwork" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Delete</button>
+              <button type="button" class="btn btn-primary" id="updatePlaylist">Delete</button>
             </div>
           </form>
         </div>
       </div>
     </div>
   </div>
+
+   <!-- Create an genre modal -->
+   <div class="modal fade" id="createGenreModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add an Genre</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="log-in" action="index.html" method="POST">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+              </div>
+              <input id="createGenreName" type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" required>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
+              </div>
+              <input id="createGenreDesc" type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" required>
+            </div>
+            <div class="modal-footer">
+              <p id="login-msg" class="card-text"></p>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary"id="createGenre">Create</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Delete an genre modal -->
+  <div class="modal fade" id="deleteGenreModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete an Genre</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="log-in" action="index.html" method="POST">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">ID</span>
+              </div>
+              <input id="deleteGenreID" type="number" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" required>
+            </div>
+            <div class="modal-footer">
+              <p id="login-msg" class="card-text"></p>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="deleteGenre">Delete</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- update an genre modal -->
+  <div class="modal fade" id="updateGenreModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update an Genre</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="log-in" action="index.html" method="POST">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">ID</span>
+              </div>
+              <input id="updateGenreID" type="number" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" required>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+              </div>
+              <input id="updateGenreName" type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" required>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
+              </div>
+              <input id="updateGenreDesc" type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" required>
+            </div>
+            <div class="modal-footer">
+              <p id="login-msg" class="card-text"></p>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary"id="updateGenre">Update</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+     <!-- Add to playlist by id modal -->
+ <div class="modal fade" id="addToPlaylistTrackID" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add to playlist</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <p id="success-create" class="card-text"></p>
+      <div class="modal-body">
+        <form class="update-album">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Track-ID:</span>
+            </div>
+            <input id="trackID" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="addTrackIDPlaylist">Add</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
   <footer>
     <div class="text-center p-2">
       <h5>Copyright &#169; DA,SK & GW</h5>

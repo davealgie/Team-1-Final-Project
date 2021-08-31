@@ -1,5 +1,6 @@
 package com.qa.choonz.persistence.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -34,6 +35,7 @@ public class Playlist {
     private String description;
     
     @ManyToOne
+    @JoinColumn(name = "users_user_id", referencedColumnName = "user_id")
     private Users users;
 
     @NotNull
@@ -48,7 +50,7 @@ public class Playlist {
     @JoinTable(name = "playlists_tracks", 
     joinColumns = @JoinColumn(name = "track_id"), 
     inverseJoinColumns = @JoinColumn(name = "playlist_id"))
-    private List<Track> tracks;
+    private List<Track> tracks = new ArrayList<>();
 
     public Playlist() {
         super();
@@ -74,7 +76,15 @@ public class Playlist {
         this.id = id;
     }
 
-    public String getName() {
+    public Users getUsers() {
+		return users;
+	}
+
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+
+	public String getName() {
         return name;
     }
 
