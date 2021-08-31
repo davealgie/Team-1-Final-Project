@@ -13,10 +13,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.qa.choonz.persistence.domain.Album;
 import com.qa.choonz.persistence.domain.Artist;
-import com.qa.choonz.persistence.domain.Genre;
 import com.qa.choonz.persistence.repository.AlbumRepository;
 import com.qa.choonz.persistence.repository.ArtistRepository;
-import com.qa.choonz.persistence.repository.GenreRepository;
 import com.qa.choonz.rest.dto.AlbumDTO;
 import com.qa.choonz.service.AlbumService;
 
@@ -28,8 +26,6 @@ public class AlbumServiceTest {
 	@MockBean
 	private ArtistRepository artistRepo;
 
-	@MockBean
-	GenreRepository genreRepo;
 
 	@Autowired
 	private AlbumService service;
