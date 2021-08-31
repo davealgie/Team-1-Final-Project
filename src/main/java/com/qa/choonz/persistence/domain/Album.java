@@ -55,6 +55,8 @@ public class Album {
         this.artist = artist;
         this.cover = cover;
     }
+    
+    
 
     public long getId() {
         return id;

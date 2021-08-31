@@ -13,7 +13,6 @@ public class AlbumDTO {
     private String name;
     private List<Track> tracks;
     private Artist artist;
-    private Genre genre;
     private String cover;
 
     public AlbumDTO() {
@@ -21,14 +20,13 @@ public class AlbumDTO {
         // TODO Auto-generated constructor stub
     }
 
-    public AlbumDTO(long id, String name, List<Track> tracks, Artist artist, String cover) {
+    public AlbumDTO(long id, String name, List<Track> tracks, Artist artist,  String cover) {
         super();
         this.id = id;
         this.name = name;
         this.tracks = tracks;
         this.artist = artist;
         this.cover = cover;
-
         
     }
 
@@ -64,14 +62,6 @@ public class AlbumDTO {
 		this.artist = artist;
 	}
 
-	public Genre getGenre() {
-		return genre;
-	}
-
-	public void setGenre(Genre genre) {
-		this.genre = genre;
-	}
-
 	public String getCover() {
 		return cover;
 	}
@@ -82,7 +72,7 @@ public class AlbumDTO {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(artist, cover, genre, id, name, tracks);
+		return Objects.hash(artist, cover, id, name, tracks);
 	}
 
 	@Override
@@ -94,22 +84,15 @@ public class AlbumDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		AlbumDTO other = (AlbumDTO) obj;
-		return Objects.equals(artist, other.artist) && Objects.equals(cover, other.cover)
-				&& Objects.equals(genre, other.genre) && id == other.id && Objects.equals(name, other.name)
-				&& Objects.equals(tracks, other.tracks);
+		return Objects.equals(artist, other.artist) && Objects.equals(cover, other.cover) && id == other.id
+				&& Objects.equals(name, other.name) && Objects.equals(tracks, other.tracks);
 	}
 
 	@Override
 	public String toString() {
-		return "AlbumDTO [id=" + id + ", name=" + name + ", tracks=" + tracks + ", artist=" + artist + ", genre="
-				+ genre + ", cover=" + cover + "]";
+		return "AlbumDTO [id=" + id + ", name=" + name + ", tracks=" + tracks + ", artist=" + artist + ", cover="
+				+ cover + "]";
 	}
     
-<<<<<<< HEAD
-} 
-=======
-
 }
-
    
->>>>>>> 11ef748872f3cf65e04010e8909c936c3045bfea
