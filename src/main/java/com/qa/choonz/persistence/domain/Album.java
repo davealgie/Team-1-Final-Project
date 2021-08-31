@@ -55,6 +55,14 @@ public class Album {
         this.artist = artist;
         this.cover = cover;
     }
+    public Album(long id, @NotNull @Size(max = 100) String name, Artist artist,
+            String cover) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.artist = artist;
+        this.cover = cover;
+    }
     
     
 
