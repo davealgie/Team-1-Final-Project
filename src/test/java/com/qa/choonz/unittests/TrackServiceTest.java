@@ -32,21 +32,21 @@ public class TrackServiceTest {
 	@Autowired
 	private TrackService service;
 
-	
+	private Genre genre = new Genre(1L, "name", "description", new ArrayList<>());
 	
 	private Artist artist = new Artist(1L, "name", new ArrayList<>());
 	
 	private Album album = new Album(1L, "name", new ArrayList<>(), artist, "aliens");
 
-	private Track track = new Track(1L, "name", album, new ArrayList<>(), 180, "lyrics");
+	private Track track = new Track(1L, "name", album, new ArrayList<>(), 180, "lyrics", genre);
 	
-	private TrackDTO trackDTO = new TrackDTO(1L, "name", album, new ArrayList<>(), 180, "lyrics");
+	private TrackDTO trackDTO = new TrackDTO(1L, "name", album, new ArrayList<>(), genre, 180, "lyrics");
 	
 	private Optional<Track> optionalTrack = Optional.of(new Track(1L, "name", album, new ArrayList<>(), 180, "lyrics"));
 	 
-	private Track newTrack = new Track(1L, "updated name", album, new ArrayList<>(), 180, "updated lyrics");
+	private Track newTrack = new Track(1L, "updated name", album, new ArrayList<>(), 180, "updated lyrics", genre);
 	
-	private TrackDTO newTrackDTO = new TrackDTO(1L, "updated name", album, new ArrayList<>(), 180, "updated lyrics");
+	private TrackDTO newTrackDTO = new TrackDTO(1L, "updated name", album, new ArrayList<>(), genre, 180, "updated lyrics");
 
 	@Test
 	public void testCreate() {
