@@ -20,7 +20,7 @@ import com.qa.choonz.service.UserService;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin
+@CrossOrigin("http://127.0.0.1:5500")
 public class UserController {
 
 	private UserService service;
