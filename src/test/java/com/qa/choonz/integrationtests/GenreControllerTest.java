@@ -46,11 +46,7 @@ public class GenreControllerTest {
 	@Test
 	void testCreateGenre() throws Exception {
 
-<<<<<<< HEAD
 		Genre genre = new Genre(1L, "Rock", "lead guitar");
-=======
-		Genre genre = new Genre(2L,"Rock", "lead guitar");
->>>>>>> 5df1ea38d6ce8ede2280acd4ab992ab89ee0ed91
 
 		String genreAsJSON = this.mapper.writeValueAsString(genre);
 
