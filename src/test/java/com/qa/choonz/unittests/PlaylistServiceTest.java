@@ -35,13 +35,13 @@ public class PlaylistServiceTest {
 	
 	private Playlist playlist = new Playlist(1L, "name", "description", "artwork", new ArrayList<>());
 	
-	private PlaylistDTO playlistDTO = new PlaylistDTO(1L, "name", "description", "artwork", new ArrayList<>());
+	private PlaylistDTO playlistDTO = new PlaylistDTO(1L, "name", "description", "artwork");
 	
 	private Optional<Playlist> optionalPlaylist = Optional.of(new Playlist(1L, "name", "description", "artwork", new ArrayList<>()));
 	
 	private Playlist updatedPlaylist = new Playlist(1L, "updated name", "description", "artwork", new ArrayList<>());
 	
-	private PlaylistDTO updatedPlaylistDTO = new PlaylistDTO(1L, "updated name", "description", "artwork", new ArrayList<>());
+	private PlaylistDTO updatedPlaylistDTO = new PlaylistDTO(1L, "updated name", "description", "artwork");
 	
 	@Test
 	public void testCreate() {
