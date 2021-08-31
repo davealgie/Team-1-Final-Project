@@ -31,11 +31,12 @@ public class PlaylistDTO {
         this.users = users;
     }
     
-    public PlaylistDTO(String name, String description, String artwork) {
+    public PlaylistDTO(String name, String description, String artwork, List<Track> tracks) {
  		super();
  		this.name = name;
  		this.description = description;
  		this.artwork = artwork;
+ 		this.tracks = tracks;
  	}
     
 	public PlaylistDTO(Long id, String name, String description, String artwork) {
@@ -45,6 +46,7 @@ public class PlaylistDTO {
 		this.description = description;
 		this.artwork = artwork;
 	}
+	
 	public PlaylistDTO(Long id, String name) {
 		super();
 		this.id = id;
