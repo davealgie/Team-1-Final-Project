@@ -25,5 +25,7 @@ public class TrackDTOTest {
 				+ ", playlist=[], duration=120, lyrics=lyrics]").isEqualTo(trackDTO.toString());
 
 	}
+	
+	
 
 }
