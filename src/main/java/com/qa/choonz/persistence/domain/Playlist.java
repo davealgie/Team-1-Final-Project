@@ -48,8 +48,8 @@ public class Playlist {
     
     @ManyToMany
     @JoinTable(name = "playlists_tracks", 
-    joinColumns = @JoinColumn(name = "track_id"), 
-    inverseJoinColumns = @JoinColumn(name = "playlist_id"))
+    joinColumns = @JoinColumn(name = "playlist_id"), 
+    inverseJoinColumns = @JoinColumn(name = "track_id"))
     private List<Track> tracks = new ArrayList<>();
 
     public Playlist() {
@@ -67,6 +67,19 @@ public class Playlist {
         this.tracks = tracks;
         this.users = users;
     }
+    
+    public Playlist(long id, @NotNull @Size(max = 100) String name, @NotNull @Size(max = 500) String description,
+            @NotNull @Size(max = 1000) String artwork) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.artwork = artwork;
+      
+    }
+    
+    
+    
 
     public long getId() {
         return id;

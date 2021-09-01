@@ -32,8 +32,8 @@ import com.qa.choonz.persistence.domain.Genre;
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 
-@Sql(scripts = { "classpath:testschema.sql",
-		"classpath:testdata.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = { "classpath:test-schema.sql",
+		"classpath:test-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 
 public class GenreControllerTest {
 
@@ -46,14 +46,14 @@ public class GenreControllerTest {
 	@Test
 	void testCreateGenre() throws Exception {
 
-		Genre genre = new Genre(1L, "Rock", "lead guitar");
+		Genre genre = new Genre(2L, "Smooth Rock", "smooth guitar");
 
 		String genreAsJSON = this.mapper.writeValueAsString(genre);
 
 		RequestBuilder mockRequest = post("/genres/create").contentType(MediaType.APPLICATION_JSON)
 				.content(genreAsJSON);
 
-		Genre genreInDb = new Genre(2L, "Rock", "lead guitar");
+		Genre genreInDb = new Genre(2L, "Smooth Rock", "smooth guitar");
 
 		String genreInDbAsJSON = this.mapper.writeValueAsString(genreInDb);
 
@@ -102,11 +102,11 @@ public class GenreControllerTest {
 	@Test
 	void testUpdateGenre() throws Exception {
 
-		Genre updatedGenre = new Genre(1L, "Smooth Rock", "smooth guitar");
+		Genre updatedGenre = new Genre(1L, "Light Rock", "light guitar");
 
 		String updatedGenreAsJSON = this.mapper.writeValueAsString(updatedGenre);
 
-		RequestBuilder mockRequest = put("/genres/update/1").contentType(MediaType.APPLICATION_JSON)
+		RequestBuilder mockRequest = post("/genres/update/1").contentType(MediaType.APPLICATION_JSON)
 				.content(updatedGenreAsJSON);
 
 		Genre updatedGenreInDb = new Genre(1L, "Light Rock", "light guitar");

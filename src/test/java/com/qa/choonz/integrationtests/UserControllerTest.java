@@ -29,8 +29,8 @@ import com.qa.choonz.persistence.domain.Users;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-@Sql(scripts = { "classpath:testdata.sql",
-		"classpath:testschema.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = { "classpath:test-data.sql",
+		"classpath:test-schema.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles("test")
 public class UserControllerTest {
 
@@ -41,16 +41,15 @@ public class UserControllerTest {
 	private ObjectMapper mapper;
 
 	@Test
-	@Order(1)
 	void testCreate() throws Exception {
 
-		Users user = new Users(1L, "Dave", "davealg", "davidalgie");
+		Users user = new Users("Dave", "davealg", "davidalgie");
 
 		String userAsJSON = this.mapper.writeValueAsString(user);
 
 		RequestBuilder mockRequest = post("/users/create").contentType(MediaType.APPLICATION_JSON).content(userAsJSON);
 
-		Users userInDb = new Users(1L, "Dave", "davealg", "davidalgie");
+		Users userInDb = new Users(2L, "Dave", "davealg", "davidalgie");
 
 		String userInDbAsJSON = this.mapper.writeValueAsString(userInDb);
 

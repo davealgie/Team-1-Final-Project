@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.choonz.persistence.domain.Playlist;
-import com.qa.choonz.rest.dto.AlbumDTO;
 import com.qa.choonz.rest.dto.PlaylistDTO;
 import com.qa.choonz.service.PlaylistService;
 
@@ -38,7 +37,7 @@ public class PlaylistController {
     
     // user
     @PutMapping("/{playlistId}/users/{userId}")
-    public ResponseEntity<PlaylistDTO> assignAlbumToArtist(@PathVariable Long playlistId, @PathVariable Long userId) {
+    public ResponseEntity<PlaylistDTO> assignUserToPlaylist(@PathVariable Long playlistId, @PathVariable Long userId) {
         return new ResponseEntity<PlaylistDTO>(this.service.assignUser(playlistId, userId), HttpStatus.CREATED);
     }
 
@@ -50,6 +49,11 @@ public class PlaylistController {
     @PutMapping("/{playlistId}/tracks/{trackId}")
     public ResponseEntity<PlaylistDTO> assignTrackToPlaylist(@PathVariable Long playlistId, @PathVariable Long trackId) {
         return new ResponseEntity<PlaylistDTO>(this.service.assignTrackToPlaylist(playlistId, trackId), HttpStatus.CREATED);
+    }
+    
+    @PutMapping("/{playlistId}/track-name/{trackname}")
+    public ResponseEntity<PlaylistDTO> assignTrackToPlaylistByName(@PathVariable Long playlistId, @PathVariable String trackname) {
+        return new ResponseEntity<PlaylistDTO>(this.service.assignTrackToPlaylistByName(playlistId, trackname), HttpStatus.CREATED);
     }
     
     @GetMapping("/read/{id}")

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
+import com.qa.choonz.persistence.domain.Album;
 import com.qa.choonz.rest.dto.GenreDTO;
 
 public class GenreDTOTest {
@@ -18,4 +19,6 @@ public class GenreDTOTest {
 				.isEqualTo(genreDTO.toString());
 
 	}
+	
+	
 }
