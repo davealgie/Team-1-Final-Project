@@ -35,7 +35,7 @@ public class TrackControllerTest {
 	@Test
 	void testCreateTrack() throws Exception {
 
-		Artist artist = new Artist(1L, "KIrk Hammett", new ArrayList<>());
+		Artist artist = new Artist(1L, "Kirk Hammett", new ArrayList<>());
 		List<Track> tracks = new ArrayList<>();
 		Album album = new Album(1L, "Zebra", tracks, artist, "image");
 		Users user = new Users(1L, "Dave", "davealg", "davidalgie", new ArrayList<>());
@@ -47,7 +47,7 @@ public class TrackControllerTest {
 
 		String trackAsJSON = this.mapper.writeValueAsString(track);
 
-		RequestBuilder mockRequest = post("/tracks/create/album/1").contentType(MediaType.APPLICATION_JSON)
+		RequestBuilder mockRequest = post("/tracks/create").contentType(MediaType.APPLICATION_JSON)
 				.content(trackAsJSON);
 
 		Track trackInDb = new Track(1L, "Nothing", album, playlists, 100, "else");

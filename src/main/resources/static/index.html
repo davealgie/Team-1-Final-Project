@@ -156,11 +156,7 @@
               <button class="dropdown-item" type="button" data-toggle="modal"
                 data-target="#deletePlaylistModal">Delete</button>
                 <button class="dropdown-item" type="button" data-toggle="modal"
-                data-target="#addToPlaylistTrackID">Add to Playlist By Track ID</button>
-                <button class="dropdown-item" type="button" data-toggle="modal"
-                data-target="#addToPlaylistSongName">Add to Playlist By Song Name</button>
-                <button class="dropdown-item" type="button" data-toggle="modal"
-                data-target="#addToPlaylistGenreID">Add to Playlist By Genre</button>
+                data-target="#addToPlaylistTrackID">Add Track To Playlist </button>
             </div>
           </div>
         </div>
@@ -980,12 +976,12 @@
     </div>
   </div>
 
-     <!-- Add to playlist by id modal -->
+     <!-- Add to playlist by id/name modal -->
  <div class="modal fade" id="addToPlaylistTrackID" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add to playlist</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add to playlist by track name or id</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -995,17 +991,34 @@
         <form class="update-album">
           <div class="input-group mb-3">
             <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Track-Name:</span>
+            </div>
+            <input id="trackName" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">OR</span>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
               <span class="input-group-text" id="inputGroup-sizing-default">Track-ID:</span>
             </div>
             <input id="trackID" type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default">
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Playlist-ID:</span>
+            </div>
+            <input id="playlistID" type="text" class="form-control" aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-default" required>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" id="addTrackIDPlaylist">Add</button>
-          </div>
-        </form>
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="addTrackIDPlaylist">Add By ID</button>
+        <button type="button" class="btn btn-primary" id="addTrackByName">Add By Name</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>

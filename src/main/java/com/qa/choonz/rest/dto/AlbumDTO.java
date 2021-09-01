@@ -50,8 +50,6 @@ public class AlbumDTO {
 		return tracks;
 	}
 
-<<<<<<< HEAD
-=======
 	public void setTracks(List<Track> tracks) {
 		this.tracks = tracks;
 	}
@@ -59,7 +57,10 @@ public class AlbumDTO {
 	public Artist getArtist() {
 		return artist;
 	}
->>>>>>> 505b63c784d534af12f35ec3feccce9626ad4c4f
+
+	public void setCover(String cover) {
+		this.cover = cover;
+	}
 
 	public void setArtist(Artist artist) {
 		this.artist = artist;
@@ -69,7 +70,6 @@ public class AlbumDTO {
 		return cover;
 	}
 
-<<<<<<< HEAD
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -97,35 +97,7 @@ public class AlbumDTO {
                 && id == other.id && Objects.equals(name, other.name)
                 && Objects.equals(tracks, other.tracks);
     }
-=======
-	public void setCover(String cover) {
-		this.cover = cover;
-	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(artist, cover, id, name, tracks);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		AlbumDTO other = (AlbumDTO) obj;
-		return Objects.equals(artist, other.artist) && Objects.equals(cover, other.cover) && id == other.id
-				&& Objects.equals(name, other.name) && Objects.equals(tracks, other.tracks);
-	}
->>>>>>> 505b63c784d534af12f35ec3feccce9626ad4c4f
-
-	@Override
-	public String toString() {
-		return "AlbumDTO [id=" + id + ", name=" + name + ", tracks=" + tracks + ", artist=" + artist + ", cover="
-				+ cover + "]";
-	}
     
 }
    
