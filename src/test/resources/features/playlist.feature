@@ -12,6 +12,9 @@ Feature: playlist create
     And I fill in the playlist Artwork
     And I click create new playlist
     Then I validate the outcomes
+    
+    
+		
   
 
 

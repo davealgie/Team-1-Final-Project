@@ -6,10 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.qa.choonz.hooks.SeleniumHooks;
-import com.qa.choonz.uat.pages.AlbumPage;
+
 import com.qa.choonz.uat.pages.PlaylistPage;
 
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class PlaylistStepDefs {
@@ -21,8 +22,8 @@ public class PlaylistStepDefs {
 		this.playlistPage = PageFactory.initElements(driver, PlaylistPage.class);
 		
 	}
-	@Given("I am on the album page")
-	public void iAmOnTheAlbumPage() {
+	@Given("I am on the playlists page")
+	public void iAmOnThePlaylistsPage() {
 		this.driver.get("http://127.0.0.1:5500/static/index.html");
 		this.driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
@@ -55,5 +56,11 @@ public class PlaylistStepDefs {
 	public void i_click_create_new_playlist() {
 	    playlistPage.clickCreate();
 	}
+	
+	@Then("I validate the outcomes")
+	public void i_validate_the_outcomes() {
+	
+	}
+
 
 }
