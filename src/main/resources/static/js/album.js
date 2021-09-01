@@ -1,12 +1,19 @@
 (() => {
 
   let container = document.querySelector("#card-group");
-
+  var styles = {
+    "background-color": "lightgray",
+    "width": "3rem",
+    "height": "2rem",
+    "margin-left": "9.5rem",
+    "border": "1px solid green",
+};
   function createCard(header, result){
       console.log(result);
       var div = document.createElement("div");
       div.setAttribute("class", "card");
       div.setAttribute("style", "max-width:18rem");
+      div.setAttribute("style", "min-width:6rem");
       
       var head10 = document.createElement("p");
       head10.innerText = result[0];
@@ -17,6 +24,12 @@
       para.setAttribute('href', "http://localhost:81/albums/read/" + result[0]); 
       var head2 = document.createElement("p");
       head2.innerText = header[1];
+
+      var link = document.createElement("button");
+
+      Object.assign(link.style,styles);
+
+      link.innerHTML = "View";
       // var a = document.createElement('a');
       // var linkText = document.createTextNode("my title text");
       // a.appendChild(linkText);
@@ -27,7 +40,7 @@
       div.appendChild(head);
       div.appendChild(para);
       div.appendChild(head2);
-
+     
 
       for(var i = 0; i < result[3].length; i ++){
           var para = document.createElement("a");
@@ -47,7 +60,7 @@
       para.setAttribute('href', "http://localhost:81/artists/read/1");
       div.appendChild(para);
     }
-
+    div.appendChild(link);
     return div;
   }
 
