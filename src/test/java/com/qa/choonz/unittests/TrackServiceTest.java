@@ -43,6 +43,11 @@ public class TrackServiceTest {
 	private TrackDTO trackDTO = new TrackDTO(1L, "name", album, new ArrayList<>(), genre , 180, "lyrics");
 	
 	private Optional<Track> optionalTrack = Optional.of(new Track(1L, "name", album, new ArrayList<>(), 180, "lyrics", genre));
+
+
+	 
+
+
 	
 	private Track newTrack = new Track(1L, "updated name", album, new ArrayList<>(), 180, "updated lyrics", genre);
 

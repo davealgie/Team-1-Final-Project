@@ -47,21 +47,27 @@ public class ArtistControllerTest {
 	@Test
 	void testPost() throws Exception {
 
-		Artist artist = new Artist("Kirk John", new ArrayList<>());
 
-		String ToDoAsJSON = this.mapper.writeValueAsString(artist);
+
+		String ArtistAsJSON = this.mapper.writeValueAsString(artist);
 
 		RequestBuilder mockRequest = post("/artists/create").contentType(MediaType.APPLICATION_JSON)
+
 				.content(ToDoAsJSON);
 
 		Artist savedToDo = new Artist(2L, "Kirk John", new ArrayList<>());
 
+				.content(ArtistAsJSON);
 
-		String savedToDoAsJSON = this.mapper.writeValueAsString(savedToDo);
+		Artist savedArtist = new Artist(2L, "Kirk John", new ArrayList<>());
+
+
+
+		String savedArtistAsJSON = this.mapper.writeValueAsString(savedArtist);
 
 		ResultMatcher matchStatus = status().isCreated();
 
-		ResultMatcher matchBody = content().json(savedToDoAsJSON);
+		ResultMatcher matchBody = content().json(savedArtistAsJSON);
 
 		this.mock.perform(mockRequest).andExpect(matchBody).andExpect(matchStatus);
 	}
@@ -110,7 +116,9 @@ public class ArtistControllerTest {
 	@Test
 	void testUpdateArtist() throws Exception {
 
-		Artist updatedArtist = new Artist("James Hetfield", new ArrayList<>());
+
+		Artist updatedArtist = new Artist(1L,"James Hetfield", new ArrayList<>());
+
 
 		String updatedArtistAsJSON = this.mapper.writeValueAsString(updatedArtist);
 
