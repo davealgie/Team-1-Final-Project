@@ -69,12 +69,6 @@
     let createPlaylistArtwork = document.querySelector("#createPlaylistArtwork");
     let updatePlaylistArtwork = document.querySelector("#updatePlaylistArtwork");
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> d5f18516b771cb99f166814ebabd70b29d310099
       //CREATE TRACK
   
     createTrackBtn.addEventListener("click", (event) => {
