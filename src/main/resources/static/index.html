@@ -251,6 +251,7 @@
             <div class="modal-footer">
               <button type="submit" class="btn btn-primary">Create</button>
             </div>
+            <p id="success-create" class="card-text"></p>
           </form>
         </div>
         <div class="modal-footer">
@@ -364,7 +365,6 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <p id="success-create" class="card-text"></p>
       <div class="modal-body">
         <form class="update-album">
           <div class="input-group mb-3">
@@ -400,7 +400,9 @@
             <button type="button" class="btn btn-primary" id="updateAlbum">Update</button>
           </div>
         </form>
+        <p id="success-album-update" class="card-text"></p>
       </div>
+      
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
@@ -419,6 +421,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+      
       </div>
       <div class="modal-body">
         <form class="log-in">
@@ -444,9 +447,10 @@
             <input id="artistid" type="text" class="form-control" aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-default">
           </div>
+          <p id="success-album-create" class="card-text"></p>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" id="createAlbumBtn">Create</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" id="close-button" data-dismiss="modal">Close</button>
           </div>
         </form>
       </div>
@@ -474,10 +478,12 @@
             <input id="albumiddelete" type="text" class="form-control" aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-default" required>
           </div>
+         
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" id="deleteAlbum">Delete</button>
           </div>
         </form>
+        <p id="success-album-delete" class="card-text"></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

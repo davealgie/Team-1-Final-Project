@@ -63,14 +63,13 @@
     let createPlaylistArtwork = document.querySelector("#createPlaylistArtwork");
     let updatePlaylistArtwork = document.querySelector("#updatePlaylistArtwork");
 
-
       //CREATE TRACK
   
     createTrackBtn.addEventListener("click", (event) => {
     const data = {name: createTrackName.value, duration: createTrackDuration.value, lyrics: createTrackLyrics.value, album_id: createTrackAlbumID.value, genre_id: createTrackGenreID.value};
 
     console.log(data);
-+
+
     fetch('http://localhost:81/tracks/create', {
       method: 'POST', // or 'PUT'
       headers: {
@@ -197,9 +196,8 @@
         //CREATE ALBUM
   
         createAlbumBtn.addEventListener("click", (event) => {
+            event.preventDefault();
             const data = {name: createAlbumName.value, cover: createAlbumCover.value, artist_id: createAlbumArtistID.value};
-        
-            console.log(data);
         
             fetch('http://localhost:81/albums/create', {
               method: 'POST', // or 'PUT'
@@ -222,10 +220,14 @@
                   .then(response => response.json())
                   .then(data => {
                     console.log('Success:', data);
+                    console.log(data);
+                    let msg = document.getElementById("success-album-create");
+                    msg.innerHTML = "New Album created successfully!"
                   })
                   .catch((error) => {
                     console.error('Error:', error);
                   });
+                 
                 }
             })
             .catch((error) => {
@@ -262,6 +264,8 @@
                   .then(response => response.json())
                   .then(data => {
                     console.log('Success:', data);
+                    let msg = document.getElementById("success-album-update");
+                    msg.innerHTML = "Album updated successfully!"
                   })
                   .catch((error) => {
                     console.error('Error:', error);
@@ -284,6 +288,8 @@
             .then(response => response.json())
             .then(data => {
               console.log('Success:', data);
+              let msg = document.getElementById("success-album-delete");
+              msg.innerHTML = "Album deleted successfully!"
             })
             .catch((error) => {
               console.error('Error:', error);
