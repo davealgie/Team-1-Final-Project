@@ -2,7 +2,7 @@
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const id = urlParams.get('id');
-    let container = document.querySelector("#flex");
+    let container = document.querySelector("#card-group");
 
 
     console.log(id);
