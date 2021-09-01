@@ -58,6 +58,10 @@ public class AlbumDTO {
 		return artist;
 	}
 
+	public void setCover(String cover) {
+		this.cover = cover;
+	}
+
 	public void setArtist(Artist artist) {
 		this.artist = artist;
 	}
@@ -66,33 +70,34 @@ public class AlbumDTO {
 		return cover;
 	}
 
-	public void setCover(String cover) {
-		this.cover = cover;
-	}
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("AlbumDTO [id=").append(id).append(", name=").append(name).append(", tracks=").append(tracks)
+                .append(", artist=").append(artist).append(", cover=").append(cover)
+                .append("]");
+        return builder.toString();
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(artist, cover, id, name, tracks);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(artist, cover, id, name, tracks);
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		AlbumDTO other = (AlbumDTO) obj;
-		return Objects.equals(artist, other.artist) && Objects.equals(cover, other.cover) && id == other.id
-				&& Objects.equals(name, other.name) && Objects.equals(tracks, other.tracks);
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof AlbumDTO)) {
+            return false;
+        }
+        AlbumDTO other = (AlbumDTO) obj;
+        return Objects.equals(artist, other.artist) && Objects.equals(cover, other.cover)
+                && id == other.id && Objects.equals(name, other.name)
+                && Objects.equals(tracks, other.tracks);
+    }
 
-	@Override
-	public String toString() {
-		return "AlbumDTO [id=" + id + ", name=" + name + ", tracks=" + tracks + ", artist=" + artist + ", cover="
-				+ cover + "]";
-	}
     
 }
    
