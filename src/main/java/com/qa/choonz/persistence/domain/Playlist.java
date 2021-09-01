@@ -48,8 +48,8 @@ public class Playlist {
     
     @ManyToMany
     @JoinTable(name = "playlists_tracks", 
-    joinColumns = @JoinColumn(name = "track_id"), 
-    inverseJoinColumns = @JoinColumn(name = "playlist_id"))
+    joinColumns = @JoinColumn(name = "playlist_id"), 
+    inverseJoinColumns = @JoinColumn(name = "track_id"))
     private List<Track> tracks = new ArrayList<>();
 
     public Playlist() {

@@ -34,7 +34,7 @@
         for(var i = 0; i < result[2].length; i ++){
             var para = document.createElement("a");
             para.innerText = result[2][i].name;
-            para.setAttribute('href', "artist.html" + result[2][i].id);
+            para.setAttribute('href', "album.html?id=" + result[2][i].id);
             div.appendChild(para);
         }
 
@@ -76,7 +76,6 @@
         head.innerText = header[0];
         var para = document.createElement("a");
         para.innerText = result.name;
-        para.setAttribute('href', "artist.html?id=" + result[0]);
 
         div.appendChild(head);
         div.appendChild(para);
@@ -87,8 +86,8 @@
 
         for(var i = 0; i < result.albums.length; i ++){
             var para = document.createElement("a");
-            para.innerText = result.albums[i].name;
-            // para.setAttribute('href', "artist.html" + result[2][i].id);
+            para.innerText = result.albums[i].artist.name;
+            para.setAttribute('href', "album.html?id=" + result.albums[i].artist.id);
             div.appendChild(para);
         }
 

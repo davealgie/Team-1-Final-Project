@@ -59,9 +59,16 @@ public class Users {
 		this.user_name = user_name;
 		this.password = password;
 	}
-	public Users( @NotNull @Size(max = 100) String full_name, @NotNull @Size(max = 100) String user_name, @NotNull String password) {
+	public Users(String full_name, @NotNull @Size(max = 100) String user_name, @NotNull String password, List<Playlist> playlist) {
 		super();
-		
+		this.full_name = full_name;
+		this.user_name = user_name;
+		this.password = password;
+		this.playlist = playlist;
+	}
+	
+	public Users(String full_name, @NotNull @Size(max = 100) String user_name, @NotNull String password) {
+		super();
 		this.full_name = full_name;
 		this.user_name = user_name;
 		this.password = password;
@@ -121,7 +128,7 @@ public class Users {
 		if (getClass() != obj.getClass())
 			return false;
 		Users other = (Users) obj;
-		return Objects.equals(full_name, other.full_name) && user_id == other.user_id && Objects.equals(password, other.password)
+		return Objects.equals(full_name, other.full_name) && Objects.equals(user_id, other.user_id) && Objects.equals(password, other.password)
 				&& Objects.equals(playlist, other.playlist) && Objects.equals(user_name, other.user_name);
 	}
 
