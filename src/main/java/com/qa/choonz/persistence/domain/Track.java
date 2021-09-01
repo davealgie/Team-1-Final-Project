@@ -105,6 +105,7 @@ public class Track {
     public void setPlaylist(List<Playlist> playlist) {
         this.playlist = playlist;
     }
+    
 
     public int getDuration() {
         return duration;
@@ -157,5 +158,6 @@ public class Track {
                 && Objects.equals(lyrics, other.lyrics) && Objects.equals(name, other.name) && Objects.equals(genre, other.genre)
                 && Objects.equals(playlist, other.playlist);
     }
+    
 
 }

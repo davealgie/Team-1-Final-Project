@@ -4,30 +4,45 @@
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const id = urlParams.get('id');
-    let container = document.querySelector("#flex");
-  
+    let container = document.querySelector("#card-group");
+    var styles = {
+        "background-color": "lightgray",
+        "width": "3rem",
+        "height": "2rem",
+        "margin-left": "9.5rem",
+        "border": "1px solid green",
+    };
     if(id == null){
 
     function createCard(header, result){
         console.log(result);
         var div = document.createElement("div");
         div.setAttribute("class", "card");
+        div.setAttribute("style", "max-width:18rem");
+        div.setAttribute("style", "min-width:6rem");
         var head = document.createElement("p");
         head.innerText = header[0];
         var para = document.createElement("a");
         para.innerText = result[1];
         para.setAttribute('href', "tracks.html?id=" + result[0]);
+
+              
+        var link = document.createElement("button");
+
+        Object.assign(link.style,styles);
+  
+        link.innerHTML = "View";
+        
         // para.setAttribute('href', "http://localhost:81/tracks/read/" + result[0]);
         div.appendChild(head);
         div.appendChild(para);
-    
+       
         var head = document.createElement("p");
         head.innerText = header[1];
         var para = document.createElement("p");
         para.innerText = result[4];
         div.appendChild(head);
         div.appendChild(para);
-
     if(result[3]!= null){
         var head2 = document.createElement("p");
         head2.innerText = header[2];
@@ -36,7 +51,7 @@
         div.appendChild(head2);
         div.appendChild(para2);
     }
-
+    
     if(result[2]!= null){    
         var head3 = document.createElement("p");
         head3.innerText = header[3];
@@ -57,7 +72,7 @@
         div.appendChild(para);
     }
     }
-
+    div.appendChild(link);
       return div;
     }
 
