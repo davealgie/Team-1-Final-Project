@@ -1,6 +1,5 @@
 (() => {
 
-<<<<<<< HEAD
     let container = document.querySelector("#flex");
     let submitCreateBtn = document.querySelector("#createAlbumBtn");
     let albumname = document.querySelector("#albumname");
@@ -17,44 +16,44 @@
     let submitDeleteBtn = document.querySelector("#deleteAlbum");
     let albumiddelete = document.querySelector("#albumiddelete");
 
-    function createCard(header, result){
-        console.log(result);
-        var div = document.createElement("div");
-        div.setAttribute("class", "card");
-        var head10 = document.createElement("p");
-        head10.innerText = result[0];
-        var head = document.createElement("p");
-        head.innerText = header[0];
-        var para = document.createElement("a");
-        para.innerText = result[1];
-        para.setAttribute('href', "http://localhost:81/albums/read/" + result[0]); 
-        var head2 = document.createElement("p");
-        head2.innerText = header[1];
+    // function createCard(header, result){
+    //     console.log(result);
+    //     var div = document.createElement("div");
+    //     div.setAttribute("class", "card");
+    //     var head10 = document.createElement("p");
+    //     head10.innerText = result[0];
+    //     var head = document.createElement("p");
+    //     head.innerText = header[0];
+    //     var para = document.createElement("a");
+    //     para.innerText = result[1];
+    //     para.setAttribute('href', "http://localhost:81/albums/read/" + result[0]); 
+    //     var head2 = document.createElement("p");
+    //     head2.innerText = header[1];
 
-        div.appendChild(head10);
-        div.appendChild(head);
-        div.appendChild(para);
-        div.appendChild(head2);
+    //     div.appendChild(head10);
+    //     div.appendChild(head);
+    //     div.appendChild(para);
+    //     div.appendChild(head2);
 
 
-        for(var i = 0; i < result[3].length; i ++){
-            var para = document.createElement("a");
-            para.innerText = result[3][i].name;
+    //     for(var i = 0; i < result[3].length; i ++){
+    //         var para = document.createElement("a");
+    //         para.innerText = result[3][i].name;
 
-            para.setAttribute('href', "http://localhost:81/tracks/read/" + result[3][i].id);
-            div.appendChild(para);
-        }
+    //         para.setAttribute('href', "http://localhost:81/tracks/read/" + result[3][i].id);
+    //         div.appendChild(para);
+    //     }
 
-        if(result[2]!= null){
-        var head2 = document.createElement("p");
-        head2.innerText = header[2];
-        div.appendChild(head2);
+    //     if(result[2]!= null){
+    //     var head2 = document.createElement("p");
+    //     head2.innerText = header[2];
+    //     div.appendChild(head2);
 
-        var para = document.createElement("a");
-        para.innerText = result[2].name;
-        para.setAttribute('href', "http://localhost:81/artists/read/1");
-        div.appendChild(para);
-=======
+    //     var para = document.createElement("a");
+    //     para.innerText = result[2].name;
+    //     para.setAttribute('href', "http://localhost:81/artists/read/1");
+    //     div.appendChild(para);
+
   let container = document.querySelector("#card-group");
 
   function createCard(header, result){
@@ -90,7 +89,6 @@
 
           para.setAttribute('href', "http://localhost:81/tracks/read/" + result[3][i].id);
           div.appendChild(para);
->>>>>>> 320be32ae47d1aee02803be70c3f040250d76270
       }
 
       if(result[2]!= null){

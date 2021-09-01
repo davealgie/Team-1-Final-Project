@@ -157,8 +157,17 @@ public class Playlist {
     }
 
 	public void addTracks(Track track) {
-		tracks.add(track);
+		this.tracks.add(track);
+		track.getPlaylist().add(this);
 		
 	}
+	
+	public void removeTracks(Track track) {
+		this.tracks.remove(track);
+		track.getPlaylist().remove(this);
+		
+	}
+	
+	
 
 }
