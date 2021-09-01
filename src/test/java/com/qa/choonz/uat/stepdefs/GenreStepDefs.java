@@ -53,9 +53,11 @@ public class GenreStepDefs {
 		genrePage.clickCreate();
 	}
 
-	@Then("I validate the outcomes")
-	public void i_validate_the_outcomes() {
+	@Then("I should see new genre created")
+	public void i_should_see_new_genre_created() {
+	   
+	}
 
 	}
 
-}
+
