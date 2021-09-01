@@ -1,8 +1,13 @@
 package com.qa.choonz.rest.controller;
 
+import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,7 +37,7 @@ public class UserController {
 
 	// create
 	@PostMapping("/create")
-	public ResponseEntity<UserDTO> create(@RequestBody Users user) {
+	public ResponseEntity<UserDTO> create(@Valid @RequestBody Users user) {
 		return new ResponseEntity<UserDTO>(this.service.create(user), HttpStatus.CREATED);
 	}
 

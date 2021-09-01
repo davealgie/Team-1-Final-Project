@@ -29,12 +29,20 @@ public class UserDTO {
 		this.password = password;
 		this.playlist = playlist;
 	}
-	public UserDTO(Long user_id, String full_name, String user_name, List<Playlist> playlist) {
+	public UserDTO(String full_name, String user_name, String password, List<Playlist> playlist) {
 		super();
-		this.user_id = user_id;
 		this.full_name = full_name;
 		this.user_name = user_name;
+		this.password = password;
 		this.playlist = playlist;
+	}
+	
+	public UserDTO(String full_name, String user_name, String password) {
+		super();
+		this.full_name = full_name;
+		this.user_name = user_name;
+		this.password = password;
+		
 	}
 
 
