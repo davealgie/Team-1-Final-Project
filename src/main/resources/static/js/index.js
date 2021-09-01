@@ -3,9 +3,13 @@
 
     let trackName = document.querySelector("#trackName");
     let playlistID = document.querySelector("#playlistID");
-    let trackIDPlaylist = document.querySelector("#trackID");
+    let trackIDPlaylist = document.querySelector("#trackID"); // add to playlist
     let trackToPlaylistBtn = document.querySelector("#addTrackIDPlaylist");
     let trackToPlaylistByNameBtn = document.querySelector("#addTrackByName");
+
+    let removePlaylistID = document.querySelector("#removeplaylistID");
+    let removeTrackID = document.querySelector("#removetrackID"); // remove from playlist
+    let removeTrackBtn = document.querySelector("#removeTrackBtn");
 
     let createTrackBtn = document.querySelector("#createTrack");
     let createTrackName = document.querySelector("#trackname");
@@ -566,6 +570,27 @@
                           addToPlaylistByName(playlistID.value, trackName.value);
                     }, false);
 
+                    removeTrackBtn.addEventListener("click", (event) => {
+                        removeFromPlaylist(removeTrackID.value, removePlaylistID.value);
+                    }, false);
+
+                    
+                    function removeFromPlaylist(trackid, playlistid){
+    
+                        fetch('http://localhost:81/playlists/' + playlistid + '/track-remove/' + trackid, {
+                                method: 'PUT', // or 'PUT'
+                          })
+                           .then(response => response.json())
+                           .then(data => {
+                            console.log('Success:', data);
+                            })
+                              .catch((error) => {
+                                console.error('Error:', error);
+                              });
+                            
+                    }
+
+
 
                     function addToPlaylist(trackid, playlistid){
     
@@ -820,8 +845,7 @@
             
                 
                     function simpleFetch(){
-                        const a = ["http://localhost:81/playlists/read"];
-                            fetch(a)
+                        fetch("http://localhost:81/playlists/read")
                             .then((response => {
                               if(response.status !== 200){
                                 console.error(`status: ${response.status})`);

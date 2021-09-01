@@ -53,7 +53,7 @@ public class ArtistControllerTest {
 
 		RequestBuilder mockRequest = post("/artists/create").contentType(MediaType.APPLICATION_JSON)
 
-				.content(ToDoAsJSON);
+			
 
 		Artist savedToDo = new Artist(2L, "Kirk John", new ArrayList<>());
 
