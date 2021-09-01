@@ -91,6 +91,8 @@
     .then(data => {
       console.log('Success:', data);
       console.log(data.id);
+      let msg = document.getElementById("success-track-create");
+      msg.innerHTML = "New track created successfully!"
       if(createTrackAlbumID!=null){
         fetch('http://localhost:81/tracks/' + data.id + '/albums/' + createTrackAlbumID.value, {
             method: 'PUT', // or 'PUT'
@@ -146,6 +148,8 @@
     .then(response => response.json())
     .then(data => {
       console.log('Success:', data);
+      let msg = document.getElementById("success-track-update");
+      msg.innerHTML = "Track updated successfully!"
       if(updateTrackAlbumID!=null){
         fetch('http://localhost:81/tracks/' + data.id + '/albums/' + updateTrackAlbumID.value, {
             method: 'PUT', // or 'PUT'
@@ -195,6 +199,8 @@
     .then(response => response.json())
     .then(data => {
       console.log('Success:', data);
+      let msg = document.getElementById("success-track-delete");
+      msg.innerHTML = "Track deleted successfully!"
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -325,6 +331,8 @@
             .then(response => response.json())
             .then(data => {
               console.log('Success:', data);
+              let msg = document.getElementById("success-artist-create");
+              msg.innerHTML = "New Artist created successfully!"
             })
             .catch((error) => {
               console.error('Error:', error);
@@ -349,6 +357,8 @@
             .then(response => response.json())
             .then(data => {
               console.log('Success:', data);
+              let msg = document.getElementById("success-artist-update");
+              msg.innerHTML = "Artist updated successfully!"
             })
             .catch((error) => {
               console.error('Error:', error);      
@@ -366,6 +376,8 @@
             .then(response => response.json())
             .then(data => {
               console.log('Success:', data);
+              let msg = document.getElementById("success-artist-delete");
+              msg.innerHTML = "Artist deleted successfully!"
             })
             .catch((error) => {
               console.error('Error:', error);
@@ -391,6 +403,8 @@
                     .then(response => response.json())
                     .then(data => {
                       console.log('Success:', data);
+                      let msg = document.getElementById("success-genre-create");
+                      msg.innerHTML = "New genre created successfully!"
                     })
                     .catch((error) => {
                       console.error('Error:', error);
@@ -415,6 +429,8 @@
                     .then(response => response.json())
                     .then(data => {
                       console.log('Success:', data);
+                      let msg = document.getElementById("success-genre-update");
+                      msg.innerHTML = "Genre updated successfully!"
                     })
                     .catch((error) => {
                       console.error('Error:', error);      
@@ -432,6 +448,8 @@
                     .then(response => response.json())
                     .then(data => {
                       console.log('Success:', data);
+                      let msg = document.getElementById("success-genre-delete");
+                      msg.innerHTML = "Genre deleted successfully!"
                     })
                     .catch((error) => {
                       console.error('Error:', error);
@@ -468,6 +486,8 @@
                               .then(response => response.json())
                               .then(data => {
                                 console.log('Success:', data);
+                                let msg = document.getElementById("success-playlist-create");
+                                msg.innerHTML = "New playlist created successfully!"
                               })
                               .catch((error) => {
                                 console.error('Error:', error);
@@ -508,6 +528,8 @@
                           .then(response => response.json())
                           .then(data => {
                             console.log('Success:', data);
+                            let msg = document.getElementById("success-playlist-update");
+                            msg.innerHTML = "Playlist updated successfully!"
                           })
                           .catch((error) => {
                             console.error('Error:', error);
@@ -530,6 +552,8 @@
                         .then(response => response.json())
                         .then(data => {
                           console.log('Success:', data);
+                          let msg = document.getElementById("success-playlist-delete");
+                          msg.innerHTML = "Playlist deleted successfully!"
                         })
                         .catch((error) => {
                           console.error('Error:', error);
