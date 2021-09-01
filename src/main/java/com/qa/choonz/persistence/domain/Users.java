@@ -29,8 +29,8 @@ public class Users {
 
 	@NotNull
 	@Size(max = 100)
-	@Column(unique = true)
-	private String user_name;
+	@Column(name = "user_name", unique = true)
+	private String username;
 
 	@NotNull
 	private String password;
@@ -43,34 +43,34 @@ public class Users {
 		super();
 	}
 
-	public Users(Long user_id, @NotNull @Size(max = 100) String full_name, @NotNull @Size(max = 100) String user_name, @NotNull String password, List<Playlist> playlist) {
+	public Users(Long user_id, @NotNull @Size(max = 100) String full_name, @NotNull @Size(max = 100) String username, @NotNull String password, List<Playlist> playlist) {
 		super();
 		this.user_id = user_id;
 		this.full_name = full_name;
-		this.user_name = user_name;
+		this.username = username;
 		this.password = password;
 		this.playlist = playlist;
 	}
 	
-	public Users(Long user_id, @NotNull @Size(max = 100) String full_name, @NotNull @Size(max = 100) String user_name, @NotNull String password) {
+	public Users(Long user_id, @NotNull @Size(max = 100) String full_name, @NotNull @Size(max = 100) String username, @NotNull String password) {
 		super();
 		this.user_id = user_id;
 		this.full_name = full_name;
-		this.user_name = user_name;
+		this.username = username;
 		this.password = password;
 	}
-	public Users(String full_name, @NotNull @Size(max = 100) String user_name, @NotNull String password, List<Playlist> playlist) {
+	public Users(String full_name, @NotNull @Size(max = 100) String username, @NotNull String password, List<Playlist> playlist) {
 		super();
 		this.full_name = full_name;
-		this.user_name = user_name;
+		this.username = username;
 		this.password = password;
 		this.playlist = playlist;
 	}
 	
-	public Users(String full_name, @NotNull @Size(max = 100) String user_name, @NotNull String password) {
+	public Users(String full_name, @NotNull @Size(max = 100) String username, @NotNull String password) {
 		super();
 		this.full_name = full_name;
-		this.user_name = user_name;
+		this.username = username;
 		this.password = password;
 	}
 
@@ -91,11 +91,11 @@ public class Users {
 	}
 
 	public String getUser_name() {
-		return user_name;
+		return username;
 	}
 
 	public void setUser_name(String user_name) {
-		this.user_name = user_name;
+		this.username = user_name;
 	}
 
 	public String getPassword() {
@@ -116,7 +116,7 @@ public class Users {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(full_name, user_id, password, playlist, user_name);
+		return Objects.hash(full_name, user_id, password, playlist, username);
 	}
 
 	@Override
@@ -129,14 +129,15 @@ public class Users {
 			return false;
 		Users other = (Users) obj;
 		return Objects.equals(full_name, other.full_name) && Objects.equals(user_id, other.user_id) && Objects.equals(password, other.password)
-				&& Objects.equals(playlist, other.playlist) && Objects.equals(user_name, other.user_name);
+				&& Objects.equals(playlist, other.playlist) && Objects.equals(username, other.username);
 	}
 
 	@Override
 	public String toString() {
-		return "Users [user_id=" + user_id + ", full_name=" + full_name + ", user_name=" + user_name + ", password=" + password
+		return "Users [user_id=" + user_id + ", full_name=" + full_name + ", user_name=" + username + ", password=" + password
 				+ ", playlist=" + playlist + "]";
 	}
+
 	
 }
 
