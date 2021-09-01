@@ -2,25 +2,41 @@
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const id = urlParams.get('id');
-  let container = document.querySelector("#flex");
+  let container = document.querySelector("#card-group");
+  var styles = {
+    "background-color": "lightgray",
+    "width": "3rem",
+    "height": "2rem",
+    "margin-left": "9.5rem",
+    "border": "1px solid green",
+};
 
   if(id == null){
     function createCard(header, result){
 
         var div = document.createElement("div");
         div.setAttribute("class", "card");
+        div.setAttribute("style", "max-width:18rem");
+        div.setAttribute("style", "min-width:6rem");
         var head = document.createElement("p");
         head.innerText = header[0];
         var para = document.createElement("a");
         para.innerText = result[1];
         para.setAttribute('href', "genres.html?id=" + result[0]);
+      
+        var link = document.createElement("button");
 
+        Object.assign(link.style,styles);
+  
+        link.innerHTML = "View";
+        
         div.appendChild(head);
         div.appendChild(para);
     
         var head = document.createElement("p");
         head.innerText = header[1];
         div.appendChild(head);
+     
 
         for(var i = 0; i < result[2].length; i ++){
             var para = document.createElement("a");
@@ -28,6 +44,8 @@
             para.setAttribute('href', "tracks.html?id=" + result[2][i].id);
             div.appendChild(para);
         }
+
+        div.appendChild(link);
       return div;
 
     }

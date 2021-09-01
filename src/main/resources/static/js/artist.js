@@ -4,6 +4,13 @@
     const id = urlParams.get('id');
     let container = document.querySelector("#card-group");
 
+    var styles = {
+      "background-color": "lightgray",
+      "width": "3rem",
+      "height": "2rem",
+      "margin-left": "9.5rem",
+      "border": "1px solid green",
+  };
 
     console.log(id);
     if(id == null){
@@ -11,25 +18,30 @@
 
         var div = document.createElement("div");
         div.setAttribute("class", "card");
+        div.setAttribute("style", "max-width:18rem");
+        div.setAttribute("style", "min-width:6rem");
+        
         var head = document.createElement("p");
         head.innerText = header[0];
         var para = document.createElement("a");
         para.innerText = result[1];
         para.setAttribute('href', "artist.html?id=" + result[0]);
 
-        // var a = document.createElement('a');
-        // var linkText = document.createTextNode("my title text");
-        // a.appendChild(linkText);
-        // a.title = "my title text";
-        // a.href = "http://example.com";
-        // document.body.appendChild(a);
+        var link = document.createElement("button");
+
+        Object.assign(link.style,styles);
+  
+        link.innerHTML = "View";
+        
 
         div.appendChild(head);
         div.appendChild(para);
-    
+
         var head = document.createElement("p");
         head.innerText = header[1];
         div.appendChild(head);
+    
+  
 
         for(var i = 0; i < result[2].length; i ++){
             var para = document.createElement("a");
@@ -39,7 +51,7 @@
         }
 
 
-
+        div.appendChild(link);
       return div;
     }
 
@@ -86,7 +98,7 @@
 
         for(var i = 0; i < result.albums.length; i ++){
             var para = document.createElement("a");
-            para.innerText = result.albums[i].artist.name;
+            para.innerText = result.albums[i].name;
             para.setAttribute('href', "album.html?id=" + result.albums[i].artist.id);
             div.appendChild(para);
         }
