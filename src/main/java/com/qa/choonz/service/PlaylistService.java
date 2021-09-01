@@ -88,5 +88,13 @@ public class PlaylistService {
 		return this.mapToDTO(updated);
 	}
 
+	public PlaylistDTO removeTrackFromPlaylist(Long playlistId, Long trackId) {
+		Playlist playlist = repo.findById(playlistId).get();
+		Track track = repoTrack.findById(trackId).get();
+		playlist.removeTracks(track);
+		Playlist updated = this.repo.save(playlist);
+		return this.mapToDTO(updated);
+	}
+
 
 }

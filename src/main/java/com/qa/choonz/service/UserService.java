@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import com.qa.choonz.persistence.domain.Users;
 import com.qa.choonz.persistence.repository.UserRepository;
 import com.qa.choonz.rest.dto.UserDTO;
-
 import com.qa.choonz.exception.UsersNotFoundException;
 
 @Service
@@ -63,6 +62,11 @@ public class UserService {
 		this.repo.deleteById(id);
 		return !this.repo.existsById(id);
 
+	}
+
+	public UserDTO readByUsername(String username) {
+		return this.mapToDTO(this.repo.findByUsername(username));
+		
 	}
 
 }
