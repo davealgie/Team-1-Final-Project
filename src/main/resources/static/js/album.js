@@ -30,12 +30,6 @@
         var head2 = document.createElement("p");
         head2.innerText = header[1];
 
-        // var a = document.createElement('a');
-        // var linkText = document.createTextNode("my title text");
-        // a.appendChild(linkText);
-        // a.title = "my title text";
-        // a.href = "http://example.com";
-        // document.body.appendChild(a);
         div.appendChild(head10);
         div.appendChild(head);
         div.appendChild(para);
