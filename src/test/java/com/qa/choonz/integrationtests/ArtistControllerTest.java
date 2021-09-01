@@ -32,8 +32,8 @@ import com.qa.choonz.rest.dto.ArtistDTO;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-@Sql(scripts = { "classpath:testdata.sql",
-		"classpath:testschema.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = { "classpath:test-schema.sql",
+		"classpath:test-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles("test")
 public class ArtistControllerTest {
 
@@ -47,16 +47,14 @@ public class ArtistControllerTest {
 	@Test
 	void testPost() throws Exception {
 
-		Artist artist = new Artist(1L, "Kirk Hammett", new ArrayList<>());
+		Artist artist = new Artist("Kirk John", new ArrayList<>());
 
 		String ToDoAsJSON = this.mapper.writeValueAsString(artist);
 
 		RequestBuilder mockRequest = post("/artists/create").contentType(MediaType.APPLICATION_JSON)
 				.content(ToDoAsJSON);
 
-		Artist artistInDb = new Artist(2L, "Kirk Hammett", new ArrayList<>());
-
-		Artist savedToDo = new Artist(2L, "Kirk Hammett", new ArrayList<>());
+		Artist savedToDo = new Artist(2L, "Kirk John", new ArrayList<>());
 
 
 		String savedToDoAsJSON = this.mapper.writeValueAsString(savedToDo);
@@ -112,12 +110,11 @@ public class ArtistControllerTest {
 	@Test
 	void testUpdateArtist() throws Exception {
 
-		Artist updatedArtist = new Artist(2L,"James Hetfield", new ArrayList<>());
+		Artist updatedArtist = new Artist("James Hetfield", new ArrayList<>());
 
 		String updatedArtistAsJSON = this.mapper.writeValueAsString(updatedArtist);
 
-		RequestBuilder mockRequest = put("/artists/update/1").contentType(MediaType.APPLICATION_JSON)
-				.content(updatedArtistAsJSON);
+		RequestBuilder mockRequest = post("/artists/update/1").contentType(MediaType.APPLICATION_JSON).content(updatedArtistAsJSON);
 
 		Artist updatedArtistInDb = new Artist(1L, "James Hetfield", new ArrayList<>());
 
