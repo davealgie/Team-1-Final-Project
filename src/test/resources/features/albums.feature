@@ -5,12 +5,14 @@
   
   Scenario: create album
     Given I am on "http://127.0.0.1:5500/static/index.html"
-    When I click on the album management button
+    When I click album log in and sign up
+    And I create an artist
+    And I click on the album management button
     And I click on create album
    	And I fill in the required fields
     And I click create album
-    Then I should see new album created successfully
-
+    Then I should see New Album created successfully
+    
     Scenario: read album
      Given I am on "http://127.0.0.1:5500/static/index.html"
      When I click on the albums page
@@ -19,7 +21,8 @@
      
      Scenario: update album
       Given I am on "http://127.0.0.1:5500/static/index.html"
-      When I click on the albums management drop down
+      When I sign up and login to update
+      And I click on the albums management drop down
       And I click on the update albums button
       And I enter the required fields
       And I click update
@@ -30,7 +33,8 @@
      
      Scenario: delete album
      Given I am on "http://127.0.0.1:5500/static/index.html"
-     When I click on the albums management menu
+     When I sign up and login to delete
+     And I click on the albums management menu
      And I click on the delete albums button
      And I enter the id of the album to delete
      And I click delete

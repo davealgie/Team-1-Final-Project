@@ -6,7 +6,8 @@ Feature: artist create
  
   Scenario: create artist
     Given I am on "http://127.0.0.1:5500/static/index.html"
-    When I click the artist management button
+    When I log in and sign up to create an artist
+    And I click the artist management button
     And I click on create artist
     And I fill in the name field
     And I click on create new artist
@@ -22,7 +23,8 @@ Then I should be able to see the artist created
 
 Scenario: update artist
 Given I am on "http://127.0.0.1:5500/static/index.html"
-When I click on the artist management drop down
+When I log in and sign up to update an artist
+And I click on the artist management drop down
 And I click on the update artist button
 And I enter the artist Id field
 And I enter the updated artist name
@@ -34,7 +36,8 @@ Then I should be able to see the updated artist
 
 Scenario: delete artist
 Given I am on "http://127.0.0.1:5500/static/index.html"
-When I click on the artist management drop down menu
+When I log in and sign up to delete an artist
+And I click on the artist management drop down menu
 And I click on the delete artist button
 And I enter the artist Id i want to delete
 And I click delete artist

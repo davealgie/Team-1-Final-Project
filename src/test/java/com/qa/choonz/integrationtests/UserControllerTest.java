@@ -29,8 +29,8 @@ import com.qa.choonz.persistence.domain.Users;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-@Sql(scripts = { "classpath:test-data.sql",
-		"classpath:test-schema.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = { "classpath:test-schema.sql",
+		"classpath:test-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles("test")
 public class UserControllerTest {
 
@@ -43,13 +43,13 @@ public class UserControllerTest {
 	@Test
 	void testCreate() throws Exception {
 
-		Users user = new Users("Dave", "davealg", "davidalgie");
+		Users user = new Users(1L,"Dave", "dave", "davidalgie");
 
 		String userAsJSON = this.mapper.writeValueAsString(user);
 
 		RequestBuilder mockRequest = post("/users/create").contentType(MediaType.APPLICATION_JSON).content(userAsJSON);
 
-		Users userInDb = new Users(2L, "Dave", "davealg", "davidalgie");
+		Users userInDb = new Users(2L, "Dave", "dave", "davidalgie");
 
 		String userInDbAsJSON = this.mapper.writeValueAsString(userInDb);
 
@@ -65,7 +65,7 @@ public class UserControllerTest {
 
 		RequestBuilder mockRequest = get("/users/read/1");
 
-		Users userInDb = new Users(1L, "Dave", "davealg", "davidalgie");
+		Users userInDb = new Users(1L, "Dave", "dave", "davidalgie");
 
 		String userInDbAsJSON = this.mapper.writeValueAsString(userInDb);
 
@@ -78,11 +78,11 @@ public class UserControllerTest {
 
 	@Test
 	void testReadAllUsers() throws Exception {
-		// Build mock request
+		
 		RequestBuilder mockRequest = get("/users/read");
 
-		// Create user object that should resemble the existing one on database
-		Users user = new Users(1L, "Dave", "davealg", "davidalgie");
+		
+		Users user = new Users(1L, "Dave", "dave", "davidalgie");
 
 		List<Users> usersInDb = new ArrayList<>();
 		usersInDb.add(user);
@@ -99,14 +99,14 @@ public class UserControllerTest {
 	@Test
 	void testUpdateUser() throws Exception {
 
-		Users updatedUser = new Users("Sirish", "sirsho", "sirishk");
+		Users updatedUser = new Users("Sirish", "sirsho", "sirish123");
 
 		String updatedUserAsJSON = this.mapper.writeValueAsString(updatedUser);
 
 		RequestBuilder mockRequest = put("/users/update/1").contentType(MediaType.APPLICATION_JSON)
 				.content(updatedUserAsJSON);
 
-		Users updatedUserInDb = new Users(1L, "MichealNew", "password123New", "polkadotNew");
+		Users updatedUserInDb = new Users(1L, "New Sirish", "New sirisho", "new sirish123");
 
 		String updatedUserInDbAsJSON = this.mapper.writeValueAsString(updatedUserInDb);
 

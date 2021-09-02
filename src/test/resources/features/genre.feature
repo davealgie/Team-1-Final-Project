@@ -2,10 +2,12 @@
 Feature: create genre
   I want to use this template for my feature file
 
+
  
   Scenario: genre create
     Given I am on "http://127.0.0.1:5500/static/index.html"
-    When I click on genre management
+    When I sign up and log in
+    And I click on genre management
     And I click on create genre
     And I fill in the genre name field
     And I fill in the description field
@@ -20,7 +22,8 @@ Then I should be able to see the genre created
  
 Scenario: update genre
 Given I am on "http://127.0.0.1:5500/static/index.html"
-When I click on the genre drop down 
+When I click sign up and log in
+And I click on the genre drop down 
 And I click on the update genre button
 And I enter the genre Id field
 And I enter the updated genre name
@@ -33,7 +36,8 @@ Then I should be able to see the updated genre
 
 Scenario: delete genre
 Given I am on "http://127.0.0.1:5500/static/index.html"
-When I click on the genre management drop down menu
+When I sign up and log in again
+And I click on the genre management drop down menu
 And I click on the delete genre button
 And I enter the genre id i want to delete
 And I click delete genre

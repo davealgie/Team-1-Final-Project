@@ -8,8 +8,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.qa.choonz.hooks.SeleniumHooks;
-
+import com.qa.choonz.uat.pages.AlbumPage;
+import com.qa.choonz.uat.pages.ArtistPage;
+import com.qa.choonz.uat.pages.GenrePage;
 import com.qa.choonz.uat.pages.TrackPage;
+import com.qa.choonz.uat.pages.UsersPage;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -19,10 +22,18 @@ public class TrackStepDefs {
 
 	private WebDriver driver;
 	private TrackPage trackPage;
+	private UsersPage usersPage;
+	private AlbumPage albumPage;
+	private ArtistPage artistPage;
+	private GenrePage genrePage;
 
 	public TrackStepDefs(SeleniumHooks hooks) {
 		this.driver = hooks.getDriver();
 		this.trackPage = PageFactory.initElements(driver, TrackPage.class);
+		this.usersPage = PageFactory.initElements(driver, UsersPage.class);
+		this.albumPage = PageFactory.initElements(driver, AlbumPage.class);
+		this.artistPage = PageFactory.initElements(driver, ArtistPage.class);
+		this.genrePage = PageFactory.initElements(driver, GenrePage.class);
 	}
 
 	@Given("I am on the track page")
@@ -31,21 +42,71 @@ public class TrackStepDefs {
 		this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 
-	@When("I click on track management")
-	public void i_click_on_track_management() {
-		trackPage.clickTrackMenu();
-
+	@When("I sign up and login to create a track")
+	public void I_sign_up_and_login_to_create_a_track() throws InterruptedException {
+		usersPage.clickSignUp();
+		usersPage.addFullname("Sirish Khatry");
+		usersPage.addUsername("sirisho");
+		usersPage.addPassword("sirish123");
+		Thread.sleep(2000);
+		usersPage.clickCreateAccBtn();
+		usersPage.closeBtn();
+		Thread.sleep(2000);
+		usersPage.clickLogIn();
+		Thread.sleep(2000);
+		usersPage.AddLogInInfo("sirisho", "sirish123");
+		Thread.sleep(2000);
+		usersPage.clickLogInUser();
+		usersPage.closeLogIn();
+		Thread.sleep(2000);
+		usersPage.clickHome();
 	}
 
-	@When("I click on create track")
-	public void i_click_on_create_track() {
+	@When("I create a new artist")
+	public void i_create_a_new_artist() throws InterruptedException {
+		artistPage.clickArtistMenu();
+		artistPage.clickCreateArtist();
+		artistPage.addNameField("Guns N Roses");
+		artistPage.clickCreate();
+		Thread.sleep(2000);
+		artistPage.closeCreate();
+		Thread.sleep(2000);
+	}
+
+	@When("I create a new album again")
+	public void i_create_a_new_album_again() throws InterruptedException {
+		albumPage.clickAlbumMenu();
+		albumPage.clickAlbumCreate();
+		Thread.sleep(2000);
+		albumPage.albumContents("Appetite for Destruction", "Skulls and cross", "1");
+		albumPage.createAlbum();
+		albumPage.closeBtnOff();
+	}
+
+	@When("I create a new genre")
+	public void i_create_a_new_genre() throws InterruptedException {
+		genrePage.clickGenreMenu();
+		genrePage.clickCreateGenre();
+		genrePage.addNameField("Rock");
+		genrePage.addDescriptionField("Lead guitar");
+		Thread.sleep(2000);
+		genrePage.clickCreate();
+		Thread.sleep(2000);
+		genrePage.closeBtn();
+		Thread.sleep(2000);
+	}
+
+	@When("I click on track management and select create")
+	public void i_click_on_track_management_and_select_create() {
+		trackPage.clickTrackMenu();
 		trackPage.clickCreateTrack();
 
 	}
 
 	@When("I fill in the necessary fields")
-	public void i_fill_in_the_necessary_field() {
-		trackPage.addRequiredFields("Nothing else matters", "nothing matters", "280", "1", "1");
+	public void i_fill_in_the_necessary_field() throws InterruptedException {
+		Thread.sleep(2000);
+		trackPage.addRequiredFields("Nightrain", "Loaded like a freight train, Flyin' like an aeroplane, Feelin' like a space brain, One more time tonight", "280", "1", "1");
 	}
 
 	@When("I click the create track button")
@@ -73,6 +134,26 @@ public class TrackStepDefs {
 		assertEquals("http://127.0.0.1:5500/static/tracks.html?id=1", this.driver.getCurrentUrl());
 	}
 
+	@When("I sign up and login to update a track")
+	public void I_sign_up_and_login_to_update_a_track() throws InterruptedException {
+		usersPage.clickSignUp();
+		usersPage.addFullname("Sirish Khatry");
+		usersPage.addUsername("sirisho");
+		usersPage.addPassword("sirish123");
+		Thread.sleep(2000);
+		usersPage.clickCreateAccBtn();
+		usersPage.closeBtn();
+		Thread.sleep(2000);
+		usersPage.clickLogIn();
+		Thread.sleep(2000);
+		usersPage.AddLogInInfo("sirisho", "sirish123");
+		Thread.sleep(2000);
+		usersPage.clickLogInUser();
+		usersPage.closeLogIn();
+		Thread.sleep(2000);
+		usersPage.clickHome();
+	}
+
 	@When("I click on the track management drop down")
 	public void i_click_on_the_track_management_drop_down() {
 		trackPage.clickTrackMenu();
@@ -84,11 +165,10 @@ public class TrackStepDefs {
 		trackPage.clickUpdate();
 	}
 
-
 	@When("I enter the necessary fields to update")
 	public void i_enter_the_necessary_fields_to_update() throws InterruptedException {
 		Thread.sleep(4000);
-		trackPage.updateFields("1","The unforgiven", "and you will be unforgiven", "200", "1", "1");
+		trackPage.updateFields("1", "Paradise city", "Take me down to the paradise city where the grass is green and the girls are pretty", "320", "1", "1");
 	}
 
 	@When("I click update track")
@@ -119,6 +199,26 @@ public class TrackStepDefs {
 	public void i_should_be_able_to_see_the_updated_track() throws InterruptedException {
 		Thread.sleep(2000);
 		assertEquals("http://127.0.0.1:5500/static/tracks.html?id=1", this.driver.getCurrentUrl());
+	}
+
+	@When("I sign up and login to delete a track")
+	public void I_sign_up_and_login_to_delete_a_track() throws InterruptedException {
+		usersPage.clickSignUp();
+		usersPage.addFullname("Sirish Khatry");
+		usersPage.addUsername("sirisho");
+		usersPage.addPassword("sirish123");
+		Thread.sleep(2000);
+		usersPage.clickCreateAccBtn();
+		usersPage.closeBtn();
+		Thread.sleep(2000);
+		usersPage.clickLogIn();
+		Thread.sleep(2000);
+		usersPage.AddLogInInfo("sirisho", "sirish123");
+		Thread.sleep(2000);
+		usersPage.clickLogInUser();
+		usersPage.closeLogIn();
+		Thread.sleep(2000);
+		usersPage.clickHome();
 	}
 
 	@When("I click on the track management menu")

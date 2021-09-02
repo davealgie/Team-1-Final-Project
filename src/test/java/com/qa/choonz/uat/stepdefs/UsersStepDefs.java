@@ -68,18 +68,54 @@ public class UsersStepDefs {
 	}
 
 	@When("I enter the required fields to log in")
-	public void i_enter_the_required_fields_to_log_in() {
+	public void i_enter_the_required_fields_to_log_in() throws InterruptedException {
+		Thread.sleep(2000);
 		usersPage.AddLogInInfo("sirisho", "sirish123");
 	}
 
 	@When("I click log in")
 	public void i_click_log_in() {
 		usersPage.clickLogInUser();
+		usersPage.closeLogOut();
+		usersPage.clickHomePage();
 	}
 
 	@Then("I should see log in successfull")
 	public void i_should_see_log_in_successfull() {
+		
+	}
+	
+	@When("I log in")
+	public void i_log_in() throws InterruptedException {
+		usersPage.clickSignUp();
+		usersPage.addFullname("Sirish Khatry");
+		usersPage.addUsername("sirisho");
+		usersPage.addPassword("sirish123");
+		Thread.sleep(2000);
+		usersPage.clickCreateAccBtn();
+		usersPage.closeBtn();
+		Thread.sleep(2000);
+		usersPage.clickLogIn();
+		Thread.sleep(2000);
+		usersPage.AddLogInInfo("sirisho", "sirish123");
+		Thread.sleep(2000);
+		usersPage.clickLogInUser();
+		usersPage.closeLogIn();
+		Thread.sleep(2000);
+		usersPage.clickHome();
+	}
+	
+	
+	@When("I click the log out button")
+	public void i_click_the_log_out_button() {
+	  usersPage.clickUser();
+	  usersPage.clickLogOut();
+	}
 
+	@Then("I should not see any functions for tracks etc")
+	public void i_should_not_see_any_functions_for_tracks_etc() throws InterruptedException {
+		Thread.sleep(2000);
+	    assertEquals("http://127.0.0.1:5500/static/index.html", this.driver.getCurrentUrl());
 	}
 
 }
