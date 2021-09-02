@@ -52,11 +52,13 @@ document.querySelector("#createSubmit").addEventListener("click", (event) => {
   }
 
   function checkUser(data, password){
+          console.log(data);
             if(data.length == 0){
               document.getElementById("loginAlert").innerHTML = "User Not Found!";
               return;
             }
             var fullname;
+            var userID = data.id;
             for(var key in data){
               if(key == "full_name"){
                fullname = data[key];
@@ -64,8 +66,10 @@ document.querySelector("#createSubmit").addEventListener("click", (event) => {
               if(key == "password"){
                 if(password == data[key]){
                   document.cookie = "username="+ fullname + ";" + "path=/";
+                  document.cookie = "id=" + userID + ";" + "path=/";
                   document.getElementById("loginAlert").innerHTML = "Successfully Logged In!";
                   console.log(fullname);
+                  console.log(userID);
                   return;
                 }
                 else {

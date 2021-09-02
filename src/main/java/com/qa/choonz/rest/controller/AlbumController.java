@@ -62,5 +62,10 @@ public class AlbumController {
         return this.service.delete(id) ? new ResponseEntity<AlbumDTO>(HttpStatus.NO_CONTENT)
                 : new ResponseEntity<AlbumDTO>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
+    
+    @GetMapping("/read-album/{name}")
+    public ResponseEntity<AlbumDTO> read(@PathVariable String name) {
+        return new ResponseEntity<AlbumDTO>(this.service.readByName(name), HttpStatus.OK);
+    }
 
 }
