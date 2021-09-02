@@ -1,5 +1,6 @@
 document.querySelector('button[id="logOutBtn"]').addEventListener("click", function (stop) {
     deleteCookie("username", "/");
+    deleteCookie("id", "/");
   })
   
   function deleteCookie(name, path) {
