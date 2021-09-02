@@ -87,9 +87,10 @@ public class AlbumsStepDefs {
 	}
 
 	@Then("I should see New Album created successfully")
-	public void i_should_see_new_album_created_successfully() {
+	public void i_should_see_new_album_created_successfully() throws InterruptedException {
+		Thread.sleep(2000);
 		assertEquals("New Album created successfully!", albumPage.assertText());
-		
+
 	}
 
 	@When("I click on the albums page")
@@ -111,14 +112,6 @@ public class AlbumsStepDefs {
 
 	@When("I sign up and login to update")
 	public void i_sign_up_and_login_to_update() throws InterruptedException {
-		usersPage.clickSignUp();
-		usersPage.addFullname("Sirish Khatry");
-		usersPage.addUsername("sirisho");
-		usersPage.addPassword("sirish123");
-		Thread.sleep(2000);
-		usersPage.clickCreateAccBtn();
-		usersPage.closeBtn();
-		Thread.sleep(2000);
 		usersPage.clickLogIn();
 		Thread.sleep(2000);
 		usersPage.AddLogInInfo("sirisho", "sirish123");
@@ -175,14 +168,6 @@ public class AlbumsStepDefs {
 
 	@When("I sign up and login to delete")
 	public void i_sign_up_and_login_to_delete() throws InterruptedException {
-		usersPage.clickSignUp();
-		usersPage.addFullname("Sirish Khatry");
-		usersPage.addUsername("sirisho");
-		usersPage.addPassword("sirish123");
-		Thread.sleep(2000);
-		usersPage.clickCreateAccBtn();
-		usersPage.closeBtn();
-		Thread.sleep(2000);
 		usersPage.clickLogIn();
 		Thread.sleep(2000);
 		usersPage.AddLogInInfo("sirisho", "sirish123");

@@ -136,14 +136,6 @@ public class TrackStepDefs {
 
 	@When("I sign up and login to update a track")
 	public void I_sign_up_and_login_to_update_a_track() throws InterruptedException {
-		usersPage.clickSignUp();
-		usersPage.addFullname("Sirish Khatry");
-		usersPage.addUsername("sirisho");
-		usersPage.addPassword("sirish123");
-		Thread.sleep(2000);
-		usersPage.clickCreateAccBtn();
-		usersPage.closeBtn();
-		Thread.sleep(2000);
 		usersPage.clickLogIn();
 		Thread.sleep(2000);
 		usersPage.AddLogInInfo("sirisho", "sirish123");
@@ -203,14 +195,6 @@ public class TrackStepDefs {
 
 	@When("I sign up and login to delete a track")
 	public void I_sign_up_and_login_to_delete_a_track() throws InterruptedException {
-		usersPage.clickSignUp();
-		usersPage.addFullname("Sirish Khatry");
-		usersPage.addUsername("sirisho");
-		usersPage.addPassword("sirish123");
-		Thread.sleep(2000);
-		usersPage.clickCreateAccBtn();
-		usersPage.closeBtn();
-		Thread.sleep(2000);
 		usersPage.clickLogIn();
 		Thread.sleep(2000);
 		usersPage.AddLogInInfo("sirisho", "sirish123");
