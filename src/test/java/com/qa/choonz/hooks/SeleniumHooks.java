@@ -6,6 +6,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
+
+import com.qa.choonz.uat.pages.UsersPage;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -16,10 +19,13 @@ public class SeleniumHooks {
 	private WebDriver driver;
 	
 	@Before("@webpage")
-	public void setup() {
+	public void setup() throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
 		this.driver = new ChromeDriver();
 		this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+		
+		
 	}
 	
 	

@@ -12,55 +12,55 @@ public class GenrePage {
 	@FindBy(xpath = "/html/body/div[1]/h1[5]/div/div/div/div/button[1]")
 	private WebElement createGenreBtn;
 
-	@FindBy(xpath = "/html/body/div[9]/div/div/div[2]/form/div[1]/input")
+	@FindBy(xpath = "/html/body/div[19]/div/div/div[2]/form/div[1]/input")
 	private WebElement genreNameField;
 
-	@FindBy(xpath = "/html/body/div[9]/div/div/div[2]/form/div[2]/input")
+	@FindBy(xpath = "/html/body/div[19]/div/div/div[2]/form/div[2]/input")
 	private WebElement genreDescriptionField;
 
-	@FindBy(xpath = "/html/body/div[9]/div/div/div[2]/form/div[3]/button[2]")
+	@FindBy(xpath = "/html/body/div[19]/div/div/div[2]/form/div[3]/button[2]")
 	private WebElement createBtn;
 
 	@FindBy(xpath = "/html/body/nav/div[2]/ul[2]/class/li[4]/a")
 	private WebElement genreBtn;
 
-	@FindBy(xpath = "/html/body/div[1]/div[1]/div/a")
+	@FindBy(xpath = "/html/body/div[1]/div[2]/div/div/a")
 	private WebElement genreCheckCreate;
 	
 	@FindBy(xpath = "/html/body/div[1]/h1[5]/div/div/div/div/button[2]")
 	private WebElement updateGenreBtn;
 
-	@FindBy(xpath = "/html/body/div[11]/div/div/div[2]/form/div[1]/input")
+	@FindBy(xpath = "/html/body/div[21]/div/div/div[2]/form/div[1]/input")
 	private WebElement updateIdField;
 
-	@FindBy(xpath = "/html/body/div[11]/div/div/div[2]/form/div[2]/input")
+	@FindBy(xpath = "/html/body/div[21]/div/div/div[2]/form/div[2]/input")
 	private WebElement updateNameField;
 
-	@FindBy(xpath = "/html/body/div[11]/div/div/div[2]/form/div[3]/input")
+	@FindBy(xpath = "/html/body/div[21]/div/div/div[2]/form/div[3]/input")
 	private WebElement updateDescriptionField;
 	
-	@FindBy(xpath = "/html/body/div[11]/div/div/div[2]/form/div[4]/button[2]")
+	@FindBy(xpath = "/html/body/div[21]/div/div/div[2]/form/div[4]/button[2]")
 	private WebElement updateBtn;
 
-	@FindBy(xpath = "/html/body/div[1]/div[1]/div/a")
+	@FindBy(xpath = "/html/body/div[1]/div[2]/div/div/a")
 	private WebElement genreUpdatedCard;
 	
-	@FindBy(xpath = "/html/body/div[11]/div/div/div[2]/form/div[4]/button[1]")
+	@FindBy(xpath = "/html/body/div[19]/div/div/div[1]/button/span")
 	private WebElement closeBtn;
 	
 	@FindBy(xpath = "/html/body/div[1]/h1[5]/div/div/div/div/button[3]")
 	private WebElement deleteBtn;
 	
-	@FindBy(xpath = "/html/body/div[10]/div/div/div[2]/form/div[1]/input")
+	@FindBy(xpath = "/html/body/div[20]/div/div/div[2]/form/div[1]/input")
 	private WebElement deleteId;
 	
-	@FindBy(xpath = "/html/body/div[10]/div/div/div[2]/form/div[2]/button[2]")
+	@FindBy(xpath = "/html/body/div[20]/div/div/div[2]/form/div[2]/button[2]")
 	private WebElement deleteGenre;
 	
-	@FindBy(xpath = "/html/body/div[10]/div/div/div[2]/form/div[2]/button[1]")
+	@FindBy(xpath = "/html/body/div[20]/div/div/div[2]/form/div[2]/button[1]")
 	private WebElement closeDelete;
 	
-	@FindBy(xpath = "/html/body/div[11]/div/div/div[2]/form/div[4]/button[1]")
+	@FindBy(xpath = "/html/body/div[21]/div/div/div[1]/button/span")
 	private WebElement closeWindow;
 	
 	
@@ -153,7 +153,7 @@ public class GenrePage {
 	}
 	
 	public GenrePage closeBtn() {
-		closeBtn.clear();
+		closeBtn.click();
 		return this;
 	}
 }

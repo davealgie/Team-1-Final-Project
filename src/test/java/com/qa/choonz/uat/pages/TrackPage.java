@@ -12,70 +12,70 @@ public class TrackPage {
 	@FindBy(xpath = "/html/body/div[1]/h1[2]/div/div/div/div/button[1]")
 	private WebElement createTrackBtn;
 
-	@FindBy(xpath = "/html/body/div[2]/div[9]/div/div/div[2]/form/div[1]/input")
+	@FindBy(xpath = "/html/body/div[10]/div/div/div[2]/form/div[1]/input")
 	private WebElement trackNameField;
 
-	@FindBy(xpath = "/html/body/div[2]/div[9]/div/div/div[2]/form/div[2]/input")
+	@FindBy(xpath = "/html/body/div[10]/div/div/div[2]/form/div[2]/input")
 	private WebElement trackLyricsField;
 
-	@FindBy(xpath = "/html/body/div[2]/div[9]/div/div/div[2]/form/div[3]/input")
+	@FindBy(xpath = "/html/body/div[10]/div/div/div[2]/form/div[3]/input")
 	private WebElement trackDurationField;
 	
-	@FindBy(xpath = "/html/body/div[2]/div[9]/div/div/div[2]/form/div[4]/input")
+	@FindBy(xpath = "/html/body/div[10]/div/div/div[2]/form/div[4]/input")
 	private WebElement trackAlbumId;
 	
-	@FindBy(xpath = "/html/body/div[2]/div[9]/div/div/div[2]/form/div[5]/input")
+	@FindBy(xpath = "/html/body/div[10]/div/div/div[2]/form/div[5]/input")
 	private WebElement trackGenreId;
 	
-	@FindBy(xpath = "/html/body/div[2]/div[9]/div/div/div[2]/form/div[6]/button[1]")
+	@FindBy(xpath = "/html/body/div[10]/div/div/div[2]/form/div[6]/button[1]")
 	private WebElement createBtn;
 
 	@FindBy(xpath = "/html/body/nav/div[2]/ul[2]/class/li[5]/a")
 	private WebElement trackPage;
 
-	@FindBy(xpath = "/html/body/div[1]/div/div/a")
+	@FindBy(xpath = "/html/body/div[1]/div[2]/div/div/a")
 	private WebElement trackPageCard;
 
 	@FindBy(xpath = "/html/body/div[1]/h1[2]/div/div/div/div/button[2]")
 	private WebElement updateBtn;
 
-	@FindBy(xpath = "/html/body/div[2]/div[11]/div/div/div[2]/form/div[1]/input")
+	@FindBy(xpath = "/html/body/div[12]/div/div/div[2]/form/div[1]/input")
 	private WebElement updateId;
 
-	@FindBy(xpath = "/html/body/div[2]/div[11]/div/div/div[2]/form/div[2]/input")
+	@FindBy(xpath = "/html/body/div[12]/div/div/div[2]/form/div[2]/input")
 	private WebElement updatedNameField;
 
-	@FindBy(xpath = "/html/body/div[2]/div[11]/div/div/div[2]/form/div[3]/input")
+	@FindBy(xpath = "/html/body/div[12]/div/div/div[2]/form/div[3]/input")
 	private WebElement updatedLyricsField;
 
-	@FindBy(xpath = "/html/body/div[2]/div[11]/div/div/div[2]/form/div[4]/input")
+	@FindBy(xpath = "/html/body/div[12]/div/div/div[2]/form/div[4]/input")
 	private WebElement updatedDurationField;
 
-	@FindBy(xpath = "/html/body/div[2]/div[11]/div/div/div[3]/button[2]")
+	@FindBy(xpath = "/html/body/div[12]/div/div/div[3]/button[2]")
 	private WebElement updatedCreateBtn;
 
-	@FindBy(xpath = "/html/body/div[2]/div[11]/div/div/div[2]/form/div[5]/input")
+	@FindBy(xpath = "/html/body/div[12]/div/div/div[2]/form/div[5]/input")
 	private WebElement updatedAlbumId;
 	
-	@FindBy(xpath = "/html/body/div[2]/div[11]/div/div/div[2]/form/div[6]/input")
+	@FindBy(xpath = "/html/body/div[12]/div/div/div[2]/form/div[6]/input")
 	private WebElement updatedGenreId;
 	
-	@FindBy(xpath = "/html/body/div[2]/div[11]/div/div/div[1]/button/span")
+	@FindBy(xpath = "/html/body/div[12]/div/div/div[3]/button[1]")
 	private WebElement clickX;
 
 	@FindBy(xpath = "/html/body/div[2]/div[10]/div/div/div[1]/button/span")
 	private WebElement clickXAgain;
 
-	@FindBy(xpath = "/html/body/div[1]/div/div/a")
+	@FindBy(xpath = "/html/body/div[1]/div[2]/div/div/a")
 	private WebElement updatedPageCard;
 
 	@FindBy(xpath = "/html/body/div[1]/h1[2]/div/div/div/div/button[3]")
 	private WebElement deleteBtn;
 
-	@FindBy(xpath = "/html/body/div[2]/div[10]/div/div/div[2]/form/div[1]/input")
+	@FindBy(xpath = "/html/body/div[11]/div/div/div[2]/form/div[1]/input")
 	private WebElement deleteIdField;
 
-	@FindBy(xpath = "/html/body/div[2]/div[10]/div/div/div[2]/form/div[2]/button[2]")
+	@FindBy(xpath = "/html/body/div[11]/div/div/div[2]/form/div[2]/button[2]")
 	private WebElement deleteTrackBtn;
 	
 	

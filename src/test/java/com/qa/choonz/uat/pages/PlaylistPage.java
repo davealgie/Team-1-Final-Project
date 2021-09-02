@@ -12,20 +12,45 @@ public class PlaylistPage {
 	@FindBy(xpath = "/html/body/div[1]/h1[3]/div/div/div/div/button[1]")
 	private WebElement createPlaylistBtn;
 
-	@FindBy(xpath = "/html/body/div[6]/div/div/div[2]/form/div[1]/input")
+	@FindBy(xpath = "/html/body/div[16]/div/div/div[2]/form/div[1]/input")
 	private WebElement playlistNameField;
 
-	@FindBy(xpath = "/html/body/div[6]/div/div/div[2]/form/div[2]/input")
+	@FindBy(xpath = "/html/body/div[16]/div/div/div[2]/form/div[2]/input")
 	private WebElement playlistDescriptionField;
-	
-	@FindBy(xpath = "/html/body/div[2]/div[7]/div/div/div[2]/form/div[2]/input")
-	private WebElement playlistCoverField;
 
-	@FindBy(xpath = "/html/body/div[6]/div/div/div[2]/form/div[4]/input")
+	@FindBy(xpath = "/html/body/div[16]/div/div/div[2]/form/div[4]/input")
 	private WebElement playlistArtworkField;
 	
-	@FindBy(xpath = "/html/body/div[6]/div/div/div[2]/form/div[5]/button[2]")
+	@FindBy(xpath = "/html/body/div[16]/div/div/div[2]/form/div[3]/input")
+	private WebElement userIdField;
+
+	@FindBy(xpath = "/html/body/div[16]/div/div/div[2]/form/div[5]/button[2]")
 	private WebElement createBtn;
+	
+	@FindBy(xpath = "/html/body/div[1]/h1[3]/div/div/div/div/button[2]")
+	private WebElement updateBtn;
+
+	@FindBy(xpath = "/html/body/div[18]/div/div/div[2]/form/div[1]/input")
+	private WebElement updateIdField;
+	
+	@FindBy(xpath = "/html/body/div[18]/div/div/div[2]/form/div[2]/input")
+	private WebElement updateUserIdField;
+
+	@FindBy(xpath = "/html/body/div[18]/div/div/div[2]/form/div[3]/input")
+	private WebElement updateName;
+	
+	@FindBy(xpath = "/html/body/div[18]/div/div/div[2]/form/div[4]/input")
+	private WebElement updateDescription;
+	
+	@FindBy(xpath = "/html/body/div[18]/div/div/div[2]/form/div[5]/input")
+	private WebElement updateArtwork;
+	
+	@FindBy(xpath = "/html/body/div[18]/div/div/div[2]/form/div[6]/button[2]")
+	private WebElement updatePlaylistBtn;
+	
+	
+	
+
 
 	public PlaylistPage clickPlaylistMenu() {
 		playlistMenuBtn.click();
@@ -37,28 +62,21 @@ public class PlaylistPage {
 		return this;
 	}
 
-	public PlaylistPage addNameField(String name) {
+	public PlaylistPage addFields(String name, String description, String id, String artwork) {
 		playlistNameField.sendKeys(name);
-		return this;
-	}
-	
-	public PlaylistPage addDescriptionField(String description) {
 		playlistDescriptionField.sendKeys(description);
-		return this;
-	}
-	
-	public PlaylistPage addArtworkField(String artwork) {
+		userIdField.sendKeys(id);
 		playlistArtworkField.sendKeys(artwork);
-		return this;
-	}
-
-	public PlaylistPage addCoverField(String cover) {
-		playlistCoverField.sendKeys(cover);
 		return this;
 	}
 
 	public PlaylistPage clickCreate() {
 		createBtn.click();
+		return this;
+	}
+	
+	public PlaylistPage clickUpdatePlaylist() {
+		updateBtn.click();
 		return this;
 	}
 }

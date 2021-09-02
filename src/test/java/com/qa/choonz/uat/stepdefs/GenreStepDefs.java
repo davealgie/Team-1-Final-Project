@@ -10,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.qa.choonz.hooks.SeleniumHooks;
 
 import com.qa.choonz.uat.pages.GenrePage;
+import com.qa.choonz.uat.pages.UsersPage;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -18,16 +19,40 @@ import io.cucumber.java.en.When;
 public class GenreStepDefs {
 	private WebDriver driver;
 	private GenrePage genrePage;
+	private UsersPage usersPage;
+	
 
 	public GenreStepDefs(SeleniumHooks hooks) {
 		this.driver = hooks.getDriver();
 		this.genrePage = PageFactory.initElements(driver, GenrePage.class);
+		this.usersPage = PageFactory.initElements(driver, UsersPage.class);
+	
 	}
 
 	@Given("I am on the genre page")
 	public void iAmOnTheGenrePage() {
 		this.driver.get("http://127.0.0.1:5500/static/index.html");
 		this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	}
+
+	@When("I sign up and log in")
+	public void i_sign_up_and_log_in() throws InterruptedException {
+		usersPage.clickSignUp();
+		usersPage.addFullname("Sirish Khatry");
+		usersPage.addUsername("sirisho");
+		usersPage.addPassword("sirish123");
+		Thread.sleep(2000);
+		usersPage.clickCreateAccBtn();
+		usersPage.closeBtn();
+		Thread.sleep(2000);
+		usersPage.clickLogIn();
+		Thread.sleep(2000);
+		usersPage.AddLogInInfo("sirisho", "sirish123");
+		Thread.sleep(2000);
+		usersPage.clickLogInUser();
+		usersPage.closeLogIn();
+		Thread.sleep(2000);
+		usersPage.clickHome();
 	}
 
 	@When("I click on genre management")
@@ -47,7 +72,7 @@ public class GenreStepDefs {
 
 	@When("I fill in the description field")
 	public void i_fill_in_the_description_field() {
-		genrePage.addDescriptionField("Rock");
+		genrePage.addDescriptionField("Lead Guitar");
 	}
 
 	@When("I click on create new genre")
@@ -75,6 +100,26 @@ public class GenreStepDefs {
 	public void i_should_be_able_to_see_the_genre_created() {
 
 		assertEquals("http://127.0.0.1:5500/static/genres.html?id=1", this.driver.getCurrentUrl());
+	}
+
+	@When("I click sign up and log in")
+	public void i_click_sign_up_and_log_in() throws InterruptedException {
+		usersPage.clickSignUp();
+		usersPage.addFullname("Sirish Khatry");
+		usersPage.addUsername("sirisho");
+		usersPage.addPassword("sirish123");
+		Thread.sleep(2000);
+		usersPage.clickCreateAccBtn();
+		usersPage.closeBtn();
+		Thread.sleep(2000);
+		usersPage.clickLogIn();
+		Thread.sleep(2000);
+		usersPage.AddLogInInfo("sirisho", "sirish123");
+		Thread.sleep(2000);
+		usersPage.clickLogInUser();
+		usersPage.closeLogIn();
+		Thread.sleep(2000);
+		usersPage.clickHome();
 	}
 
 	@When("I click on the genre drop down")
@@ -131,6 +176,26 @@ public class GenreStepDefs {
 		assertEquals("http://127.0.0.1:5500/static/genres.html?id=1", this.driver.getCurrentUrl());
 	}
 
+	@When("I sign up and log in again")
+	public void i_sign_up_and_log_in_again() throws InterruptedException {
+		usersPage.clickSignUp();
+		usersPage.addFullname("Sirish Khatry");
+		usersPage.addUsername("sirisho");
+		usersPage.addPassword("sirish123");
+		Thread.sleep(2000);
+		usersPage.clickCreateAccBtn();
+		usersPage.closeBtn();
+		Thread.sleep(2000);
+		usersPage.clickLogIn();
+		Thread.sleep(2000);
+		usersPage.AddLogInInfo("sirisho", "sirish123");
+		Thread.sleep(2000);
+		usersPage.clickLogInUser();
+		usersPage.closeLogIn();
+		Thread.sleep(2000);
+		usersPage.clickHome();
+	}
+
 	@When("I click on the genre management drop down menu")
 	public void i_click_on_the_genre_management_drop_down_menu() {
 		genrePage.clickGenreMenu();
@@ -159,7 +224,8 @@ public class GenreStepDefs {
 	}
 
 	@When("I click back on the genre page")
-	public void i_click_back_on_the_genre_page() {
+	public void i_click_back_on_the_genre_page() throws InterruptedException {
+		Thread.sleep(2000);
 		genrePage.genrePage();
 	}
 

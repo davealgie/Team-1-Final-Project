@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.qa.choonz.hooks.SeleniumHooks;
 import com.qa.choonz.uat.pages.ArtistPage;
+import com.qa.choonz.uat.pages.UsersPage;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -18,16 +19,39 @@ public class ArtistStepDefs {
 
 	private WebDriver driver;
 	private ArtistPage artistPage;
+	private UsersPage usersPage;
 
 	public ArtistStepDefs(SeleniumHooks hooks) {
 		this.driver = hooks.getDriver();
 		this.artistPage = PageFactory.initElements(driver, ArtistPage.class);
+		this.usersPage = PageFactory.initElements(driver, UsersPage.class);
 	}
 
 	@Given("I am on the index page")
 	public void iAmOnTheIndexPage() {
 		this.driver.get("http://127.0.0.1:5500/static/index.html");
 		this.driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	}
+
+	@When("I log in and sign up to create an artist")
+	public void I_log_in_and_sign_up_to_create_an_artist() throws InterruptedException {
+		usersPage.clickSignUp();
+		usersPage.addFullname("Sirish Khatry");
+		usersPage.addUsername("sirisho");
+		usersPage.addPassword("sirish123");
+		Thread.sleep(2000);
+		usersPage.clickCreateAccBtn();
+		usersPage.closeBtn();
+		Thread.sleep(2000);
+		usersPage.clickLogIn();
+		Thread.sleep(2000);
+		usersPage.AddLogInInfo("sirisho", "sirish123");
+		Thread.sleep(2000);
+		usersPage.clickLogInUser();
+		usersPage.closeLogIn();
+		Thread.sleep(2000);
+		usersPage.clickHome();
+
 	}
 
 	@When("I click the artist management button")
@@ -72,6 +96,26 @@ public class ArtistStepDefs {
 
 	}
 
+	@When("I log in and sign up to update an artist")
+	public void I_log_in_and_sign_up_to_update_an_artist() throws InterruptedException {
+		usersPage.clickSignUp();
+		usersPage.addFullname("Sirish Khatry");
+		usersPage.addUsername("sirisho");
+		usersPage.addPassword("sirish123");
+		Thread.sleep(2000);
+		usersPage.clickCreateAccBtn();
+		usersPage.closeBtn();
+		Thread.sleep(2000);
+		usersPage.clickLogIn();
+		Thread.sleep(2000);
+		usersPage.AddLogInInfo("sirisho", "sirish123");
+		Thread.sleep(2000);
+		usersPage.clickLogInUser();
+		usersPage.closeLogIn();
+		Thread.sleep(2000);
+		usersPage.clickHome();
+	}
+
 	@When("I click on the artist management drop down")
 	public void i_click_on_the_artist_management_drop_down() {
 		artistPage.clickArtistMenu();
@@ -91,16 +135,17 @@ public class ArtistStepDefs {
 	public void i_enter_the_updated_artist_name() {
 		artistPage.updateArtistName("James Hetfield");
 	}
-	
+
 	@When("I click create updated artist")
 	public void i_click_create_updated_artist() throws InterruptedException {
 		Thread.sleep(3000);
-	  artistPage.updateArtistBtn();
+		artistPage.updateArtistBtn();
 	}
+
 	@When("I close off the box")
 	public void i_close_off_the_box() {
-		
-	   artistPage.closeX();
+
+		artistPage.closeX();
 	}
 
 	@When("I click on the artist page again")
@@ -119,45 +164,61 @@ public class ArtistStepDefs {
 		assertEquals("http://127.0.0.1:5500/static/artist.html?id=1", this.driver.getCurrentUrl());
 
 	}
-	
+
+	@When("I log in and sign up to delete an artist")
+	public void I_log_in_and_sign_up_to_delete_an_artist() throws InterruptedException {
+		usersPage.clickSignUp();
+		usersPage.addFullname("Sirish Khatry");
+		usersPage.addUsername("sirisho");
+		usersPage.addPassword("sirish123");
+		Thread.sleep(2000);
+		usersPage.clickCreateAccBtn();
+		usersPage.closeBtn();
+		Thread.sleep(2000);
+		usersPage.clickLogIn();
+		Thread.sleep(2000);
+		usersPage.AddLogInInfo("sirisho", "sirish123");
+		Thread.sleep(2000);
+		usersPage.clickLogInUser();
+		usersPage.closeLogIn();
+		Thread.sleep(2000);
+		usersPage.clickHome();
+	}
+
 	@When("I click on the artist management drop down menu")
 	public void i_click_on_the_artist_management_drop_down_menu() {
-	 artistPage.clickArtistMenu();
+		artistPage.clickArtistMenu();
 	}
 
 	@When("I click on the delete artist button")
 	public void i_click_on_the_delete_artist_button() {
-	  artistPage.deleteArtist();
+		artistPage.deleteArtist();
 	}
 
 	@When("I enter the artist Id i want to delete")
 	public void i_enter_the_artist_id_i_want_to_delete() {
-	   artistPage.deleteId("1");
+		artistPage.deleteId("1");
 	}
 
 	@When("I click delete artist")
 	public void i_click_delete_artist() {
-	   artistPage.deleteArtistBtn();
+		artistPage.deleteArtistBtn();
 	}
-	   
-	 @When("I close off the box again")
-		public void i_close_off_the_box_again() throws InterruptedException {
-		 Thread.sleep(1000);
-		   artistPage.closeDeleteMenu();
+
+	@When("I close off the box again")
+	public void i_close_off_the_box_again() throws InterruptedException {
+		Thread.sleep(1000);
+		artistPage.closeDeleteMenu();
 	}
 
 	@When("I click on the updated artist page")
 	public void i_click_on_the_updated_artist_page() {
-	artistPage.clickNav();
+		artistPage.clickNav();
 	}
 
-	
 	@Then("I should be able to see no artists")
 	public void i_should_be_able_to_see_no_artists() {
 		assertEquals("http://127.0.0.1:5500/static/artist.html", this.driver.getCurrentUrl());
 	}
-	
-	
-
 
 }
