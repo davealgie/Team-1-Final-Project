@@ -43,6 +43,11 @@ public class ArtistController {
     public ResponseEntity<ArtistDTO> read(@PathVariable long id) {
         return new ResponseEntity<ArtistDTO>(this.service.read(id), HttpStatus.OK);
     }
+    
+    @GetMapping("/read-artist/{name}")
+    public ResponseEntity<ArtistDTO> read(@PathVariable String name) {
+        return new ResponseEntity<ArtistDTO>(this.service.readByName(name), HttpStatus.OK);
+    }
 
     @PostMapping("/update/{id}")
     public ResponseEntity<ArtistDTO> update(@RequestBody Artist artist, @PathVariable long id) {

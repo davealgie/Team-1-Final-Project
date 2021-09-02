@@ -205,13 +205,13 @@
     </h1>
     <br>
   </div>
+  <body>
   <div class="container">
     <div class="row">
         <h1 id="title">Playlist</h1>
     </div>
     <div class="row">
         <div id="card-group" class="card-columns">
-          <table id="myTable" class="table table-dark table-bordered"></table>
         </div>
     </div>
   </div>
@@ -763,35 +763,35 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
               </div>
-              <input name="createPlaylistName" type="text" class="form-control" aria-label="Sizing example input"
+              <input id="createPlaylistName" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
               </div>
-              <input name="createPlaylistDesc" type="text" class="form-control" aria-label="Sizing example input"
+              <input id="createPlaylistDesc" type="text" class="form-control" aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-default" required>
               </div>
-              <div class="input-group mb-3">
+              <!-- <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="inputGroup-sizing-default">User-ID</span>
                 </div>
                 <input name="createPlaylistUserID" type="number" class="form-control" aria-label="Sizing example input"
                   aria-describedby="inputGroup-sizing-default" required>
-              </div>
+              </div> -->
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Artwork</span>
               </div>
-              <input name="createPlaylistArtwork" type="text" class="form-control" aria-label="Sizing example input"
+              <input id="createPlaylistArtwork" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <p id="success-playlist-create" class="card-text"></p>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary" id="createPlaylist">Create</button>
+              <button type="button" class="btn btn-primary" id="createPlaylist">Create</button>
             </div>
           </form>
         </div>
@@ -814,7 +814,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">ID</span>
               </div>
-              <input name="deletePlaylistID" type="number" class="form-control" aria-label="Sizing example input"
+              <input id="deletePlaylistID" type="number" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <p id="success-playlist-delete" class="card-text"></p>
@@ -844,35 +844,35 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">ID</span>
               </div>
-              <input name="updatePlaylistID" type="number" class="form-control" aria-label="Sizing example input"
+              <input id="updatePlaylistID" type="number" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">User-ID</span>
               </div>
-              <input name="updatePlaylistUserID" type="number" class="form-control" aria-label="Sizing example input"
+              <input id="updatePlaylistUserID" type="number" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
               </div>
-              <input name="updatePlaylistName" type="text" class="form-control" aria-label="Sizing example input"
+              <input id="updatePlaylistName" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
               </div>
-              <input name="updatePlaylistDesc" type="text" class="form-control" aria-label="Sizing example input"
+              <input id="updatePlaylistDesc" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Artwork</span>
               </div>
-              <input name="updatePlaylistArtwork" type="text" class="form-control" aria-label="Sizing example input"
+              <input id="updatePlaylistArtwork" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <p id="success-playlist-update" class="card-text"></p>

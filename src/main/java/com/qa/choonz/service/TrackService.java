@@ -85,4 +85,9 @@ public class TrackService {
 		return this.mapToDTO(updated);
 	}
 
+	public TrackDTO readByName(String name) {
+		Track found = this.repo.findByName(name);
+		return this.mapToDTO(found);
+	}
+
 }
