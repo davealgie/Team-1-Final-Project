@@ -68,7 +68,7 @@ public class ArtistStepDefs {
 	@Then("I should be able to see the artist created")
 	public void i_should_be_able_to_see_the_artist_created() throws InterruptedException {
 		Thread.sleep(1000);
-		assertEquals("http://127.0.0.1:5500/static/artist.html?id=50", this.driver.getCurrentUrl());
+		assertEquals("http://127.0.0.1:5500/static/artist.html?id=1", this.driver.getCurrentUrl());
 
 	}
 
@@ -84,7 +84,7 @@ public class ArtistStepDefs {
 
 	@When("I enter the artist Id field")
 	public void i_enter_the_artist_id_field() {
-		artistPage.artistId("50");
+		artistPage.artistId("1");
 	}
 
 	@When("I enter the updated artist name")
@@ -116,7 +116,7 @@ public class ArtistStepDefs {
 	@Then("I should be able to see the updated artist")
 	public void i_should_be_able_to_see_the_updated_artist() throws InterruptedException {
 		Thread.sleep(3000);
-		assertEquals("http://127.0.0.1:5500/static/artist.html?id=50", this.driver.getCurrentUrl());
+		assertEquals("http://127.0.0.1:5500/static/artist.html?id=1", this.driver.getCurrentUrl());
 
 	}
 	
@@ -132,7 +132,7 @@ public class ArtistStepDefs {
 
 	@When("I enter the artist Id i want to delete")
 	public void i_enter_the_artist_id_i_want_to_delete() {
-	   artistPage.deleteId("50");
+	   artistPage.deleteId("1");
 	}
 
 	@When("I click delete artist")

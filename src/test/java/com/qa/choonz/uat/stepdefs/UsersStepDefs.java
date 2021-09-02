@@ -38,7 +38,7 @@ public class UsersStepDefs {
 
 	@When("I enter my fullname")
 	public void i_enter_my_fullname() {
-		signUpPage.addFullname("Sirish Khatry");
+	signUpPage.addFullname("Sirish Khatry");
 	}
 
 	@When("I enter my username")
