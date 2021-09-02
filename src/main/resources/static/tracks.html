@@ -45,9 +45,7 @@
                     User
                   </button>
                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-                    <button id ="editProfile" class="dropdown-item" type="button"  data-toggle="modal" data-target="#userProfileModal" >Edit My Profile</button>
                     <button id= "logOutBtn" class="dropdown-item" type="button">Log Out</button>
-                    <button id= "deleteUserBtn" class="dropdown-item" type="button">Delete Account</button>
                   </div>
                 </div>
               </li>
@@ -87,7 +85,7 @@
 
 <div class="container">
   <div class="row">
-      <h1>Tracks</h1>
+      <h1 id="title">Tracks</h1>
   </div>
   <div class="row">
       <div id="card-group" class="card-columns">
@@ -188,42 +186,7 @@ Modal -->
     </div>
   </div>
 </div>
-<!-- update user profile -->
-<div class="modal fade" id="userProfileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form class="user-profile" action="todo.html" method="POST">
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default">User Name</span></>
-            </div>
-            <input id="user_name" name="user_name" type="text" class="form-control" aria-label="Sizing example input"
-              aria-describedby="inputGroup-sizing-default" required>
-          </div>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default">Password</span></l>
-            </div>
-            <input id="password" name="password" type="text" class="form-control" aria-label="With textarea"
-              required></input>
-          </div>
-        </form>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button id="delete-user" type="submit" class="btn btn-danger">Delete Account</button>
-          <button id="update-user" type="submit" class="btn btn-primary">Update</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
 <!-- user log in modal -->
 <div class="modal fade" id="userLoginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
