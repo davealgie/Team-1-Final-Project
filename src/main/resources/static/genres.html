@@ -84,34 +84,15 @@
 <!--end of nav bar -->
   <body>
     <div class="container">
-      
-      <h1>Genres</h1>
-      <div id="flex"></div>
-
-      <div hidden>
-        <div id = "cards" class="cards">
-        <div id ="card" class="card" classname="card" style="max-width: 18rem; width: auto;">
-          <a id="imageLink"><img width="250" height="250" class="card-img-top"></a>
-          <div id = "body" class="card-body">
-              <h5 id = "title" class = "card-title"><a id="titlelink"
-                style="color: white; text-decoration: none; background-color: none;"></a></h5>
-              <p id = "text" class = "card-text"></p>
-              <a id = "button" class = "btn btn-primary"></a>
-          </div>
-        </div>
-        </div>
+      <div class="row">
+          <h1 id="title">Genres</h1>
       </div>
-
-      <p></p>
-      
-      <div class="d-flex p-2">
-        <div class="card-columns" style="text-align:center; margin: 0 auto;">
-          <div id ="showcards" class = "showcards">
+      <div class="row">
+          <div id="card-group" class="card-columns">
+    
           </div>
-        </div>
       </div>
-
-      <p></p>
+    </div>
     </div>
 
  <!-- create account modal -->
@@ -263,9 +244,8 @@
 </footer>
       <script src="js/genre.js"></script>
       <script src="js/search.js"></script>
-      <script src="js/userAuth.js"></script>
-      <script src="js/newUser.js"></script>
-      <script src="js/crudUser.js"></script>
+      <script src="js/createUser.js"></script>
+      <script src="js/cookie-auth.js"></script>
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

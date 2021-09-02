@@ -3,6 +3,9 @@ package com.qa.choonz.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +21,9 @@ import com.qa.choonz.rest.dto.PlaylistDTO;
 @Service
 public class PlaylistService {
 
+	@PersistenceContext
+	private EntityManager em;
+	
     private PlaylistRepository repo;
     private UserRepository repoUser;
     private TrackRepository repoTrack;
@@ -86,6 +92,19 @@ public class PlaylistService {
 		playlist.setUsers(user);
 		Playlist updated = this.repo.save(playlist);
 		return this.mapToDTO(updated);
+	}
+
+	public PlaylistDTO removeTrackFromPlaylist(Long playlistId, Long trackId) {
+		Playlist playlist = repo.findById(playlistId).get();
+		Track track = repoTrack.findById(trackId).get();
+		playlist.removeTracks(track);
+		Playlist updated = this.repo.save(playlist);
+		return this.mapToDTO(updated);
+	}
+
+	public List<PlaylistDTO> readByUser(long id) {
+        List<Playlist> result = em.createQuery("from Playlist a where a.users.user_id =:id", Playlist.class).setParameter("id", id).getResultList();
+        return result.stream().map(this::mapToDTO).collect(Collectors.toList());
 	}
 
 

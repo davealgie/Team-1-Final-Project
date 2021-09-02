@@ -2,32 +2,34 @@
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const id = urlParams.get('id');
-  let container = document.querySelector("#flex");
+  let container = document.querySelector("#card-group");
+
 
   if(id == null){
-    function createCard(header, result){
+    function createCard(result){
 
         var div = document.createElement("div");
         div.setAttribute("class", "card");
-        var head = document.createElement("p");
-        head.innerText = header[0];
         var para = document.createElement("a");
+        para.setAttribute("class", "name");
         para.innerText = result[1];
         para.setAttribute('href', "genres.html?id=" + result[0]);
-
-        div.appendChild(head);
         div.appendChild(para);
-    
-        var head = document.createElement("p");
-        head.innerText = header[1];
-        div.appendChild(head);
+        var hr = document.createElement("hr");
+        hr.setAttribute("style", "height:1px;border-width:0;color:gray;background-color:gray");
+        div.appendChild(hr);
+
+     
 
         for(var i = 0; i < result[2].length; i ++){
             var para = document.createElement("a");
             para.innerText = result[2][i].name;
             para.setAttribute('href', "tracks.html?id=" + result[2][i].id);
             div.appendChild(para);
+            let br = document.createElement("BR");
+            div.appendChild(br);
         }
+
       return div;
 
     }
@@ -45,7 +47,7 @@
             .then(data => {
                 const result = data.map(({id, name, tracks}) => [id, name, tracks]);
                 for (data of result) {
-                const table = createCard(header, data);
+                const table = createCard(data);
                 container.appendChild(table);
                 }
             })
@@ -53,32 +55,30 @@
             .finally(() => { console.log("All OK!"); });
   
         }
-    const header = ["NAME", "TRACKS"];
     simpleFetch();
 
       } else {
 
-        function createCard(header, result){
+        function createCard(result){
 
           var div = document.createElement("div");
           div.setAttribute("class", "card");
-          var head = document.createElement("p");
-          head.innerText = header[0];
           var para = document.createElement("a");
+          para.setAttribute("class", "name");
           para.innerText = result.name;
-
-          div.appendChild(head);
           div.appendChild(para);
+          var hr = document.createElement("hr");
+          hr.setAttribute("style", "height:1px;border-width:0;color:gray;background-color:gray");
+          div.appendChild(hr);
       
-          var head = document.createElement("p");
-          head.innerText = header[1];
-          div.appendChild(head);
   
           for(var i = 0; i < result.tracks.length; i ++){
               var para = document.createElement("a");
               para.innerText = result.tracks[i].name;
               para.setAttribute('href', "tracks.html?id=" + result.tracks[i].id);
               div.appendChild(para);
+              let br = document.createElement("BR");
+              div.appendChild(br);
           }
   
   
@@ -97,17 +97,13 @@
                 return response.json();
               })) 
               .then(data => {
-                  // const result = data.map(({id, name, tracks}) => [id, name, tracks]);
-                  // for (data of result) {
-                  const table = createCard(header, data);
+                  const table = createCard( data);
                   container.appendChild(table);
-                  // }
               })
               .catch(error => console.error(error))
               .finally(() => { console.log("All OK!"); });
     
           }
-      const header = ["NAME", "TRACKS"];
       simpleFetch();
 
       }

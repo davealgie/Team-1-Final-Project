@@ -1,11 +1,39 @@
-(() => {
-    let container = document.querySelector("#flex");
+// (() => {
+
+
+    var id = getCookie("id");
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+    
+    if(id!=null){
+        //console.log(id);
+        simpleFetch(id);
+    }
+    let container = document.querySelector("#card-group");
 
     let trackName = document.querySelector("#trackName");
     let playlistID = document.querySelector("#playlistID");
-    let trackIDPlaylist = document.querySelector("#trackID");
+    let trackIDPlaylist = document.querySelector("#trackID"); // add to playlist
     let trackToPlaylistBtn = document.querySelector("#addTrackIDPlaylist");
     let trackToPlaylistByNameBtn = document.querySelector("#addTrackByName");
+
+    let removePlaylistID = document.querySelector("#removeplaylistID");
+    let removeTrackID = document.querySelector("#removetrackID"); // remove from playlist
+    let removeTrackBtn = document.querySelector("#removeTrackBtn");
 
     let createTrackBtn = document.querySelector("#createTrack");
     let createTrackName = document.querySelector("#trackname");
@@ -87,6 +115,8 @@
     .then(data => {
       console.log('Success:', data);
       console.log(data.id);
+      let msg = document.getElementById("success-track-create");
+      msg.innerHTML = "New track created successfully!"
       if(createTrackAlbumID!=null){
         fetch('http://localhost:81/tracks/' + data.id + '/albums/' + createTrackAlbumID.value, {
             method: 'PUT', // or 'PUT'
@@ -142,6 +172,8 @@
     .then(response => response.json())
     .then(data => {
       console.log('Success:', data);
+      let msg = document.getElementById("success-track-update");
+      msg.innerHTML = "Track updated successfully!"
       if(updateTrackAlbumID!=null){
         fetch('http://localhost:81/tracks/' + data.id + '/albums/' + updateTrackAlbumID.value, {
             method: 'PUT', // or 'PUT'
@@ -191,6 +223,8 @@
     .then(response => response.json())
     .then(data => {
       console.log('Success:', data);
+      let msg = document.getElementById("success-track-delete");
+      msg.innerHTML = "Track deleted successfully!"
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -321,6 +355,8 @@
             .then(response => response.json())
             .then(data => {
               console.log('Success:', data);
+              let msg = document.getElementById("success-artist-create");
+              msg.innerHTML = "New Artist created successfully!"
             })
             .catch((error) => {
               console.error('Error:', error);
@@ -345,6 +381,8 @@
             .then(response => response.json())
             .then(data => {
               console.log('Success:', data);
+              let msg = document.getElementById("success-artist-update");
+              msg.innerHTML = "Artist updated successfully!"
             })
             .catch((error) => {
               console.error('Error:', error);      
@@ -362,6 +400,8 @@
             .then(response => response.json())
             .then(data => {
               console.log('Success:', data);
+              let msg = document.getElementById("success-artist-delete");
+              msg.innerHTML = "Artist deleted successfully!"
             })
             .catch((error) => {
               console.error('Error:', error);
@@ -387,6 +427,8 @@
                     .then(response => response.json())
                     .then(data => {
                       console.log('Success:', data);
+                      let msg = document.getElementById("success-genre-create");
+                      msg.innerHTML = "New genre created successfully!"
                     })
                     .catch((error) => {
                       console.error('Error:', error);
@@ -411,6 +453,8 @@
                     .then(response => response.json())
                     .then(data => {
                       console.log('Success:', data);
+                      let msg = document.getElementById("success-genre-update");
+                      msg.innerHTML = "Genre updated successfully!"
                     })
                     .catch((error) => {
                       console.error('Error:', error);      
@@ -428,6 +472,8 @@
                     .then(response => response.json())
                     .then(data => {
                       console.log('Success:', data);
+                      let msg = document.getElementById("success-genre-delete");
+                      msg.innerHTML = "Genre deleted successfully!"
                     })
                     .catch((error) => {
                       console.error('Error:', error);
@@ -464,6 +510,8 @@
                               .then(response => response.json())
                               .then(data => {
                                 console.log('Success:', data);
+                                let msg = document.getElementById("success-playlist-create");
+                                msg.innerHTML = "New playlist created successfully!"
                               })
                               .catch((error) => {
                                 console.error('Error:', error);
@@ -504,6 +552,8 @@
                           .then(response => response.json())
                           .then(data => {
                             console.log('Success:', data);
+                            let msg = document.getElementById("success-playlist-update");
+                            msg.innerHTML = "Playlist updated successfully!"
                           })
                           .catch((error) => {
                             console.error('Error:', error);
@@ -526,6 +576,8 @@
                         .then(response => response.json())
                         .then(data => {
                           console.log('Success:', data);
+                          let msg = document.getElementById("success-playlist-delete");
+                          msg.innerHTML = "Playlist deleted successfully!"
                         })
                         .catch((error) => {
                           console.error('Error:', error);
@@ -541,6 +593,27 @@
                       trackToPlaylistByNameBtn.addEventListener("click", (event) => {
                           addToPlaylistByName(playlistID.value, trackName.value);
                     }, false);
+
+                    removeTrackBtn.addEventListener("click", (event) => {
+                        removeFromPlaylist(removeTrackID.value, removePlaylistID.value);
+                    }, false);
+
+                    
+                    function removeFromPlaylist(trackid, playlistid){
+    
+                        fetch('http://localhost:81/playlists/' + playlistid + '/track-remove/' + trackid, {
+                                method: 'PUT', // or 'PUT'
+                          })
+                           .then(response => response.json())
+                           .then(data => {
+                            console.log('Success:', data);
+                            })
+                              .catch((error) => {
+                                console.error('Error:', error);
+                              });
+                            
+                    }
+
 
 
                     function addToPlaylist(trackid, playlistid){
@@ -574,13 +647,19 @@
                     }
 
 
-                      function createCard(header, result){
+                      function createCard(result){
                         console.log(result);
+
                         var div = document.createElement("div");
                         div.setAttribute("class", "card");
                         var head10 = document.createElement("p");
+                        head10.setAttribute("class", "name");
                         head10.innerText = result[1];
                         div.appendChild(head10);
+                        var hr = document.createElement("hr");
+                        hr.setAttribute("style", "height:1px;border-width:0;color:gray;background-color:gray");
+                        div.appendChild(hr);
+
 
                         for(var i = 0; i < result[2].length; i ++){
                             var para = document.createElement("a");
@@ -588,216 +667,17 @@
                             // para.setAttribute('href', "http://localhost:81/tracks/read/" + result[2][i].id);
                             para.setAttribute('href', "tracks.html?id=" + result[2][i].id);
                             div.appendChild(para);
+                            let br = document.createElement("BR");
+                            div.appendChild(br);
                         }
                 
-                        // var btndiv = document.createElement("div");
-                        // btndiv.setAttribute("class", "btn-group");
-                        // var btn = document.createElement("button");
-                        // btn.setAttribute("type", "button");
-                        // btn.setAttribute("class", "btn btn-secondary dropdown-toggle");
-                        // btn.setAttribute("data-toggle", "dropdown");
-                        // btn.setAttribute("data-display", "static");
-                        // btn.innerText = "Update Playlist";
-                        // var dropdiv = document.createElement("div");
-                        // dropdiv.setAttribute("class", "dropdown-menu dropdown-menu-right dropdown-menu-lg-left")
-                        // var btn1 = document.createElement("button");
-                        // btn1.setAttribute("class", "dropdown-item");
-                        // btn1.setAttribute("type", "button");
-                        // btn1.setAttribute("data-toggle", "modal");
-                        // btn1.setAttribute("data-target", "#addTrack");
-                        // btn1.innerText = "Add Track";
-                        // var btn2 = document.createElement("button");
-                        // btn2.setAttribute("class", "dropdown-item");
-                        // btn2.setAttribute("type", "button");
-                        // btn2.setAttribute("data-toggle", "modal");
-                        // btn2.setAttribute("data-target", "#removeTrack");
-                        // btn2.innerText = "Remove Track";
-
-
-                        // var addmodal = document.createElement("div");
-                        // addmodal.setAttribute("class", "modal fade");
-                        // addmodal.setAttribute("id", "addTrack");
-                        // addmodal.setAttribute("tabindex", "-1");
-                        // addmodal.setAttribute("aria-labelledby", "exampleModalLabel");
-                        // addmodal.setAttribute("aria-hidden", "true");
-                        // var modaldialog = document.createElement("div");
-                        // modaldialog.setAttribute("class", "modal-dialog");
-                        // addmodal.appendChild(modaldialog);
-                        // var modaldialog2 = document.createElement("div");
-                        // modaldialog2.setAttribute("class", "modal-content");
-                        // modaldialog.appendChild(modaldialog2);
-                        // var modaldialog3 = document.createElement("div");
-                        // modaldialog3.setAttribute("class", "modal-header");
-                        // modaldialog2.appendChild(modaldialog3); //line 322
-                        // var h5 = document.createElement("h5");
-                        // h5.setAttribute("class", "modal-title");
-                        // h5.setAttribute("id", "exampleModalLabel");
-                        // h5.innerText = "Add Track";
-                        // modaldialog3.appendChild(h5);
-                        // var buttonClose = document.createElement("button");
-                        // buttonClose.setAttribute("type", "button");
-                        // buttonClose.setAttribute("class", "close");
-                        // buttonClose.setAttribute("data-dismiss", "modal");
-                        // buttonClose.setAttribute("aria-label", "close");
-                        // var areaSpan = document.createElement("span");
-                        // areaSpan.setAttribute("aria-hidden", "true");
-                        // buttonClose.appendChild(areaSpan);
-                        // modaldialog3.appendChild(buttonClose);
-                        // var modalBody = document.createElement("div");
-                        // modalBody.setAttribute("class", "modal-body");
-                        // modaldialog2.appendChild(modalBody);
-                        // var form = document.createElement("form");
-                        // form.setAttribute("class", "log-in");
-                        // modalBody.appendChild(form);
-                        // var inputGroupmb = document.createElement("div");
-                        // inputGroupmb.setAttribute("class", "input-groub mb-3");
-                        // form.appendChild(inputGroupmb);
-                        // var inputPrepend = document.createElement("div");
-                        // inputPrepend.setAttribute("class", "input-group-prepend");
-                        // inputGroupmb.appendChild(inputPrepend);
-                        // var spanLabel = document.createElement("span");
-                        // spanLabel.setAttribute("class", "input-group-text");
-                        // spanLabel.setAttribute("id", "inputGroup-sizing-default");
-                        // spanLabel.textContent = "Track-ID";
-                        // inputPrepend.appendChild(spanLabel);
-                        // var idinput = document.createElement("input");
-                        // idinput.setAttribute("id", "addTrackToID");
-                        // idinput.setAttribute("type", "number");
-                        // idinput.setAttribute("class", "form-control");
-                        // idinput.setAttribute("aria-label", "Sizing example input");
-                        // idinput.setAttribute("aria-describedby", "inputGroup-sizing-default");
-                        // inputGroupmb.appendChild(idinput);
-                        // var modalFooter = document.createElement("div");
-                        // modalFooter.setAttribute("class", "modal-footer");
-                        // modalBody.appendChild(modalFooter);
-                        // var para5 = document.createElement("p");
-                        // para5.setAttribute("class", "card-text");
-                        // modalFooter.appendChild(para5);
-                        // var closeForm = document.createElement("button");
-                        // closeForm.setAttribute("class", "btn btn-secondary");
-                        // closeForm.setAttribute("data-dismiss", "modal")
-                        // closeForm.innerText = "Close";
-                        // var addButton = document.createElement("button");
-                        // addButton.setAttribute("class", "btn btn-primary");
-                        // addButton.onclick = function() {
-                        //     let trackinputID = document.querySelector("#addTrackToID");
-                        //     fetch('http://localhost:81/playlists/' + result[0] + '/tracks/' + trackinputID.value, {
-                        //         method: 'PUT', // or 'PUT'
-                        //       })
-                        //       .then(response => response.json())
-                        //       .then(data => {
-                        //         console.log('Success:', data);
-                        //       })
-                        //       .catch((error) => {
-                        //         console.error('Error:', error);
-                        //       });
-                        // }
-                        // addButton.innerText = "Add";
-                        // modalFooter.appendChild(closeForm);
-                        // modalFooter.appendChild(addButton);
-                        // div.appendChild(addmodal);
-                        // var addmodal = document.createElement("div");
-                        // addmodal.setAttribute("class", "modal fade");
-                        // addmodal.setAttribute("id", "removeTrack");
-                        // addmodal.setAttribute("tabindex", "-1");
-                        // addmodal.setAttribute("aria-labelledby", "exampleModalLabel");
-                        // addmodal.setAttribute("aria-hidden", "true");
-                        // var modaldialog = document.createElement("div");
-                        // modaldialog.setAttribute("class", "modal-dialog");
-                        // addmodal.appendChild(modaldialog);
-                        // var modaldialog2 = document.createElement("div");
-                        // modaldialog2.setAttribute("class", "modal-content");
-                        // modaldialog.appendChild(modaldialog2);
-                        // var modaldialog3 = document.createElement("div");
-                        // modaldialog3.setAttribute("class", "modal-header");
-                        // modaldialog2.appendChild(modaldialog3); //line 322
-                        // var h5 = document.createElement("h5");
-                        // h5.setAttribute("class", "modal-title");
-                        // h5.setAttribute("id", "exampleModalLabel");
-                        // h5.innerText = "Remove Track";
-                        // modaldialog3.appendChild(h5);
-                        // var buttonClose = document.createElement("button");
-                        // buttonClose.setAttribute("type", "button");
-                        // buttonClose.setAttribute("class", "close");
-                        // buttonClose.setAttribute("data-dismiss", "modal");
-                        // buttonClose.setAttribute("aria-label", "close");
-                        // var areaSpan = document.createElement("span");
-                        // areaSpan.setAttribute("aria-hidden", "true");
-                        // buttonClose.appendChild(areaSpan);
-                        // modaldialog3.appendChild(buttonClose);
-                        // var modalBody = document.createElement("div");
-                        // modalBody.setAttribute("class", "modal-body");
-                        // modaldialog2.appendChild(modalBody);
-                        // var form = document.createElement("form");
-                        // form.setAttribute("class", "log-in");
-                        // modalBody.appendChild(form);
-                        // var inputGroupmb = document.createElement("div");
-                        // inputGroupmb.setAttribute("class", "input-groub mb-3");
-                        // form.appendChild(inputGroupmb);
-                        // var inputPrepend = document.createElement("div");
-                        // inputPrepend.setAttribute("class", "input-group-prepend");
-                        // inputGroupmb.appendChild(inputPrepend);
-                        // var spanLabel = document.createElement("span");
-                        // spanLabel.setAttribute("class", "input-group-text");
-                        // spanLabel.setAttribute("id", "inputGroup-sizing-default");
-                        // spanLabel.textContent = "Track-ID";
-                        // inputPrepend.appendChild(spanLabel);
-                        // var idinput = document.createElement("input");
-                        // idinput.setAttribute("id", "removeTrackID");
-                        // idinput.setAttribute("type", "number");
-                        // idinput.setAttribute("class", "form-control");
-                        // idinput.setAttribute("aria-label", "Sizing example input");
-                        // idinput.setAttribute("aria-describedby", "inputGroup-sizing-default");
-                        // inputGroupmb.appendChild(idinput);
-                        // var modalFooter = document.createElement("div");
-                        // modalFooter.setAttribute("class", "modal-footer");
-                        // modalBody.appendChild(modalFooter);
-                        // var para5 = document.createElement("p");
-                        // para5.setAttribute("class", "card-text");
-                        // modalFooter.appendChild(para5);
-                        // var closeForm = document.createElement("button");
-                        // closeForm.setAttribute("class", "btn btn-secondary");
-                        // closeForm.setAttribute("data-dismiss", "modal")
-                        // closeForm.innerText = "Close";
-                        // var addButton = document.createElement("button");
-                        // addButton.setAttribute("class", "btn btn-primary");
-                        // addButton.setAttribute("id", "removeTrackButton");
-                        // addButton.innerText = "Remove";
-                        // modalFooter.appendChild(closeForm);
-                        // modalFooter.appendChild(addButton);
-
-                        // div.appendChild(addmodal);
-                        // dropdiv.appendChild(btn1);
-                        // dropdiv.appendChild(btn2);
-                        // btndiv.appendChild(dropdiv);
-                        // btndiv.appendChild(btn);
-                        // div.appendChild(btndiv);
-
-                    //     function addToPlaylist(trackid, playlistid){
-                    
-                    //         // console.log(idinput.value);
-    
-                    //         fetch('http://localhost:81/playlists/' + playlistid + '/tracks/' + trackid, {
-                    //             method: 'DELETE', // or 'PUT'
-                    //           })
-                    //           .then(response => response.json())
-                    //           .then(data => {
-                    //             console.log('Success:', data);
-                    //           })
-                    //           .catch((error) => {
-                    //             console.error('Error:', error);
-                    //           });
-                            
-                    // }
-
                       return div;
                     }
 
             
                 
-                    function simpleFetch(){
-                        const a = ["http://localhost:81/playlists/read"];
-                            fetch(a)
+                    function simpleFetch(id){
+                        fetch("http://localhost:81/playlists/readByUser/" + id)
                             .then((response => {
                               if(response.status !== 200){
                                 console.error(`status: ${response.status})`);
@@ -809,14 +689,13 @@
                                 const result = data.map(({id, name, tracks}) => [id, name, tracks]);
                                 console.log(result);
                                 for (data of result) {
-                                const table = createCard(header, data);
+                                const table = createCard(data);
                                 container.appendChild(table);
                                 }
                             })
                             .catch(error => console.error(error))
                             .finally(() => { console.log("All OK!"); });
                         }
-                    const header = ["NAME", "TRACKS"];
-                    simpleFetch();
+                    
 
-})();
+// })();

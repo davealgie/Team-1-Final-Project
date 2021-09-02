@@ -57,10 +57,7 @@
                   User
                 </button>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-                  <button id="editProfile" class="dropdown-item" type="button" data-toggle="modal"
-                    data-target="#userProfileModal">Edit My Profile</button>
                   <button id="logOutBtn" class="dropdown-item" type="button">Log Out</button>
-                  <button id="deleteUserBtn" class="dropdown-item" type="button">Delete Account</button>
                 </div>
               </div>
             </li>
@@ -157,6 +154,8 @@
                 data-target="#deletePlaylistModal">Delete</button>
                 <button class="dropdown-item" type="button" data-toggle="modal"
                 data-target="#addToPlaylistTrackID">Add Track To Playlist </button>
+                <button class="dropdown-item" type="button" data-toggle="modal"
+                data-target="#removeTrackPlaylist">Remove Track From Playlist </button>
             </div>
           </div>
         </div>
@@ -207,7 +206,15 @@
     <br>
   </div>
   <div class="container">
-  <div id="flex"></div>
+    <div class="row">
+        <h1 id="title">Playlist</h1>
+    </div>
+    <div class="row">
+        <div id="card-group" class="card-columns">
+          <table id="myTable" class="table table-dark table-bordered"></table>
+        </div>
+    </div>
+  </div>
   <!-- create account modal -->
   <div class="modal fade" id="createAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -225,7 +232,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Your Name:</span>
               </div>
-              <input name="full_name" type="text" class="form-control" aria-label="Sizing example input"
+              <input id="full_name" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="input-group mb-3">
@@ -233,7 +240,7 @@
                 <span class="input-group-text" id="inputGroup-sizing-default">User
                   Name:</span>
               </div>
-              <input name="user_name" type="text" class="form-control" aria-label="Sizing example input"
+              <input id="username" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="input-group">
@@ -241,11 +248,11 @@
                 <span class="input-group-text" id="inputGroup-sizing-default">
                   Password:</span>
               </div>
-              <input name="password" type="password" class="form-control" aria-label="Sizing example input"
+              <input id="passwordUser" type="password" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-primary">Create</button>
+              <button type="button" id="createSubmit" class="btn btn-primary">Create</button>
             </div>
             <p id="success-create" class="card-text"></p>
           </form>
@@ -323,27 +330,26 @@
           </button>
         </div>
         <div class="modal-body">
-          <!-- <h5 class="card-title">Log in</h5> -->
           <p class="card-text">Use your credentials to log in</p>
           <form class="log-in" action="index.html" method="POST">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">User Name:</span>
               </div>
-              <input name="user_name" type="text" class="form-control" aria-label="Sizing example input"
+              <input id="usernameLogin" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="inputGroup-sizing-default">Password:</span>
               </div>
-              <input name="password" type="password" class="form-control" aria-label="Sizing example input"
+              <input id="passwordLogin" type="password" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
             <div class="modal-footer">
-              <p id="login-msg" class="card-text"></p>
+              <p id="loginAlert" class="card-text"></p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Log In</button>
+              <button type="button" id="loginSubmit" class="btn btn-primary">Log In</button>
             </div>
           </form>
         </div>
@@ -535,6 +541,7 @@
               <input id="genreid" type="number" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" />
             </div>
+            <p id="success-track-create" class="card-text"></p>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" id="createTrack">Create</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -563,6 +570,7 @@
               <input id="deletetrackid" type="number" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
+            <p id="success-track-delete" class="card-text"></p>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -627,6 +635,7 @@
                 <input id="updateTrackGenreID" type="number" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default"/>
               </div>
+              <p id="success-track-update" class="card-text"></p>
             </div>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
@@ -637,7 +646,6 @@
         </div>
       </div>
     </div>
-  </div>
 
 
   <!-- Create an artist modal -->
@@ -659,6 +667,7 @@
               <input id="createName" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
+            <p id="success-artist-create" class="card-text"></p>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -688,6 +697,7 @@
               <input id="deleteID" type="number" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
+            <p id="success-artist-delete" class="card-text"></p>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -724,6 +734,7 @@
               <input id="updateName" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
+            <p id="success-artist-update" class="card-text"></p>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -776,6 +787,7 @@
               <input name="createPlaylistArtwork" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
+            <p id="success-playlist-create" class="card-text"></p>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -805,6 +817,7 @@
               <input name="deletePlaylistID" type="number" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
+            <p id="success-playlist-delete" class="card-text"></p>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -862,10 +875,11 @@
               <input name="updatePlaylistArtwork" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
+            <p id="success-playlist-update" class="card-text"></p>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" id="updatePlaylist">Delete</button>
+              <button type="button" class="btn btn-primary" id="updatePlaylist">Update</button>
             </div>
           </form>
         </div>
@@ -899,6 +913,7 @@
               <input id="createGenreDesc" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
+            <p id="success-genre-create" class="card-text"></p>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -928,6 +943,7 @@
               <input id="deleteGenreID" type="number" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
+            <p id="success-genre-delete" class="card-text"></p>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -971,6 +987,7 @@
               <input id="updateGenreDesc" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
+            <p id="success-genre-update" class="card-text"></p>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -1030,17 +1047,55 @@
     </div>
   </div>
 </div>
+
+     <!-- Remove from playlist by id -->
+     <div class="modal fade" id="removeTrackPlaylist" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Remove track from playlist by id</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <p id="success-create" class="card-text"></p>
+          <div class="modal-body">
+            <form class="update-album">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Track-ID:</span>
+                </div>
+                <input id="removetrackID" type="text" class="form-control" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default">
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Playlist-ID:</span>
+                </div>
+                <input id="removeplaylistID" type="text" class="form-control" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default" required>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="removeTrackBtn">Remove</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 </div>
   <footer>
     <div class="text-center p-2">
       <h5>Copyright &#169; DA,SK & GW</h5>
     </div>
   </footer>
-  <script src="js/index.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
   <script src="js/search.js"></script>
-  <script src="js/newUser.js"></script>
-  <script src="js/crudUser.js"></script>
-  <script src="js/userAuth.js"></script>
+  <script src="js/createUser.js"></script>
+  <script type="text/javascript" src="js/cookie-auth.js"></script>
+  <!-- <script src="js/crudUser.js"></script>
+  <script src="js/userAuth.js"></script> -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>

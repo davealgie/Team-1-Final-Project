@@ -137,3 +137,4 @@ public class ArtistControllerTest {
 		this.mock.perform(mockRequest).andExpect(matchStatus);
 	}
 }
+
