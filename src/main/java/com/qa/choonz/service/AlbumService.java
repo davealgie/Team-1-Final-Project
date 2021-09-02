@@ -69,4 +69,9 @@ public class AlbumService {
 		Album updated = this.repo.save(album);
 		return this.mapToDTO(updated);
 	}
+
+	public AlbumDTO readByName(String name) {
+        Album found = this.repo.findByName(name);
+        return this.mapToDTO(found);
+	}
 }

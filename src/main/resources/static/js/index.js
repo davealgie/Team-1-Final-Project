@@ -1,5 +1,36 @@
+<<<<<<< Updated upstream
 (() => {
     let container = document.querySelector("#flex");
+=======
+// (() => {
+    let container = document.querySelector("#card-group");
+
+    var id = getCookie("id");
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
+    
+    if(id == null || id == ""){
+        heroPage();
+    } else {
+        console.log(id);
+        simpleFetch(id);
+        // heroPage();
+    }
+>>>>>>> Stashed changes
 
     let trackName = document.querySelector("#trackName");
     let playlistID = document.querySelector("#playlistID");
@@ -68,7 +99,7 @@
     let updatePlaylistName = document.querySelector("#updatePlaylistName");
     let createPlaylistDesc = document.querySelector("#createPlaylistDesc");
     let updatePlaylistDesc = document.querySelector("#updatePlaylistDesc");                    
-    let createPlaylistUserID = document.querySelector("#createPlaylistUserID");
+    // let createPlaylistUserID = document.querySelector("#createPlaylistUserID");
     let updatePlaylistUserID = document.querySelector("#updatePlaylistUserID");
     let createPlaylistArtwork = document.querySelector("#createPlaylistArtwork");
     let updatePlaylistArtwork = document.querySelector("#updatePlaylistArtwork");
@@ -461,7 +492,7 @@
                   // CREATE PLAYLIST
   
             createPlaylistBtn.addEventListener("click", (event) => {
-                    const data = {name: createPlaylistName.value, users_user_id: createPlaylistUserID.value,  description: createPlaylistDesc.value, artwork: createPlaylistArtwork.value};
+                    const data = {name: createPlaylistName.value, description: createPlaylistDesc.value, artwork: createPlaylistArtwork.value};
                     
                         console.log(data);
                     
@@ -475,8 +506,8 @@
                         .then(response => response.json())
                         .then(data => {
                           console.log('Success:', data);
-                          if(createPlaylistUserID!=null){
-                            fetch('http://localhost:81/playlists/' + data.id + '/users/' + createPlaylistUserID.value, {
+                          if(id!=null){
+                            fetch('http://localhost:81/playlists/' + data.id + '/users/' + id, {
                                 method: 'PUT', // or 'PUT'
                                 headers: {
                                   'Content-Type': 'application/json',
@@ -503,7 +534,7 @@
                             //UPDATE PLAYLIST
                     
                         updatePlaylistBtn.addEventListener("click", (event) => {
-                        const data = {name: updatePlaylistName.value, users_user_id: updatePlaylistUserID.value,  description: updatePlaylistDesc.value, artwork: updatePlaylistArtwork.value};
+                        const data = {name: updatePlaylistName.value, description: updatePlaylistDesc.value, artwork: updatePlaylistArtwork.value};
                     
                         console.log(data);
                     
@@ -590,7 +621,7 @@
                             
                     }
 
-
+                    // Add to playlist by ID
 
                     function addToPlaylist(trackid, playlistid){
     
@@ -606,6 +637,8 @@
                               });
                             
                     }
+
+                    // Add to playlist by name
 
                     function addToPlaylistByName(playlist, track1){
 
@@ -636,6 +669,7 @@
                             para.innerText = result[2][i].name;
                             // para.setAttribute('href', "http://localhost:81/tracks/read/" + result[2][i].id);
                             para.setAttribute('href', "tracks.html?id=" + result[2][i].id);
+                            para.setAttribute("style", "font-size: 14px");
                             div.appendChild(para);
                         }
                 
@@ -864,7 +898,26 @@
                             .catch(error => console.error(error))
                             .finally(() => { console.log("All OK!"); });
                         }
+<<<<<<< Updated upstream
                     const header = ["NAME", "TRACKS"];
                     simpleFetch();
+=======
+
+                        function heroPage(){
+
+                        let imageDiv = document.createElement("div");
+                        imageDiv.setAttribute("class", "banner");
+                        let textDiv = document.createElement("div");  
+                        textDiv.setAttribute("class", "banner-text-div");
+                        let text = document.createElement("h1");
+                        text.setAttribute("class", "bannerText")    
+                        textDiv.appendChild(text);
+                        imageDiv.appendChild(textDiv);
+                        container.appendChild(imageDiv);
+
+
+                        }
+                    
+>>>>>>> Stashed changes
 
 })();
