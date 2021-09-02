@@ -67,4 +67,10 @@ public class TrackController {
         return this.service.delete(id) ? new ResponseEntity<TrackDTO>(HttpStatus.NO_CONTENT)
                 : new ResponseEntity<TrackDTO>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
+    
+    @GetMapping("/read-track/{name}")
+    public ResponseEntity<TrackDTO> read(@PathVariable String name) {
+        return new ResponseEntity<TrackDTO>(this.service.readByName(name), HttpStatus.OK);
+    }
+
 }

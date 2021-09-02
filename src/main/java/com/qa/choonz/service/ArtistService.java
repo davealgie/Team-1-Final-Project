@@ -53,4 +53,9 @@ public class ArtistService {
         this.repo.deleteById(id);
         return !this.repo.existsById(id);
     }
+
+	public ArtistDTO readByName(String name) {
+	       Artist found = this.repo.findByName(name);
+	        return this.mapToDTO(found);
+	}
 }
