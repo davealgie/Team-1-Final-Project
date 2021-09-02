@@ -6,7 +6,34 @@ Feature: track create
     Given I am on "http://127.0.0.1:5500/static/index.html"
     When I click on track management
     And I click on create track
-    And I fill in the track name field
-    And I fill in the lyrics field
-    And I fill in the duration field
+    And I fill in the necessary fields
+    And I click the create track button
     Then I should see track created
+    
+    Scenario: read track
+    Given I am on "http://127.0.0.1:5500/static/index.html"
+    When I click on the track page
+		And I click on created track card
+		Then I should be able to see the track created
+		
+		Scenario: update track
+		 Given I am on "http://127.0.0.1:5500/static/index.html"
+		 When I click on the track management drop down
+		 And I click on the update track button
+		 And I enter the necessary fields to update
+		 And I click update track
+		 And I click the x
+		 And I click back on the tracks page
+		 And I click on the updated card
+		 Then I should be able to see the updated track
+		 
+		 Scenario: delete track
+		  Given I am on "http://127.0.0.1:5500/static/index.html"
+		  When I click on the track management menu
+		  And I click on the delete track button
+		  And I enter of the id of the track I want to delete
+		  And I click the delete button
+		  And I click on the tracks page
+		  Then I should be able to see no tracks
+		 
+		

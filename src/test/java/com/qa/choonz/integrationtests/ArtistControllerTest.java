@@ -47,20 +47,14 @@ public class ArtistControllerTest {
 	@Test
 	void testPost() throws Exception {
 
-
+		Artist artist = new Artist(2L,"Kirk John", new ArrayList<>());
 
 		String ArtistAsJSON = this.mapper.writeValueAsString(artist);
 
 		RequestBuilder mockRequest = post("/artists/create").contentType(MediaType.APPLICATION_JSON)
-
-			
-
-		Artist savedToDo = new Artist(2L, "Kirk John", new ArrayList<>());
-
 				.content(ArtistAsJSON);
 
 		Artist savedArtist = new Artist(2L, "Kirk John", new ArrayList<>());
-
 
 
 		String savedArtistAsJSON = this.mapper.writeValueAsString(savedArtist);
@@ -116,9 +110,7 @@ public class ArtistControllerTest {
 	@Test
 	void testUpdateArtist() throws Exception {
 
-
 		Artist updatedArtist = new Artist(1L,"James Hetfield", new ArrayList<>());
-
 
 		String updatedArtistAsJSON = this.mapper.writeValueAsString(updatedArtist);
 
@@ -145,3 +137,4 @@ public class ArtistControllerTest {
 		this.mock.perform(mockRequest).andExpect(matchStatus);
 	}
 }
+
