@@ -1,0 +1,95 @@
+package com.qa.choonz.uat.pages;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class UsersPage {
+
+	public final String url = "http://127.0.0.1:5500/static/index.html";
+	// CLICK LOG IN/SIGN UP BUTTON
+	@FindBy(xpath = "/html/body/nav/div[2]/ul[1]/form/div[1]/li/div/button")
+	private WebElement signUpBtn;
+	// CLICKS OPTION TO MAKE AN ACCOUNT
+	@FindBy(xpath = "/html/body/nav/div[2]/ul[1]/form/div[1]/li/div/div/button[2]")
+	private WebElement createAccBtn;
+	// FINDS YOUR NAME SECTION
+	@FindBy(xpath = "/html/body/div[2]/div[2]/div/div/div[2]/form/div[1]/input")
+	private WebElement fullNameField;
+	// FINDS USERNAME SECTION
+	@FindBy(xpath = "/html/body/div[2]/div[2]/div/div/div[2]/form/div[2]/input")
+	private WebElement userNameField;
+	// FINDS PASSWORD SECTION
+	@FindBy(xpath = "/html/body/div[2]/div[2]/div/div/div[2]/form/div[3]/input")
+	private WebElement passwordField;
+	// FINDS CREATE BUTTON TO MAKE ACCOUNT
+	@FindBy(xpath = "/html/body/div[2]/div[2]/div/div/div[2]/form/div[4]/button")
+	private WebElement createBtn;
+	// FINDS TEXT SAYING CREATED
+	@FindBy(xpath="//*[@id=\"success-create\"]")
+	private WebElement textBox;
+	
+	@FindBy(xpath = "/html/body/nav/div[2]/ul[1]/form/div[1]/li/div/div/button[1]")
+	private WebElement logInBtn;
+	
+	@FindBy(xpath = "/html/body/div[2]/div[5]/div/div/div[2]/form/div[3]/button[2]")
+	private WebElement logInUser;
+	
+	@FindBy(xpath = "/html/body/div[2]/div[5]/div/div/div[2]/form/div[1]/input")
+	private WebElement loginUserName;
+	
+	@FindBy(xpath = "/html/body/div[2]/div[5]/div/div/div[2]/form/div[2]/input")
+	private WebElement loginPassword;
+	
+	public UsersPage clickLogInUser() {
+		logInUser.click();
+		return this;
+	}
+	
+	public UsersPage AddLogInInfo(String user_name, String password) {
+		loginUserName.sendKeys(user_name);
+		loginPassword.sendKeys(password);
+		return this;
+	}
+	
+	public UsersPage clickLogIn() {
+		signUpBtn.click();
+		logInBtn.click();
+		return this;
+	}
+	
+	public UsersPage addFullname(String full_name) {
+		fullNameField.sendKeys(full_name);
+		return this;
+	}
+
+	public UsersPage addUsername(String user_name) {
+		userNameField.sendKeys(user_name);
+		return this;
+	}
+
+	public UsersPage addPassword(String password) {
+		passwordField.sendKeys(password);
+		return this;
+	}
+	
+	public UsersPage clickSignUp() {
+		signUpBtn.click();
+		createAccBtn.click();
+		return this;
+	}
+	
+	public UsersPage clickCreate() {
+		createAccBtn.click();
+		return this;
+	}
+	
+	public UsersPage clickCreateAccBtn() {
+		createBtn.click();
+		return this;
+	}
+	
+	public String getText() {
+		return textBox.getText();
+		}
+
+}

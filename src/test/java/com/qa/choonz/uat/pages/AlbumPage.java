@@ -64,6 +64,13 @@ public class AlbumPage {
 	@FindBy(xpath = "/html/body/div[2]/div[8]/div/div/div[3]/button")
 	private WebElement closeOff;
 	
+	@FindBy(xpath = "/html/body/div[2]/div[7]/div/div/div[2]/form/div[3]/input")
+	private WebElement artistId;
+	
+	@FindBy(xpath = "/html/body/div[2]/div[6]/div/div/div[2]/form/div[4]/input")
+	private WebElement updateArtistId;
+	
+
 	
 	public AlbumPage closeOff() {
 		closeOff.click();
@@ -89,10 +96,11 @@ public class AlbumPage {
 		updatedCard.click();
 		return this;
 	}
-	public AlbumPage updatedAlbumContents(String id, String name, String cover) {
+	public AlbumPage updatedAlbumContents(String id, String name, String cover, String artId) {
 		updateId.sendKeys(id);
 		updateName.sendKeys(name);
 		updateCover.sendKeys(cover);
+		updateArtistId.sendKeys(artId);
 		return this;
 	}
 
@@ -131,15 +139,14 @@ public class AlbumPage {
 		return this;
 	}
 
-	public AlbumPage albumName(String name) {
+	public AlbumPage albumContents(String name, String cover, String artid) {
 		albumName.sendKeys(name);
+		coverName.sendKeys(cover);
+		artistId.sendKeys(artid);
 		return this;
 	}
 
-	public AlbumPage coverName(String cover) {
-		coverName.sendKeys(cover);
-		return this;
-	}
+	
 
 	public AlbumPage createAlbum() {
 		createName.click();

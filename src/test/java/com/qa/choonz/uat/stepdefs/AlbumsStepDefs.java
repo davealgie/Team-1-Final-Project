@@ -40,15 +40,11 @@ public class AlbumsStepDefs {
 		   albumPage.clickAlbumCreate();
 		}
 
-		@When("I fill in the album name")
-		public void i_fill_in_the_album_name() {
-		   albumPage.albumName("Black Album");
+		@When("I fill in the required fields")
+		public void i_fill_in_the_required_fields() {
+		   albumPage.albumContents("Black Album", "Black", "1");
 		}
 
-		@When("I fil in the Cover")
-		public void i_fil_in_the_cover() {
-		  albumPage.coverName("Black");
-		}
 
 		@When("I click create album")
 		public void i_click_create_album() {
@@ -87,7 +83,7 @@ public class AlbumsStepDefs {
 
 		@When("I enter the required fields")
 		public void i_enter_the_required_fields() {
-		 albumPage.updatedAlbumContents("1", "Kill em all", "Hammer");
+		 albumPage.updatedAlbumContents("1", "Kill em all", "Hammer", "1");
 		}
 
 		@When("I click update")

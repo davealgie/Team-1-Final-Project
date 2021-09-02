@@ -7,8 +7,7 @@
     Given I am on "http://127.0.0.1:5500/static/index.html"
     When I click on the album management button
     And I click on create album
-    And I fill in the album name
-    And I fil in the Cover
+   	And I fill in the required fields
     And I click create album
     Then I should see new album created successfully
 
