@@ -1,8 +1,5 @@
 INSERT INTO users (full_name, user_name, password) VALUES ('Dave', 'dave', 'davidalgie');
 
-
-INSERT INTO artist(name) VALUES ('Kirk Hammett');
-
 INSERT INTO artist(name) VALUES ('Kirk Hammett');
 
 INSERT INTO genre(name, description) VALUES ('Rock', 'lead guitar');
