@@ -4,15 +4,15 @@ Feature: create genre
 
 
  
-  Scenario: genre create
-    Given I am on "http://127.0.0.1:5500/static/index.html"
-    When I sign up and log in
-    And I click on genre management
-    And I click on create genre
-    And I fill in the genre name field
-    And I fill in the description field
-    And I click on create new genre
-    Then I should see the new genre created
+ Scenario: genre create
+ Given I am on "http://127.0.0.1:5500/static/index.html"
+ When I sign up and log in
+ And I click on genre management
+ And I click on create genre
+ And I fill in the genre name field
+ And I fill in the description field
+ And I click on create new genre
+ Then I should see the new genre created
     
 Scenario: read genre
 Given I am on "http://127.0.0.1:5500/static/index.html"

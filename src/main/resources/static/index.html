@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-md navbar-dark bg-white sticky-top">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
     <div class="navbar-toggler-right">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
         aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +27,6 @@
       <ul class="navbar-nav  w-100 justify-content-center px-3 py-md-3">
 
         <form class="form-inline">
-          <img src="/image/Choonz.jpg" alt="" width="100" height="40" class="d-inline-block align-text-top me-3">
           <input id="searchField" class="form-control mr-sm-2" type="search" onsearch="search()" placeholder="Search"
             aria-label="Search">
           <button id="searchButton" class="btn btn-outline-success my-2 my-sm-0" onclick="search()" type="button"
@@ -94,6 +93,7 @@
   </nav>
   <!--end of nav bar -->
   <br>
+  
   <div id="guestLoggedInSection" class="container">
     <h1>
       <div class="btn-group">
@@ -207,11 +207,6 @@
   </div>
   <body>
   <div class="container">
-    <div id="imgHolderBanner">
-      <img id="bannercover" src="https://imageproxy.youversionapi.com/640x360/https://s3-us-west-2.amazonaws.com/mushroom-event-images-prod/23053709-1492091867307.jpg"></img>
-      <button id="bannerBtn" data-toggle="modal" data-target="#createAccountModal">Login/Register NOW</button>
-    </div>
-    <!-- </div> -->
     <div class="row">
         <h1 id="title">Playlist</h1>
     </div>
@@ -220,7 +215,6 @@
         </div>
     </div>
   </div>
-</div>
   <!-- create account modal -->
   <div class="modal fade" id="createAccountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -289,6 +283,42 @@
       </div>
     </div>
   </div>
+  <!-- update user profile -->
+  <div class="modal fade" id="userProfileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="user-profile" action="todo.html" method="POST">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">User Name:</span>
+              </div>
+              <input id="user_name" name="user_name" type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" required>
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default">Password:</span></l>
+              </div>
+              <input id="password" name="password" type="text" class="form-control" aria-label="With textarea"
+                required></input>
+            </div>
+          </form>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button id="delete-user" type="submit" class="btn btn-danger">Delete Account</button>
+            <button id="update-user" type="submit" class="btn btn-primary">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
   <!-- user log in modal -->
   <div class="modal fade" id="userLoginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -318,7 +348,7 @@
             </div>
             <div class="modal-footer">
               <p id="loginAlert" class="card-text"></p>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=" location.href = '/index.html';">Close</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" id="loginSubmit" class="btn btn-primary">Log In</button>
             </div>
           </form>
@@ -369,11 +399,14 @@
               aria-describedby="inputGroup-sizing-default">
           </div>
           <div class="modal-footer">
-            <p id="success-album-update" class="card-text"></p>
             <button type="button" class="btn btn-primary" id="updateAlbum">Update</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=" location.href = '/index.html';">Close</button>
           </div>
         </form>
+        <p id="success-album-update" class="card-text"></p>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -419,7 +452,7 @@
           <p id="success-album-create" class="card-text"></p>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" id="createAlbumBtn">Create</button>
-            <button type="button" class="btn btn-secondary" id="close-button" data-dismiss="modal" onclick=" location.href = '/index.html';">Close</button>
+            <button type="button" class="btn btn-secondary" id="close-button" data-dismiss="modal">Close</button>
           </div>
         </form>
       </div>
@@ -455,7 +488,7 @@
         <p id="success-album-delete" class="card-text"></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=" location.href = '/index.html';">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -508,10 +541,10 @@
               <input id="genreid" type="number" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" />
             </div>
+            <p id="success-track-create" class="card-text"></p>
             <div class="modal-footer">
-              <p id="success-track-create" class="card-text"></p>
               <button type="button" class="btn btn-primary" id="createTrack">Create</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=" location.href = '/index.html';">Close</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
           </form>
         </div>
@@ -537,9 +570,10 @@
               <input id="deletetrackid" type="number" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
+            <p id="success-track-delete" class="card-text"></p>
             <div class="modal-footer">
-              <p id="success-track-delete" class="card-text"></p>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=" location.href = '/index.html';">Close</button>
+              <p id="login-msg" class="card-text"></p>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="submit" class="btn btn-primary" id="deleteTrack">Delete</button>
             </div>
           </form>
@@ -604,8 +638,8 @@
               <p id="success-track-update" class="card-text"></p>
             </div>
             <div class="modal-footer">
-              <p id="success-track-update" class="card-text"></p>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=" location.href = '/index.html';">Close</button>
+              <p id="login-msg" class="card-text"></p>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary" id="updateTrack">Update</button>
             </div>
           </form>
@@ -636,7 +670,7 @@
             <p id="success-artist-create" class="card-text"></p>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=" location.href = '/index.html';">Close</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary"id="createArtist">Create</button>
             </div>
           </form>
@@ -663,9 +697,10 @@
               <input id="deleteID" type="number" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
+            <p id="success-artist-delete" class="card-text"></p>
             <div class="modal-footer">
-              <p id="success-artist-delete" class="card-text"></p>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=" location.href = '/index.html';">Close</button>
+              <p id="login-msg" class="card-text"></p>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary" id="deleteArtist">Delete</button>
             </div>
           </form>
@@ -699,9 +734,10 @@
               <input id="updateName" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
+            <p id="success-artist-update" class="card-text"></p>
             <div class="modal-footer">
-              <p id="success-artist-update" class="card-text"></p>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=" location.href = '/index.html';">Close</button>
+              <p id="login-msg" class="card-text"></p>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary"id="updateArtist">Update</button>
             </div>
           </form>
@@ -754,7 +790,7 @@
             <p id="success-playlist-create" class="card-text"></p>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=" location.href = '/index.html';">Close</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary" id="createPlaylist">Create</button>
             </div>
           </form>
@@ -781,9 +817,10 @@
               <input id="deletePlaylistID" type="number" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
+            <p id="success-playlist-delete" class="card-text"></p>
             <div class="modal-footer">
-              <p id="success-playlist-delete" class="card-text"></p>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=" location.href = '/index.html';">Close</button>
+              <p id="login-msg" class="card-text"></p>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary" id="deletePlaylist">Delete</button>
             </div>
           </form>
@@ -838,9 +875,10 @@
               <input id="updatePlaylistArtwork" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
+            <p id="success-playlist-update" class="card-text"></p>
             <div class="modal-footer">
-              <p id="success-playlist-update" class="card-text"></p>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=" location.href = '/index.html';">Close</button>
+              <p id="login-msg" class="card-text"></p>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary" id="updatePlaylist">Update</button>
             </div>
           </form>
@@ -878,7 +916,7 @@
             <p id="success-genre-create" class="card-text"></p>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=" location.href = '/index.html';">Close</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary"id="createGenre">Create</button>
             </div>
           </form>
@@ -908,7 +946,7 @@
             <p id="success-genre-delete" class="card-text"></p>
             <div class="modal-footer">
               <p id="login-msg" class="card-text"></p>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=" location.href = '/index.html';">Close</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary" id="deleteGenre">Delete</button>
             </div>
           </form>
@@ -949,9 +987,10 @@
               <input id="updateGenreDesc" type="text" class="form-control" aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-default" required>
             </div>
+            <p id="success-genre-update" class="card-text"></p>
             <div class="modal-footer">
-              <p id="success-genre-update" class="card-text"></p>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=" location.href = '/index.html';">Close</button>
+              <p id="login-msg" class="card-text"></p>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary"id="updateGenre">Update</button>
             </div>
           </form>
@@ -1001,10 +1040,9 @@
           </div>
       </div>
       <div class="modal-footer">
-        <p id="success-playlist-track" class="card-text"></p>
         <button type="button" class="btn btn-primary" id="addTrackIDPlaylist">Add By ID</button>
         <button type="button" class="btn btn-primary" id="addTrackByName">Add By Name</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=" location.href = '/index.html';">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -1039,9 +1077,8 @@
               </div>
           </div>
           <div class="modal-footer">
-            <p id="success-playlist-track-delete" class="card-text"></p>
             <button type="button" class="btn btn-primary" id="removeTrackBtn">Remove</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick=" location.href = '/index.html';">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -1057,6 +1094,8 @@
   <script src="js/search.js"></script>
   <script src="js/createUser.js"></script>
   <script type="text/javascript" src="js/cookie-auth.js"></script>
+  <!-- <script src="js/crudUser.js"></script>
+  <script src="js/userAuth.js"></script> -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>

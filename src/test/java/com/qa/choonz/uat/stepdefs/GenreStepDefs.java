@@ -97,8 +97,8 @@ public class GenreStepDefs {
 	}
 
 	@Then("I should be able to see the genre created")
-	public void i_should_be_able_to_see_the_genre_created() {
-
+	public void i_should_be_able_to_see_the_genre_created() throws InterruptedException {
+		Thread.sleep(2000);
 		assertEquals("http://127.0.0.1:5500/static/genres.html?id=1", this.driver.getCurrentUrl());
 	}
 
