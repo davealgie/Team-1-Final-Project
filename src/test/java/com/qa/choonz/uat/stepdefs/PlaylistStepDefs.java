@@ -105,7 +105,7 @@ public class PlaylistStepDefs {
 
 	@When("I click on update a playlist")
 	public void i_click_on_update_a_playlist() {
-		playlistPage.clickUpdatePlaylist();
+		playlistPage.updatePlaylist();
 	}
 
 	@When("I fill in the required update playlist fields")
@@ -116,8 +116,10 @@ public class PlaylistStepDefs {
 
 	@When("I click the update playlist button")
 	public void i_click_the_update_playlist_button() throws InterruptedException {
-		Thread.sleep(2000);
 		playlistPage.clickUpdatePlaylist();
+		Thread.sleep(2000);
+		playlistPage.closeUpdate();
+		usersPage.clickHome();
 	}
 
 	@Then("I should see the updated playlist")

@@ -534,7 +534,7 @@
                     
                         console.log(data);
                     
-                        fetch('http://localhost:81/genres/update/' + updatePlaylistID.value, {
+                        fetch('http://localhost:81/playlists/update/' + updatePlaylistID.value, {
                           method: 'POST', // or 'PUT'
                           headers: {
                             'Content-Type': 'application/json',

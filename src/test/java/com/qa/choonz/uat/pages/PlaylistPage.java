@@ -24,7 +24,7 @@ public class PlaylistPage {
 	@FindBy(xpath = "/html/body/div[16]/div/div/div[2]/form/div[4]/button[2]")
 	private WebElement createBtn;
 
-	@FindBy(xpath = "/html/body/div[1]/h1[3]/div/div/div/div/button[2]")
+	@FindBy(xpath = "/html/body/div[18]/div/div/div[2]/form/div[6]/button[2]")
 	private WebElement updateBtn;
 
 	@FindBy(xpath = "/html/body/div[18]/div/div/div[2]/form/div[1]/input")
@@ -42,7 +42,7 @@ public class PlaylistPage {
 	@FindBy(xpath = "/html/body/div[18]/div/div/div[2]/form/div[5]/input")
 	private WebElement updateArtwork;
 
-	@FindBy(xpath = "/html/body/div[18]/div/div/div[2]/form/div[6]/button[2]")
+	@FindBy(xpath = "/html/body/div[1]/h1[3]/div/div/div/div/button[2]")
 	private WebElement updatePlaylistBtn;
 
 	@FindBy(xpath = "/html/body/div[18]/div/div/div[2]/form/div[6]/button[1]")
@@ -95,6 +95,12 @@ public class PlaylistPage {
 
 	@FindBy(xpath = "/html/body/div[23]/div/div/div[3]/button[2]")
 	private WebElement closeRemove;
+	
+	
+	public PlaylistPage closeUpdate() {
+		closeUpdateBtn.click();
+		return this;
+	}
 
 	public PlaylistPage closeRemove() {
 		closeRemove.click();
@@ -206,6 +212,11 @@ public class PlaylistPage {
 
 	public PlaylistPage clickUpdatePlaylist() {
 		updateBtn.click();
+		return this;
+	}
+	
+	public PlaylistPage updatePlaylist() {
+		updatePlaylistBtn.click();
 		return this;
 	}
 }
