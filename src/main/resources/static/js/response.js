@@ -19,6 +19,13 @@
 
         var div = document.createElement("div");
         div.setAttribute("class", "card");
+        var imgDiv = document.createElement("div");
+        imgDiv.setAttribute("class", "imgHolder");
+        var img = document.createElement("img");
+        img.setAttribute("id", "albumcover");
+        img.src = result.cover;
+        imgDiv.appendChild(img)
+        div.appendChild(imgDiv);
         var para = document.createElement("a");
         para.setAttribute("class", "name");
         para.innerText = result.name;

@@ -29,6 +29,8 @@ console.log(user)
 var userBtn = document.getElementById("userLoggedInBtn");
 var guestBtn = document.getElementById("guestLoggedInBtn");
 var userSection = document.getElementById("guestLoggedInSection");
+var titleview = document.getElementById("title");
+var imgHolderBanner = document.getElementById("imgHolderBanner");
 
 
 //if user logged in then change hidden button
@@ -36,10 +38,14 @@ if(user!= ""){
     guestBtn.style.display = "none";
     userBtn.style.display = "block";
     userSection.style.display = "flex";
-
+    titleview.style.display = "block";
+    imgHolderBanner.style.display = "none";
 }
 else{
     guestBtn.style.display = "block";
     userBtn.style.display = "none";
+    titleview.style.display = "none";
     userSection.style.display = "none";
+    imgHolderBanner.style.display = "block";
+
 }
