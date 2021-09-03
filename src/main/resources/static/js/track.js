@@ -11,13 +11,19 @@
         console.log(result);
         var div = document.createElement("div");
         div.setAttribute("class", "card");
+        var para2 = document.createElement("p");
+        para2.setAttribute("class", "id");
+        para2.setAttribute("style", "font-size:10px");
+        // para2.setAttribute("style", "margin-bottom:2px");
+        para2.innerText = result[0];
+        div.appendChild(para2);
         var para = document.createElement("a");
         para.setAttribute("class", "name");
         para.innerText = result[1];
         para.setAttribute('href', "tracks.html?id=" + result[0]);
         div.appendChild(para);
         var hr = document.createElement("hr");
-        hr.setAttribute("style", "height:1px;border-width:0;color:gray;background-color:gray");
+        hr.setAttribute("style", "height:1px;border-width:0;color:gray;background-color:gray; margin-top: -1px");
         div.appendChild(hr);
        
 
@@ -37,7 +43,7 @@
         // div.appendChild(head2);
         div.appendChild(para2);
         var hr = document.createElement("hr");
-        hr.setAttribute("style", "height:1px;border-width:0;color:gray;background-color:gray");
+        hr.setAttribute("style", "height:1px;border-width:0;color:gray;background-color:gray; margin-top: -1px");
         div.appendChild(hr);
     }
     if(result[2]!= null){    
@@ -46,7 +52,7 @@
         para3.href = "album.html?id=" + result[2].id;
         div.appendChild(para3);
         var hr = document.createElement("hr");
-        hr.setAttribute("style", "height:1px;border-width:0;color:gray;background-color:gray");
+        hr.setAttribute("style", "height:1px;border-width:0;color:gray;background-color:gray; margin-top: -1px");
         div.appendChild(hr);
   
     if(result[2].artist!= null){    
@@ -56,7 +62,7 @@
         // div.appendChild(head);
         div.appendChild(para);
         var hr = document.createElement("hr");
-        hr.setAttribute("style", "height:1px;border-width:0;color:gray;background-color:gray");
+        hr.setAttribute("style", "height:1px;border-width:0;color:gray;background-color:gray; margin-top: -1px");
         div.appendChild(hr);
     }
     }
@@ -92,13 +98,18 @@
             console.log(result);
             var div = document.createElement("div");
             div.setAttribute("class", "card");
+            var para2 = document.createElement("p");
+            para2.setAttribute("class", "id");
+            para2.setAttribute("style", "font-size:10px");
+            // para2.setAttribute("style", "margin-bottom:2px");
+            para2.innerText = result.id;
+            div.appendChild(para2);
             var para = document.createElement("a");
             para.setAttribute("class", "name");
             para.innerText = result.name;
-            para.setAttribute('href', "tracks.html?id=" + result[0]);
             div.appendChild(para);
             var hr = document.createElement("hr");
-            hr.setAttribute("style", "height:1px;border-width:0;color:gray;background-color:gray");
+            hr.setAttribute("style", "height:1px;border-width:0;color:gray;background-color:gray; margin-top: -1px");
             div.appendChild(hr);
 
 

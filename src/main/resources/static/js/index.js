@@ -1,6 +1,15 @@
 
 // (() => {
     let container = document.querySelector("#card-group");
+    // let containerGuest = document.querySelector("#bannerContainer");
+
+    // let textDiv = document.createElement("div");  
+    // textDiv.setAttribute("class", "banner-text-div");
+    // let text = document.createElement("h1");
+    // text.setAttribute("class", "bannerText")  
+    // text.innerText("HELLO") ;
+    // textDiv.appendChild(text);
+    // containerGuest.appendChild(textDiv);
 
     var id = getCookie("id");
 
@@ -21,7 +30,7 @@
       }
     
     if(id == null || id == ""){
-        heroPage();
+        // heroPage();
     } else {
         console.log(id);
         simpleFetch(id);
@@ -129,29 +138,30 @@
             body: JSON.stringify(data),
           })
           .then(response => response.json())
-          .then(data => {
-            console.log('Success:', data);
+          .then(data1 => {
+            console.log('Success- ALBUM:', data1);
+            if(createTrackGenreID!=null){
+                fetch('http://localhost:81/tracks/' + data1.id + '/genres/' + createTrackGenreID.value, {
+                    method: 'PUT', // or 'PUT'
+                    headers: {
+                      'Content-Type': 'application/json',
+                  },
+                    body: JSON.stringify(data),
+                  })
+                  .then(response => response.json())
+                  .then(data => {
+                    console.log('Success - GENRE:', data);
+                  })
+                  .catch((error) => {
+                    console.error('Error:', error);
+                  });
+                }
           })
           .catch((error) => {
             console.error('Error:', error);
           });
         }
-        if(createTrackGenreID!=null){
-            fetch('http://localhost:81/tracks/' + data.id + '/genres/' + createTrackGenreID.value, {
-                method: 'PUT', // or 'PUT'
-                headers: {
-                  'Content-Type': 'application/json',
-              },
-                body: JSON.stringify(data),
-              })
-              .then(response => response.json())
-              .then(data => {
-                console.log('Success:', data);
-              })
-              .catch((error) => {
-                console.error('Error:', error);
-              });
-            }
+
     })
     .catch((error) => {
       console.error('Error:', error);
@@ -223,7 +233,7 @@
     fetch('http://localhost:81/tracks/delete/' + deleteTrackID.value, {
       method: 'DELETE', // or 'PUT'
     })
-    .then(response => response.json())
+    .then(response => response.text())
     .then(data => {
       console.log('Success:', data);
       let msg = document.getElementById("success-track-delete");
@@ -328,7 +338,7 @@
             fetch('http://localhost:81/albums/delete/' + deleteAlbumID.value, {
               method: 'DELETE', // or 'PUT'
             })
-            .then(response => response.json())
+            .then(response => response.text())
             .then(data => {
               console.log('Success:', data);
               let msg = document.getElementById("success-album-delete");
@@ -400,7 +410,7 @@
             fetch('http://localhost:81/artists/delete/' + deleteArtistID.value, {
               method: 'DELETE', // or 'PUT'
             })
-            .then(response => response.json())
+            .then(response => response.text())
             .then(data => {
               console.log('Success:', data);
               let msg = document.getElementById("success-artist-delete");
@@ -472,7 +482,7 @@
                     fetch('http://localhost:81/genres/delete/' + deleteGenreID.value, {
                       method: 'DELETE', // or 'PUT'
                     })
-                    .then(response => response.json())
+                    .then(response => response.text())
                     .then(data => {
                       console.log('Success:', data);
                       let msg = document.getElementById("success-genre-delete");
@@ -576,7 +586,7 @@
                         fetch('http://localhost:81/playlists/delete/' + deletePlaylistID.value, {
                           method: 'DELETE', // or 'PUT'
                         })
-                        .then(response => response.json())
+                        .then(response => response.text())
                         .then(data => {
                           console.log('Success:', data);
                           let msg = document.getElementById("success-playlist-delete");
@@ -610,6 +620,8 @@
                            .then(response => response.json())
                            .then(data => {
                             console.log('Success:', data);
+                            let msg = document.getElementById("success-playlist-track-delete");
+                            msg.innerHTML = "Removed Successfully!"
                             })
                               .catch((error) => {
                                 console.error('Error:', error);
@@ -627,6 +639,8 @@
                            .then(response => response.json())
                            .then(data => {
                             console.log('Success:', data);
+                            let msg = document.getElementById("success-playlist-track");
+                            msg.innerHTML = "Successful!"
                             })
                               .catch((error) => {
                                 console.error('Error:', error);
@@ -644,6 +658,8 @@
                           .then(response => response.json())
                           .then(data => {
                             console.log('Success:', data);
+                            let msg = document.getElementById("success-playlist-track");
+                            msg.innerHTML = "Successful!"
                           })
                           .catch((error) => {
                             console.error('Error:', error);
@@ -657,12 +673,25 @@
 
                         var div = document.createElement("div");
                         div.setAttribute("class", "card");
+                        var para2 = document.createElement("p");
+                        para2.setAttribute("class", "id");
+                        para2.setAttribute("style", "font-size:10px");
+                        // para2.setAttribute("style", "margin-bottom:2px");
+                        para2.innerText = result[0];
+                        div.appendChild(para2);
+                        var imgDiv = document.createElement("div");
+                        imgDiv.setAttribute("class", "imgHolder");
+                        var img = document.createElement("img");
+                        img.setAttribute("id", "albumcover");
+                        img.src = result[3];
+                        imgDiv.appendChild(img)
+                        div.appendChild(imgDiv);
                         var head10 = document.createElement("p");
                         head10.setAttribute("class", "name");
                         head10.innerText = result[1];
                         div.appendChild(head10);
                         var hr = document.createElement("hr");
-                        hr.setAttribute("style", "height:1px;border-width:0;color:gray;background-color:gray");
+                        hr.setAttribute("style", "height:1px;border-width:0;color:gray;background-color:gray; margin-top: -1px");
                         div.appendChild(hr);
 
 
@@ -692,7 +721,7 @@
                               return response.json();
                             })) 
                             .then(data => {
-                                const result = data.map(({id, name, tracks}) => [id, name, tracks]);
+                                const result = data.map(({id, name, tracks, artwork}) => [id, name, tracks, artwork]);
                                 console.log(result);
                                 for (data of result) {
                                 const table = createCard(data);
@@ -703,19 +732,10 @@
                             .finally(() => { console.log("All OK!"); });
                         }
 
-                        function heroPage(){
+                        // function heroPage(){
 
-                        let imageDiv = document.createElement("div");
-                        imageDiv.setAttribute("class", "banner");
-                        let textDiv = document.createElement("div");  
-                        textDiv.setAttribute("class", "banner-text-div");
-                        let text = document.createElement("h1");
-                        text.setAttribute("class", "bannerText")    
-                        textDiv.appendChild(text);
-                        imageDiv.appendChild(textDiv);
-                        container.appendChild(imageDiv);
+    
 
-
-                        }
+                        // }
                     
 // })();
