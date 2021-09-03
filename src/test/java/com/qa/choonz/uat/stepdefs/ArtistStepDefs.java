@@ -98,14 +98,6 @@ public class ArtistStepDefs {
 
 	@When("I log in and sign up to update an artist")
 	public void I_log_in_and_sign_up_to_update_an_artist() throws InterruptedException {
-		usersPage.clickSignUp();
-		usersPage.addFullname("Sirish Khatry");
-		usersPage.addUsername("sirisho");
-		usersPage.addPassword("sirish123");
-		Thread.sleep(2000);
-		usersPage.clickCreateAccBtn();
-		usersPage.closeBtn();
-		Thread.sleep(2000);
 		usersPage.clickLogIn();
 		Thread.sleep(2000);
 		usersPage.AddLogInInfo("sirisho", "sirish123");
@@ -167,14 +159,6 @@ public class ArtistStepDefs {
 
 	@When("I log in and sign up to delete an artist")
 	public void I_log_in_and_sign_up_to_delete_an_artist() throws InterruptedException {
-		usersPage.clickSignUp();
-		usersPage.addFullname("Sirish Khatry");
-		usersPage.addUsername("sirisho");
-		usersPage.addPassword("sirish123");
-		Thread.sleep(2000);
-		usersPage.clickCreateAccBtn();
-		usersPage.closeBtn();
-		Thread.sleep(2000);
 		usersPage.clickLogIn();
 		Thread.sleep(2000);
 		usersPage.AddLogInInfo("sirisho", "sirish123");

@@ -78,6 +78,13 @@ public class TrackPage {
 	@FindBy(xpath = "/html/body/div[11]/div/div/div[2]/form/div[2]/button[2]")
 	private WebElement deleteTrackBtn;
 	
+	@FindBy(xpath = "/html/body/div[10]/div/div/div[2]/form/div[6]/button[2]")
+	private WebElement closeCreate;
+	
+	public TrackPage closeCreate() {
+		closeCreate.click();
+		return this;
+	}
 	
 
 

@@ -22,7 +22,7 @@ public class AlbumPage {
 	@FindBy(xpath = "/html/body/div[8]/div/div/div[2]/form/div[4]/button[1]")
 	private WebElement createName;
 
-	@FindBy(xpath = "//*[@id=\"success-album-create\"]")
+	@FindBy(xpath = "/html/body/div[8]/div/div/div[2]/form/p")
 	private WebElement assertText;
 
 	@FindBy(xpath = "/html/body/nav/div[2]/ul[2]/class/li[3]/a")
