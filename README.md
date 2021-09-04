@@ -6,9 +6,9 @@ Starter code for SDET final project specification - music website "Choonz"
 The Choonz website allows a vistor to read all of the tracks, artists, albums and genres. While, lo
 
 ## Specifications
--MUST HAVE - Track, Artist, Album
--SHOULD HAVE - Genre, Playlist
--COULD HAVE - Login system with different authentication depending on type of user
+- MUST HAVE - Track, Artist, Album
+- SHOULD HAVE - Genre, Playlist
+- COULD HAVE - Login system with different authentication depending on type of user
 ## Client Requirements
 Multiple users can sign up to the system
 The styling of the entire site should be consistent
@@ -17,33 +17,46 @@ It would be nice to be able to search for a specific track, album, or artist
 User Home Screen
 Users can CRUD albums, artists, tracks and genres
 Users should see cards for each playlist on their home screen
--Albums
+- Albums
 Users should view each album on its own page
 The album should contain a list of songs
 The albums page should contain a link to the artist page
 Each track should link to a track page
--Artists
+- Artists
 Users should view each artist on its own page
 The artist should contain a list of albums
 Each album should link to an album page
--Tracks
+- Tracks
 Users should view each track on its own page
 The track page should show the name, lyrics, and genre
 The track page should contain links to the relevant album and artist
--Genres
+- Genres
 Users should view each genre on its own page
 The genre should contain a list of tracks
 Each track should link to a track page
--Playlists
+- Playlists
 A user can CRUD as many playlists as they like on their home screen
 Users should CRUD their own playlists either by song id, name, or genre
--Non-Functional Testing
+- Non-Functional Testing
 Response times should be <10 milliseconds
 Latency should be <2 seconds at 10000 concurrent users
 Throughput rate should be >300/s
 RAM allocation should be minimal, with few (if any) memory leaks
 The application should be spike-, load-, stress-, and soak-tested
-Prerequisites:
+## Prerequisites:
+Java Verison 14
+Eclipse installed
+MySQL Server 8.0+
+Visual Studio Code
+Spring Boot and Maven installed
+JMeter installed
+
+## Getting started
+Clone this repository to your local pc, using eclipse
+Run the project as a Spring Boot Application.
+The application is hosted as localhost:8081/ OR can be run as a live server from the index page using Visual Studio Code.
+Running the Tests
+The tests can be ran on Eclipse, this can be done by right-clicking on the project and running as a JUnit test. In regards to User acceptance tests, these can be found in test resources under the feature files which will have scenarios that can be run to tes the Front End. Non-functional testing is covered in the src/test/jmeter. The .jmx files can be find in there, with the html reports, alongside the excel sheets for a summary of data.
 
 ## Coverage
 ![coverage 2](https://user-images.githubusercontent.com/85874668/132089031-42c1f6a0-5a48-4e7a-ab4d-07b84e7174c8.png)
