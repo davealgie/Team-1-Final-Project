@@ -45,6 +45,10 @@ RAM allocation should be minimal, with few (if any) memory leaks
 The application should be spike-, load-, stress-, and soak-tested
 Prerequisites:
 
+## Coverage
+![coverage 2](https://user-images.githubusercontent.com/85874668/132089031-42c1f6a0-5a48-4e7a-ab4d-07b84e7174c8.png)
+
+
 ## ERD
 ![ERD](https://user-images.githubusercontent.com/85874668/132088901-89120727-94d9-4a1e-935d-dd1a52a168d5.png)
 
