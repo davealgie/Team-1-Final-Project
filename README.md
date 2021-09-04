@@ -3,7 +3,7 @@
 Starter code for SDET final project specification - music website "Choonz"
 
 ## Concept
-The Choonz website allows a vistor to read all of the tracks, artists, albums and genres. While, lo
+The Choonz website allows a vistor to read all of the tracks, artists, albums and genres. While, when a user has been created and logged in, the user can create, update or delete the previous functions the visitors can do. While additionally, having their own playlist allocating tracks to that playlist.
 
 ## Specifications
 - MUST HAVE - Track, Artist, Album
